@@ -1,0 +1,77 @@
+.tech__card__container {
+    font-family: "Poppins";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(2px);
+}
+.tech__card__container:nth-child(5) {
+    grid-column: 2/4;
+}
+.tech__card__container:nth-child(9) {
+    grid-column: 1/3;
+}
+.tech__card__title {
+    z-index: 2;
+}
+.tech__card__image {
+    height: 55px;
+    width: auto;
+    z-index: 2;
+    filter: saturate(0);
+    transition: filter .2s;
+}
+.tech__card__image.hovered {
+    filter: saturate(1);
+}
+.tech__card__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgb(76, 118, 225) 0%, rgba(255,255,255,0) 100%);
+    filter: blur(25px);
+    opacity: .25;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 1;
+    transition: opacity .2s;
+}
+.tech__card__background.react {
+    background: radial-gradient(circle, rgb(19, 153, 196) 0%, rgba(255,255,255,0) 100%);
+}
+.tech__card__background.next, .express, .github {
+    background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgba(255,255,255,0) 100%);
+}
+.tech__card__background.typescript {
+    background: radial-gradient(circle, rgb(47, 116, 192) 0%, rgba(255,255,255,0) 100%);
+}
+.tech__card__background.nodejs {
+    background: radial-gradient(circle, rgb(126, 200, 37) 0%, rgba(255,255,255,0) 100%);
+}
+.tech__card__background.git, .html, .postman {
+    background: radial-gradient(circle, rgb(233, 77, 50) 0%, rgba(255,255,255,0) 100%);
+}
+.tech__card__background.postgresql {
+    background: radial-gradient(circle, rgb(49, 100, 140) 0%, rgba(255,255,255,0) 100%);
+}
+.tech__card__background.firebase {
+    background: radial-gradient(circle, rgb(247, 197, 45) 0%, rgba(255,255,255,0) 100%);
+}
+.tech__card__background.css {
+    background: radial-gradient(circle, rgb(37, 75, 221) 0%, rgba(255,255,255,0) 100%);
+}
+.tech__card__background.javascript {
+    background: radial-gradient(circle, rgb(232, 212, 77) 0%, rgba(255,255,255,0) 100%);
+}
+.off {
+    opacity: 0;
+}
