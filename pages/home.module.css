@@ -18,6 +18,7 @@
     align-items: center;
     gap: 10px;
     padding: 150px 0 0 0;
+    margin-top: -80px;
     .welcome-p-container {
         display: flex;
         align-items: flex-end;

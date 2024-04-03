@@ -4,6 +4,7 @@ import Logo from "../logo";
 import Navigation from "@/ui/links";
 import { X, CaretRight } from "react-bootstrap-icons";
 import { projects } from "./projects";
+import Router from "next/router";
 export default function  Hamburguer() {
     const [hovered, setHovered] = useState(false);
     const [opened, setOpened] = useState(false);

@@ -8,7 +8,9 @@ import InputComponent from "@/ui/inputs";
 import TextArea from "@/ui/text-area";
 import { Send, Clipboard, Clipboard2Check, Github, Linkedin, Download } from "react-bootstrap-icons";
 import Navigation from "@/ui/links";
+import { useState } from "react";
 export default function Home() {
+  const [language, setLanguage] = useState<"es" | "en">("es");
   const scrollToSection = (section:string) => {
     const sectionEl = document.getElementById(section);
     if (!sectionEl) return;
