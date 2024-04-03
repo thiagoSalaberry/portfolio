@@ -13,6 +13,8 @@
   --grey: #6C7384;
   --grey-300: #ACAFB6;
   --grey-400: #888D9B;
+  --font-main: "Poppins";
+  --font-secondary: "Big Shoulders Display";
 }
 * {
   box-sizing: border-box;

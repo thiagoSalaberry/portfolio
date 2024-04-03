@@ -47,8 +47,8 @@ export default function ProjectCard(props:ProjectCardProps) {
                 })}
             </div>
             <div className={styles["tech__card__techs__links"]}>
-                <Navigation href={props.pageUrl} icon="arrow"/>
-                <Navigation href={props.githubUrl} icon="github"/>
+                <Navigation style="card" href={props.pageUrl} icon="arrow"/>
+                <Navigation style="card" href={props.githubUrl} icon="github"/>
             </div>
             <div
                 className={`${styles["tech__card__background"]} ${!hovered ? styles["off"] : ""}`}

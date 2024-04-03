@@ -11,6 +11,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    /* position: absolute;
+    top: 0; */
+    width: 100%;
 }
 .header__rigth__content {
     display: flex;

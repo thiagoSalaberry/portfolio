@@ -43,6 +43,7 @@ export const TextAreaStyled = styled.div`
     }
     .textarea::placeholder {
         color: var(--grey-300);
+        font-weight: 500;
     }
     .valued {
         border: 3px solid var(--blue);

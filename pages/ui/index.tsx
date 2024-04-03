@@ -3,7 +3,8 @@ import Button from "@/ui/buttons";
 import InputComponent from "@/ui/inputs";
 import TextArea from "@/ui/text-area";
 import { useEffect, useRef, useState } from "react";
-import { Boxes, Linkedin, Github, Download, Link45deg, ArrowUpRightCircle, Send } from "react-bootstrap-icons";
+import Boxes from "@/components/test-boxes";
+import { Boxes as BoxesIcon, Linkedin, Github, Download, Link45deg, ArrowUpRightCircle, Send } from "react-bootstrap-icons";
 import { CircularProgress } from "@mui/material";
 import TechLogo from "@/ui/tech-logo";
 import Navigation from "@/ui/links";
@@ -34,7 +35,7 @@ export default function UI() {
     return (
         <Layout>
             <main className={styles["ui-page"]}>
-                <h1>UI components</h1>
+                {/* <h1>UI components</h1>
                 <div className={styles["buttons-container"]}>
                     <Button which="Main" onClick={()=>{}}>Main</Button>
                     <Button which="Main" onClick={()=>{}}>Main <Boxes size={30}/></Button>
@@ -109,7 +110,8 @@ export default function UI() {
                     <TechCard tech="HTML" image="html"/>
                     <TechCard tech="CSS" image="css"/>
                     <TechCard tech="JavaScript" image="javascript"/>
-                </div>
+                </div> */}
+                <Boxes/>
             </main>
         </Layout>
     )

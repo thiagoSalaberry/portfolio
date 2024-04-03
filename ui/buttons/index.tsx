@@ -86,20 +86,23 @@ export const CardButton = styled.button`
     }
 `
 export default function Button(props:ButtonProps) {
+    const handleClick = () => {
+        props.onClick && props.onClick();
+    }
     switch(props.which) {
         case "Main" : 
-            return <Main onClick={props.onClick}>{props.children}</Main>;
+            return <Main onClick={handleClick}>{props.children}</Main>;
         case "Secondary" :
-            return <Secondary onClick={props.onClick}>{props.children}</Secondary>;
+            return <Secondary onClick={handleClick}>{props.children}</Secondary>;
         case "TextButton" :
-            return <TextButton onClick={props.onClick}>{props.children}</TextButton>;
+            return <TextButton onClick={handleClick}>{props.children}</TextButton>;
         case "IconFilledButton" :
-            return <IconFilledButton onClick={props.onClick}>{props.children}</IconFilledButton>;
+            return <IconFilledButton onClick={handleClick}>{props.children}</IconFilledButton>;
         case "IconButton" :
-            return <IconButton onClick={props.onClick}>{props.children}</IconButton>;
+            return <IconButton onClick={handleClick}>{props.children}</IconButton>;
         case "CardButton" :
-            return <CardButton onClick={props.onClick}>{props.children}</CardButton>;
+            return <CardButton onClick={handleClick}>{props.children}</CardButton>;
         default :
-            return <Main onClick={props.onClick}>{props.children}</Main>;
+            return <Main onClick={handleClick}>{props.children}</Main>;
     }
 };

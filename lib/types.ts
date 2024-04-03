@@ -49,7 +49,8 @@ type TechLogoProps = {
 
 type NavigationProps = {
   href: string;
-  icon: "github" | "arrow";
+  icon: "github" | "arrow" | "linkedin";
+  style: "card" | "button";
 };
 
 type LayoutProps = {
