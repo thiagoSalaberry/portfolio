@@ -139,6 +139,7 @@
 }
 .contact-section {
     height: 100vh;
+    text-align: center;
     .my__mail {
         font-size: 20px;
         font-weight: 600;
@@ -148,6 +149,10 @@
         justify-content: center;
         gap: 5px;
         cursor: pointer;
+        transition: all .1s;
+    }
+    .my__mail:active {
+        transform: scale(.97);
     }
     .contact__form {
         display: flex;

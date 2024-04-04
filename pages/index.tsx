@@ -4,16 +4,26 @@ import TechCard from "@/components/tech-card";
 import ProjectCard from "@/components/project-card";
 import TechLogo from "@/ui/tech-logo";
 import Button from "@/ui/buttons";
+import { TextButton } from "@/ui/buttons";
 import InputComponent from "@/ui/inputs";
 import TextArea from "@/ui/text-area";
-import { Send, Clipboard, Clipboard2Check, Github, Linkedin, Download } from "react-bootstrap-icons";
+import { Send, Clipboard, ClipboardCheck, Github, Linkedin, Download } from "react-bootstrap-icons";
 import Navigation from "@/ui/links";
 import { useState } from "react";
 import translation from "@/lib/translation.json";
 import { useRecoilValue } from "recoil";
 import { languajeState } from "@/atoms/languageState";
+import copy from "copy-to-clipboard";
 export default function Home() {
+  const [copied, setCopied] = useState(false);
   const language = useRecoilValue(languajeState);
+  const handleCopy = () => {
+    setCopied(true);
+    copy("thiagosalaberry99@gmail.com");
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  }
   const scrollToSection = (section:string) => {
     const sectionEl = document.getElementById(section);
     if (!sectionEl) return;
@@ -100,7 +110,7 @@ export default function Home() {
       <section className={styles["contact-section"]} id="contact">
         <h3 className={styles["section-title"]}>{translation[language].contact_section.title}</h3>
         <p>{translation[language].contact_section.contact_section_quote}</p>
-        <p className={styles["my__mail"]}>thiagosalaberry99@gmail.com <Clipboard size={20}/></p>
+        <p className={styles["my__mail"]} onClick={handleCopy}>thiagosalaberry99@gmail.com {copied ? <ClipboardCheck size={20}/> : <Clipboard size={20}/>}</p>
         <form className={styles["contact__form"]}>
           <InputComponent label={translation[language].contact_section.form_name} type="text" name="name" value="" missing={false} disabled={false} onChange={()=>{}} placeholder={translation[language].contact_section.form_name_placeholder}/>
           <InputComponent label={translation[language].contact_section.form_email} type="email" name="email" value="" missing={false} disabled={false} onChange={()=>{}} placeholder={translation[language].contact_section.form_email_placeholder}/>
