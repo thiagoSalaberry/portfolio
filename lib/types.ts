@@ -56,3 +56,4 @@ type NavigationProps = {
 type LayoutProps = {
   children: React.ReactNode;
 };
+type Language = "es" | "en";

@@ -5,9 +5,13 @@ import Navigation from "@/ui/links";
 import { X, CaretRight } from "react-bootstrap-icons";
 import { projects } from "./projects";
 import Router from "next/router";
+import translation from "@/lib/translation.json";
+import { languajeState } from "@/atoms/languageState";
+import { useRecoilValue } from "recoil";
 export default function  Hamburguer() {
     const [hovered, setHovered] = useState(false);
     const [opened, setOpened] = useState(false);
+    const language = useRecoilValue(languajeState);
     return (
         <div className={styles["hamburguer"]}>
             <button 
@@ -38,12 +42,13 @@ export default function  Hamburguer() {
                     <p className={styles["menu__me-email"]}>thiagosalaberry99@gmail.com</p>
                 </div>
                 <ul className={styles["menu__list"]}>
-                    <ListItem title="TECNOLOGÍAS"></ListItem>
-                    <ListItem title="PROYECTOS">
+                    <ListItem title={translation[language].techs_section.title}></ListItem>
+                    <ListItem title={translation[language].projects_section.title}>
                         {projects && projects.map((projectItem, index) => {
+                            const cardKey = `card_${index + 1}`
                             return (
                                 <div key={index} className={styles["project-container"]}>
-                                    <p className={styles["project-title"]}>{projectItem.title}</p>
+                                    <p className={styles["project-title"]}>{translation[language].projects_section[cardKey].title}</p>
                                     <div className={styles["project-links"]}>
                                         <Navigation href={projectItem.pageUrl} icon="arrow" style="card"></Navigation>
                                         <Navigation href={projectItem.githubUrl} icon="github" style="card"></Navigation>
@@ -52,8 +57,8 @@ export default function  Hamburguer() {
                             )
                         })}
                     </ListItem>
-                    <ListItem title="SOBRE MÍ"></ListItem>
-                    <ListItem title="CONTACTO"></ListItem>
+                    <ListItem title={translation[language].about_me_section.title}></ListItem>
+                    <ListItem title={translation[language].contact_section.title}></ListItem>
                 </ul>
             </div>
         </div>
