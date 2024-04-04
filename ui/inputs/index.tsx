@@ -58,6 +58,29 @@ export const InputStyled = styled.div`
     .missing:hover {
         box-shadow: 0 6px 0 0 var(--red-700);
     }
+    .missing:focus {
+        outline: none;
+        border: 3px solid var(--red);
+        box-shadow: 0 6px 0 0 var(--red-700);
+        transform: translateY(-3px);
+    }
+    .disabled {
+        background: var(--blue-100);
+        color: var(--blue-300);
+    }
+    .disabled:active, .disabled:hover {
+        box-shadow: 0 3px 0 0 var(--blue-700);
+        transform: none;
+    }
+    .input:-webkit-autofill,
+    .input:-webkit-autofill:hover, 
+    .input:-webkit-autofill:focus, 
+    .input:-webkit-autofill:active {
+        -webkit-text-fill-color: var(--blue) !important; /* Color del texto */
+    }
+    .input.disabled:-webkit-autofill {
+        -webkit-text-fill-color: var(--blue-300) !important; /* Color del texto */
+    }
 `;
 
 export default function InputComponent(props:InputProps) {
@@ -71,11 +94,12 @@ export default function InputComponent(props:InputProps) {
         <InputStyled>
             <label className={`input-label`} htmlFor={props.name}>{props.label}{props.missing ? <span className={`error-message`}>Completá este campo</span> : null}</label>
             <input
-                className={`input ${props.value !== "" ? "valued" : ""} ${props.missing ? "missing" : ""}`}
+                className={`input ${props.value !== "" ? "valued" : ""} ${props.missing ? "missing" : ""} ${props.disabled ? "disabled" : ""}`}
                 type={props.type}
                 name={props.name}
                 value={props.value}
-                required={props.required}
+                required
+                disabled={props.disabled}
                 placeholder={props.placeholder}
                 onChange={handleChange}
             />

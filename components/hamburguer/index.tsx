@@ -12,6 +12,7 @@ export default function  Hamburguer() {
     const [hovered, setHovered] = useState(false);
     const [opened, setOpened] = useState(false);
     const language = useRecoilValue(languajeState);
+
     return (
         <div className={styles["hamburguer"]}>
             <button 
@@ -42,7 +43,7 @@ export default function  Hamburguer() {
                     <p className={styles["menu__me-email"]}>thiagosalaberry99@gmail.com</p>
                 </div>
                 <ul className={styles["menu__list"]}>
-                    <ListItem title={translation[language].techs_section.title}></ListItem>
+                    <ListItem onClick={()=>setOpened(false)} title={translation[language].techs_section.title}></ListItem>
                     <ListItem title={translation[language].projects_section.title}>
                         <div className={styles["project-container"]}>
                             <p className={styles["project-title"]}>{translation[language].projects_section[1].title}</p>
@@ -73,18 +74,41 @@ export default function  Hamburguer() {
                             </div>
                         </div>
                     </ListItem>
-                    <ListItem title={translation[language].about_me_section.title}></ListItem>
-                    <ListItem title={translation[language].contact_section.title}></ListItem>
+                    <ListItem onClick={()=>setOpened(false)} title={translation[language].about_me_section.title}></ListItem>
+                    <ListItem onClick={()=>setOpened(false)} title={translation[language].contact_section.title}></ListItem>
                 </ul>
             </div>
         </div>
     )
 };
-function ListItem({title, children}: {title:string, children?:React.ReactNode}) {
+function ListItem({title, children, onClick}: {title:string, children?:React.ReactNode, onClick?:()=>void}) {
     const [dropped, setDropped] = useState(false);
+    const scrollToSection = (section:string) => {
+        let destiny:string = ""
+        if(section.toLowerCase() == "tecnologías" || section.toLowerCase() == "techs") {
+            destiny = "techs"
+        } else if(section.toLowerCase() == "sobre mí" || section.toLowerCase() == "about me") {
+            destiny = "about__me"
+        } else if(section.toLowerCase() == "contacto" || section.toLowerCase() == "contact") {
+            destiny = "contact"
+        }
+        const sectionEl = document.getElementById(destiny);
+        if (!sectionEl) return;
+        sectionEl.scrollIntoView({ behavior: 'smooth' });
+        onClick && onClick();
+    };
     return (
         <div className={`${styles["list-item"]}`}>
-            {children ? <h3 className={styles["item-title"]} onClick={()=>setDropped(!dropped)}>{title} <span className={`${styles["span"]} ${dropped ? styles["dropped"] : ""}`}><CaretRight size={25}/></span></h3> : <h3 className={styles["item-title"]}>{title}</h3>}
+            {children ? 
+                <h3 
+                    className={styles["item-title"]}
+                    onClick={()=>setDropped(!dropped)}
+                >{title} <span className={`${styles["span"]} ${dropped ? styles["dropped"] : ""}`}><CaretRight size={25}/></span></h3>
+                :
+                <h3 
+                    className={styles["item-title"]}
+                    onClick={()=>scrollToSection(title)}
+                >{title}</h3>}
             {children ? (
                 <div className={`${styles["item-desc"]} ${dropped ? styles["show-desc"] : ""}`}>
                     {children}

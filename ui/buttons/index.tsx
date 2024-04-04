@@ -4,13 +4,14 @@ export const Main = styled.button`
     background: var(--blue);
     display: flex;
     gap: 5px;
+    text-align: center;
     padding: 10px 20px;
     font-size: 20px;
     color: white;
     font-family: "Poppins";
     font-weight: bold;
     letter-spacing: 2px;
-    border: none;
+    border: 3px solid var(--blue);
     border-radius: 5px;
     box-shadow: 0 3px 0 0 var(--blue-700);
     transition: all .1s ease;
@@ -70,7 +71,6 @@ export const IconButton = styled(IconFilledButton)`
     padding: 10px;
     background: var(--background);
     color: var(--blue);
-    border: 3px solid var(--blue);
 `;
 export const CardButton = styled.button`
     border: none;

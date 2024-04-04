@@ -7,15 +7,40 @@ import Button from "@/ui/buttons";
 import { TextButton } from "@/ui/buttons";
 import InputComponent from "@/ui/inputs";
 import TextArea from "@/ui/text-area";
-import { Send, Clipboard, ClipboardCheck, Github, Linkedin, Download } from "react-bootstrap-icons";
+import { Send, Clipboard, ClipboardCheck, Github, Linkedin, Download, CheckCircle } from "react-bootstrap-icons";
 import Navigation from "@/ui/links";
-import { useState } from "react";
+import React, { useState } from "react";
 import translation from "@/lib/translation.json";
 import { useRecoilValue } from "recoil";
+import { CircularProgress, dividerClasses } from "@mui/material";
 import { languajeState } from "@/atoms/languageState";
 import copy from "copy-to-clipboard";
 export default function Home() {
   const [copied, setCopied] = useState(false);
+  const [form, setForm] = useState<{
+    name:string;
+    email:string;
+    company:string;
+    message:string;
+  }>({
+    name:"",
+    email:"",
+    company:"",
+    message:""
+  });
+  const [missing, setMissing] = useState<{
+    name:boolean;
+    email: boolean;
+    company:boolean;
+    message: boolean;
+  }>({
+    name: false,
+    email:  false,
+    company: false,
+    message:  false,
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
   const language = useRecoilValue(languajeState);
   const handleCopy = () => {
     setCopied(true);
@@ -23,6 +48,41 @@ export default function Home() {
     setTimeout(() => {
       setCopied(false);
     }, 2000);
+  };
+  const handleInputChange = (fieldName: keyof FormProps, value:string) => {
+    setForm({
+      ...form,
+      [fieldName]: value
+    });
+    setMissing({
+      ...missing,
+      [fieldName]: false
+    })
+  };
+  const handleOnInvalid = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const input = e.target as HTMLInputElement;
+    setMissing({
+      ...missing,
+      [input.name]: true
+    })
+  };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setTimeout(() => {
+      setSubmitting(false);
+      setSuccess(true)
+      setTimeout(() => {
+        setForm({
+          name:"",
+          email:"",
+          company: "",
+          message: ""
+        })
+      setSuccess(false)
+      }, 5000);
+    }, 3000);
   }
   const scrollToSection = (section:string) => {
     const sectionEl = document.getElementById(section);
@@ -37,7 +97,7 @@ export default function Home() {
           <p className={styles["welcome__p"]}>, {translation[language].hero_section.heading_quote}</p>
         </div>
         <h1 className={styles["welcome__title"]}>Fullstack <span className={styles["welcome__title__span"]}>Developer</span></h1>
-        <p className={styles["welcome__location"]}>Buenos Aires, <img src="arg.png"/></p>
+        <p className={styles["welcome__location"]}>Buenos Aires <img src="arg.png"/></p>
         <img src="yo1.png" alt="yo.png" className={styles["welcome__pic"]}/>
         <div className={styles["welcome-buttons-container"]}>
           <Button which="Main" onClick={()=>{scrollToSection("projects")}}>{translation[language].hero_section.main_button}</Button>
@@ -111,12 +171,25 @@ export default function Home() {
         <h3 className={styles["section-title"]}>{translation[language].contact_section.title}</h3>
         <p>{translation[language].contact_section.contact_section_quote}</p>
         <p className={styles["my__mail"]} onClick={handleCopy}>thiagosalaberry99@gmail.com {copied ? <ClipboardCheck size={20}/> : <Clipboard size={20}/>}</p>
-        <form className={styles["contact__form"]}>
-          <InputComponent label={translation[language].contact_section.form_name} type="text" name="name" value="" missing={false} disabled={false} onChange={()=>{}} placeholder={translation[language].contact_section.form_name_placeholder}/>
-          <InputComponent label={translation[language].contact_section.form_email} type="email" name="email" value="" missing={false} disabled={false} onChange={()=>{}} placeholder={translation[language].contact_section.form_email_placeholder}/>
-          <InputComponent label={translation[language].contact_section.form_company} type="text" name="company" value="" missing={false} disabled={false} onChange={()=>{}} placeholder={translation[language].contact_section.form_company_placeholder}/>
-          <TextArea label={translation[language].contact_section.form_message} name="message" missing={false} value="" placeholder={translation[language].contact_section.form_message_placeholder}/>
-          <Button which="Main" onClick={()=>{}}>{translation[language].contact_section.form_send} <Send size={30}/></Button>
+        <form className={styles["contact__form"]} onInvalid={handleOnInvalid} onSubmit={handleSubmit}>
+          {!success ? (
+            <>
+              <InputComponent label={translation[language].contact_section.form_name} type="text" name="name" value={form.name} missing={missing.name} disabled={submitting} onChange={(value) => handleInputChange("name", value)} placeholder={translation[language].contact_section.form_name_placeholder}/>
+              <InputComponent label={translation[language].contact_section.form_email} type="email" name="email" value={form.email} missing={missing.email} disabled={submitting} onChange={(value) => handleInputChange("email", value)} placeholder={translation[language].contact_section.form_email_placeholder}/>
+              <InputComponent label={translation[language].contact_section.form_company} type="text" name="company" value={form.company} missing={missing.company} disabled={submitting} onChange={(value) => handleInputChange("company", value)} placeholder={translation[language].contact_section.form_company_placeholder}/>
+              <TextArea label={translation[language].contact_section.form_message} name="message" missing={missing.message} disabled={submitting} value={form.message} onChange={(value) => handleInputChange("message", value)} placeholder={translation[language].contact_section.form_message_placeholder}/>
+              <Button which="Main" onClick={()=>{}}>{!submitting ? <>{translation[language].contact_section.form_send}<Send size={30}/></> : <CircularProgress size={30} color="inherit"/>}</Button>
+            </>
+          ) : (
+            <div className={styles["success-container"]}>
+              <CheckCircle size={60}/>
+              <p className={styles["success-message"]}>
+                {translation[language].contact_section.success_greeting} {form.name.split(" ")[0]}, {translation[language].contact_section.success_message_1}<br/>
+                <span>{form.email}</span><br/>
+                {translation[language].contact_section.success_message_2}
+              </p>
+            </div>
+          )}
         </form>
       </section>
     </Layout>

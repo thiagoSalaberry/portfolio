@@ -14,6 +14,7 @@ type TextAreaProps = {
   name: string;
   placeholder?: string;
   required?: boolean;
+  disabled?: boolean;
   value: string;
   missing: boolean;
   onChange?: (value: string) => void;
@@ -57,3 +58,10 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 type Language = "es" | "en";
+
+type FormProps = {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+};

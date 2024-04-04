@@ -59,6 +59,20 @@ export const TextAreaStyled = styled.div`
     .missing:hover {
         box-shadow: 0 6px 0 0 var(--red-700);
     }
+    .missing:focus {
+        outline: none;
+        border: 3px solid var(--red);
+        box-shadow: 0 6px 0 0 var(--red-700);
+        transform: translateY(-3px);
+    }
+    .disabled {
+        background: var(--blue-100);
+        color: var(--blue-300);
+    }
+    .disabled:active, .disabled:hover {
+        box-shadow: 0 3px 0 0 var(--blue-700);
+        transform: none;
+    }
 `;
 
 export default function TextArea(props:TextAreaProps) {
@@ -72,11 +86,12 @@ export default function TextArea(props:TextAreaProps) {
         <TextAreaStyled>
             <label className={`textarea-label`} htmlFor={props.name}>{props.label}{props.missing ? <span className={`error-message`}>Completá este campo</span> : null}</label>
             <textarea
-                className={`textarea ${props.value !== "" ? "valued" : ""} ${props.missing ? "missing" : ""}`}
+                className={`textarea ${props.value !== "" ? "valued" : ""} ${props.missing ? "missing" : ""} ${props.disabled ? "disabled" : ""}`}
                 name={props.name}
                 value={props.value}
-                required={props.required}
+                required
                 placeholder={props.placeholder}
+                disabled={props.disabled}
                 onChange={handleChange}
             />
         </TextAreaStyled>
