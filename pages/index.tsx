@@ -96,7 +96,7 @@ export default function Home() {
           <p className={styles["waving__animation"]}>🖐</p>
           <p className={styles["welcome__p"]}>, {translation[language].hero_section.heading_quote}</p>
         </div>
-        <h1 className={styles["welcome__title"]}>Fullstack <span className={styles["welcome__title__span"]}>Developer</span></h1>
+        <h1 className={styles["welcome__title"]}>Fullstack <br /> <span className={styles["welcome__title__span"]}>Developer</span></h1>
         <p className={styles["welcome__location"]}>Buenos Aires <img src="arg.png"/></p>
         <img src="yo1.png" alt="yo.png" className={styles["welcome__pic"]}/>
         <div className={styles["welcome-buttons-container"]}>

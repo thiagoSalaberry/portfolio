@@ -12,6 +12,11 @@
     background: none;
     border: none;
 }
+@media (min-width: 1280px) {
+    .hamburguer__container {
+        display: none;
+    }
+}
 .hamburguer__bar {
     background: #000;
     width: 100%;

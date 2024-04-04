@@ -34,6 +34,17 @@
         line-height: 84px;
         text-align: center;
     }
+    @media (min-width: 1280px) {
+        .welcome__title {
+            font-size: 200px;
+            line-height: 170px;
+            letter-spacing: 10px;
+        }
+        .welcome__location {
+            display: flex;
+            flex-direction: row;
+        }
+    }
     .welcome__title__span {
         color: #f5f5f5;
         -webkit-text-stroke-color: #000;
@@ -65,6 +76,24 @@
         margin-top: -210px;
     }
 }
+@media (min-width: 1280px) {
+    .welcome-section {
+        padding: 0 200px;
+        margin-top: 0px;
+        height: calc(100vh - 80px);
+        justify-content: center;
+    }
+    .welcome__pic {
+        max-width: 220px;
+        filter: saturate(0) contrast(1.7);
+        position: relative;
+        margin-top: -50px;
+        mask-image: linear-gradient(
+            black 80%,
+            transparent
+        );
+    }
+}
 .techs-section {
     height: 100vh;
     display: flex;
@@ -80,19 +109,38 @@
         gap: 15px;
     }
 }
+@media (min-width: 1280px) {
+    .techs-section {
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    .techs-container {
+        max-width: 800px;
+    }
+}
 
 .projects-section {
     height: 100vh;
     .projects-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 15px;
     }
-    @media (max-width: 430px) {
+}
+@media (min-width: 1280px) {
+    .projects-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100vh;
         .projects-container {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            max-width: 800px;
+            min-height: 500px;
         }
     }
 }
@@ -183,6 +231,17 @@
         color: var(--blue);
         font-weight: 500;
         line-height: 50px;
+    }
+}
+@media (min-width: 1280px) {
+    .contact-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contact__form, .success-container {
+        width: 800px;
     }
 }
 .section-title {
