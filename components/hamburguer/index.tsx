@@ -44,18 +44,34 @@ export default function  Hamburguer() {
                 <ul className={styles["menu__list"]}>
                     <ListItem title={translation[language].techs_section.title}></ListItem>
                     <ListItem title={translation[language].projects_section.title}>
-                        {projects && projects.map((projectItem, index) => {
-                            const cardKey = `card_${index + 1}`
-                            return (
-                                <div key={index} className={styles["project-container"]}>
-                                    <p className={styles["project-title"]}>{translation[language].projects_section[cardKey].title}</p>
-                                    <div className={styles["project-links"]}>
-                                        <Navigation href={projectItem.pageUrl} icon="arrow" style="card"></Navigation>
-                                        <Navigation href={projectItem.githubUrl} icon="github" style="card"></Navigation>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                        <div className={styles["project-container"]}>
+                            <p className={styles["project-title"]}>{translation[language].projects_section[1].title}</p>
+                            <div className={styles["project-links"]}>
+                                <Navigation href="https://frontend-seven-blond.vercel.app/" icon="arrow" style="card"></Navigation>
+                                <Navigation href="https://github.com/thiagoSalaberry/frontend" icon="github" style="card"></Navigation>
+                            </div>
+                        </div>
+                        <div className={styles["project-container"]}>
+                            <p className={styles["project-title"]}>{translation[language].projects_section[2].title}</p>
+                            <div className={styles["project-links"]}>
+                                <Navigation href="https://landing-page-zeta-mauve.vercel.app/" icon="arrow" style="card"></Navigation>
+                                <Navigation href="https://github.com/thiagoSalaberry/landing-page" icon="github" style="card"></Navigation>
+                            </div>
+                        </div>
+                        <div className={styles["project-container"]}>
+                            <p className={styles["project-title"]}>{translation[language].projects_section[3].title}</p>
+                            <div className={styles["project-links"]}>
+                                <Navigation href="https://ppt-online-react.vercel.app/"    icon="arrow" style="card"></Navigation>
+                                <Navigation href="https://github.com/thiagoSalaberry/ppt-online" icon="github" style="card"></Navigation>
+                            </div>
+                        </div>
+                        <div className={styles["project-container"]}>
+                            <p className={styles["project-title"]}>{translation[language].projects_section[4].title}</p>
+                            <div className={styles["project-links"]}>
+                                <Navigation href="" icon="arrow" style="card"></Navigation>
+                                <Navigation href="" icon="github" style="card"></Navigation>
+                            </div>
+                        </div>
                     </ListItem>
                     <ListItem title={translation[language].about_me_section.title}></ListItem>
                     <ListItem title={translation[language].contact_section.title}></ListItem>
