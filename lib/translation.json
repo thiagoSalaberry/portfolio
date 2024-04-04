@@ -12,35 +12,36 @@
     "projects_section": {
       "title": "PROYECTOS",
       "card_1": {
-        "title": "Piedra Papel o Tijera",
-        "desc": "Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
-      },
-      "card_2": {
-        "title": "Pet Finder",
-        "desc": "Una web para encontrar y reportar mascotas perdidas en cierta ubicación."
-      },
-      "card_3": {
         "title": "E-Commerce",
         "desc": "Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
       },
-      "card_4": {
+      "card_2": {
         "title": "Teoxys Tattoo Landing Page",
         "desc": "Una web para facilitar la reservación de turnos de tatuajes."
+      },
+      "card_3": {
+        "title": "Piedra Papel o Tijera",
+        "desc": "Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
+      },
+      "card_4": {
+        "title": "Pet Finder",
+        "desc": "Una web para encontrar y reportar mascotas perdidas en cierta ubicación."
       }
     },
     "about_me_section": {
       "title": "SOBRE MÍ"
     },
     "contact_section": {
+      "title": "CONTACTO",
       "contact_section_quote": "Completá el formulario o enviame un mail a la siguiente dirección:",
       "form_name": "Nombre",
       "form_name_placeholder": "ej. Thiago Salaberry",
       "form_email": "E-Mail",
       "form_email_placeholder": "ej. thiagosalaberry99@gmail.com",
       "form_company": "Empresa",
-      "form_email_company": "ej. Amazon",
+      "form_company_placeholder": "ej. Amazon",
       "form_message": "Mensaje",
-      "form_message_company": "Hola Thiago, queremos contratarte!",
+      "form_message_placeholder": "Hola Thiago, queremos contratarte!",
       "form_send": "Enviar",
       "form_error_message": "Completá este campo."
     }
@@ -53,40 +54,41 @@
       "secondary_button": "Contact"
     },
     "techs_section": {
-      "title": "TECHS"
+      "title": "SKILLS"
     },
     "projects_section": {
       "title": "PROJECTS",
       "card_1": {
-        "title": "Rock Paper and Scissors",
-        "desc": "An online Rock Paper and Scissors to play with your friends in real time."
-      },
-      "card_2": {
-        "title": "Pet Finder",
-        "desc": "A web to find and report lost pets at certain location."
-      },
-      "card_3": {
         "title": "E-Commerce",
         "desc": "An E-Commerce to publish products and buy using MercadoPago."
       },
-      "card_4": {
+      "card_2": {
         "title": "Teoxys Tattoo Landing Page",
         "desc": "A web to facilitate the scheduling of tattoo appointments."
+      },
+      "card_3": {
+        "title": "Rock Paper and Scissors",
+        "desc": "An online Rock Paper and Scissors to play with your friends in real time."
+      },
+      "card_4": {
+        "title": "Pet Finder",
+        "desc": "A web to find and report lost pets in a certain location."
       }
     },
     "about_me_section": {
       "title": "ABOUT ME"
     },
     "contact_section": {
+      "title": "CONTACT",
       "contact_section_quote": "Complete the form or send me an email to the following address:",
       "form_name": "Name",
-      "form_name_placeholder": "ej. Thiago Salaberry",
+      "form_name_placeholder": "e.g. Thiago Salaberry",
       "form_email": "E-Mail",
-      "form_email_placeholder": "ej. thiagosalaberry99@gmail.com",
+      "form_email_placeholder": "e.g. thiagosalaberry99@gmail.com",
       "form_company": "Company",
-      "form_email_company": "ej. MercadoLibre",
+      "form_company_placeholder": "e.g. MercadoLibre",
       "form_message": "Message",
-      "form_message_company": "Hi Thiago, we want to hire you!",
+      "form_message_placeholder": "Hi Thiago, we want to hire you!",
       "form_send": "Send",
       "form_error_message": "This field is required."
     }
