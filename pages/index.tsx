@@ -96,10 +96,12 @@ export default function Home() {
           <p className={styles["waving__animation"]}>🖐</p>
           <p className={styles["welcome__p"]}>, {translation[language].hero_section.heading_quote}</p>
         </div>
-        <h1 className={styles["welcome__title"]}>Fullstack <br /> <span className={styles["welcome__title__span"]}>Developer</span></h1>
-        <p className={styles["welcome__location"]}>Buenos Aires <img src="arg.png"/></p>
-        <img src="yo1.png" alt="yo.png" className={styles["welcome__pic"]}/>
+        <div className={styles["welcome__title-container"]}>
+          <h1 className={styles["welcome__title"]}>Fullstack <br /> <span className={styles["welcome__title__span"]}>Developer</span></h1>
+          <p className={styles["welcome__location"]}>Buenos Aires <img src="arg.png"/></p>
+        </div>
         <div className={styles["welcome-buttons-container"]}>
+        <img src="yo1.png" alt="yo.png" className={styles["welcome__pic"]}/>
           <Button which="Main" onClick={()=>{scrollToSection("projects")}}>{translation[language].hero_section.main_button}</Button>
           <Button which="Secondary" onClick={()=>{scrollToSection("contact")}}>{translation[language].hero_section.secondary_button}</Button>
         </div>

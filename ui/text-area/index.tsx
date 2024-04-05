@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+import { languajeState } from "@/atoms/languageState";
+import { useRecoilValue } from "recoil";
+import translation from "@/lib/translation.json";
 export const TextAreaStyled = styled.div`
     display: flex;
     flex-direction: column;
@@ -76,6 +78,7 @@ export const TextAreaStyled = styled.div`
 `;
 
 export default function TextArea(props:TextAreaProps) {
+    const language = useRecoilValue(languajeState);
     const handleChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
         const inputValue = e.target.value;
         if(props.onChange) {
@@ -84,7 +87,7 @@ export default function TextArea(props:TextAreaProps) {
     };
     return (
         <TextAreaStyled>
-            <label className={`textarea-label`} htmlFor={props.name}>{props.label}{props.missing ? <span className={`error-message`}>Completá este campo</span> : null}</label>
+            <label className={`textarea-label`} htmlFor={props.name}>{props.label}{props.missing ? <span className={`error-message`}>{translation[language].contact_section.form_error_message}</span> : null}</label>
             <textarea
                 className={`textarea ${props.value !== "" ? "valued" : ""} ${props.missing ? "missing" : ""} ${props.disabled ? "disabled" : ""}`}
                 name={props.name}

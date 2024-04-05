@@ -1,5 +1,6 @@
 .main-page {
     padding: 0 15px;
+    border: red 1px solid;
 }
 @media (min-width: 1280px) {
     .main-page {

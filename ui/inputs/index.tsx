@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+import { languajeState } from "@/atoms/languageState";
+import { useRecoilValue } from "recoil";
+import translation from "@/lib/translation.json";
 export const InputStyled = styled.div`
     display: flex;
     flex-direction: column;
@@ -84,6 +86,7 @@ export const InputStyled = styled.div`
 `;
 
 export default function InputComponent(props:InputProps) {
+    const language = useRecoilValue(languajeState);
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
         if(props.onChange) {
@@ -92,7 +95,7 @@ export default function InputComponent(props:InputProps) {
     };
     return (
         <InputStyled>
-            <label className={`input-label`} htmlFor={props.name}>{props.label}{props.missing ? <span className={`error-message`}>Completá este campo</span> : null}</label>
+            <label className={`input-label`} htmlFor={props.name}>{props.label}{props.missing ? <span className={`error-message`}>{translation[language].contact_section.form_error_message}</span> : null}</label>
             <input
                 className={`input ${props.value !== "" ? "valued" : ""} ${props.missing ? "missing" : ""} ${props.disabled ? "disabled" : ""}`}
                 type={props.type}

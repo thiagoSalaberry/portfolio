@@ -1,3 +1,4 @@
+/* WELCOME SECTION */
 @keyframes waving {
     0%, 100% {
         transform: rotate(-40deg);
@@ -11,14 +12,14 @@
     font-size: 24px;
 }
 .welcome-section {
-    height: 100vh;
+    height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
-    padding: 150px 0 0 0;
-    margin-top: -80px;
+    position: relative;
+    padding-top: 100px;
     .welcome-p-container {
         display: flex;
         align-items: flex-end;
@@ -27,6 +28,10 @@
     .welcome__p {
         
     }    
+    .welcome__title-container {
+        display: flex;
+        flex-direction: column;
+    }
     .welcome__title {
         font-family: "Big Shoulders Display";
         font-weight: 900;
@@ -60,8 +65,11 @@
     .welcome__pic {
         max-width: 220px;
         filter: saturate(0) contrast(1.7);
-        position: relative;
-        top: -100px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -25%);
+        z-index: -1;
         mask-image: linear-gradient(
             black 80%,
             transparent
@@ -73,7 +81,7 @@
         align-items: center;
         z-index: 500;
         gap: 20px;
-        margin-top: -210px;
+        padding-top: 170px;
     }
 }
 @media (min-width: 1280px) {
@@ -94,6 +102,8 @@
         );
     }
 }
+
+/* TECHS SECTION */
 .techs-section {
     height: 100vh;
     display: flex;
@@ -120,6 +130,7 @@
     }
 }
 
+/* PROJECTS SECTION */
 .projects-section {
     height: 100vh;
     .projects-container {
@@ -144,6 +155,8 @@
         }
     }
 }
+
+/* ABOUT ME SECTION */
 .about__me-section {
     height: 100vh;
     display: flex;
@@ -185,6 +198,8 @@
         z-index: 1;
     }
 }
+
+/* CONTACT SECTION */
 .contact-section {
     height: 100vh;
     text-align: center;
@@ -250,4 +265,7 @@
     text-align: center;
     /* font-family: "Big Shoulders Display"; */
     /* letter-spacing: 3px; */
+}
+.welcome-section, .techs-section, .projects-section, .about__me-section, .contact-section {
+    border: red solid 1px;
 }

@@ -41,6 +41,7 @@ export const TextButton = styled(Secondary)`
     justify-content: space-between;
     gap: 0;
     border-radius: 0;
+    z-index: 10;
     overflow: hidden;
     &:hover {
         transform: none;
