@@ -16,10 +16,10 @@ export default function Header() {
                 <Hamburguer />
                 <nav className={`${styles["header__nav"]} ${styles["desktop"]}`}>
                     <ul className={styles["header__nav__list"]}>
-                        <li className={styles["header__nav__list__item"]} onClick={()=>scrollToSection("techs")}>{translation[language].techs_section.title}</li>
-                        <li className={styles["header__nav__list__item"]} onClick={()=>scrollToSection("projects")}>{translation[language].projects_section.title}</li>
-                        <li className={styles["header__nav__list__item"]} onClick={()=>scrollToSection("about__me")}>{translation[language].about_me_section.title}</li>
-                        <li className={styles["header__nav__list__item"]} onClick={()=>scrollToSection("contact")}>{translation[language].contact_section.title}</li>
+                        <li key={1} className={styles["header__nav__list__item"]} onClick={()=>scrollToSection("techs")}>{translation[language].techs_section.title}</li>
+                        <li key={2} className={styles["header__nav__list__item"]} onClick={()=>scrollToSection("projects")}>{translation[language].projects_section.title}</li>
+                        <li key={3} className={styles["header__nav__list__item"]} onClick={()=>scrollToSection("about__me")}>{translation[language].about_me_section.title}</li>
+                        <li key={4} className={styles["header__nav__list__item"]} onClick={()=>scrollToSection("contact")}>{translation[language].contact_section.title}</li>
                     </ul>
                 </nav>
             </div>

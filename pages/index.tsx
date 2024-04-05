@@ -132,28 +132,28 @@ export default function Home() {
               description={translation[language].projects_section[1].desc}
               githubUrl="https://github.com/thiagoSalaberry/frontend"
               pageUrl="https://frontend-seven-blond.vercel.app/"
-              techList={[<TechLogo tech="react"/>, <TechLogo tech="next"/>, <TechLogo tech="typescript"/>, <TechLogo tech="firebase"/>]}
+              techList={[<TechLogo tech="react" key={1}/>, <TechLogo tech="next" key={2}/>, <TechLogo tech="typescript" key={3}/>, <TechLogo tech="firebase" key={4}/>]}
           />
           <ProjectCard
               title={translation[language].projects_section[2].title}
               description={translation[language].projects_section[2].desc}
               githubUrl="https://github.com/thiagoSalaberry/landing-page"
               pageUrl="https://landing-page-zeta-mauve.vercel.app/"
-              techList={[<TechLogo tech="react"/>, <TechLogo tech="next"/>, <TechLogo tech="typescript"/>, <TechLogo tech="styled-components"/>]}
+              techList={[<TechLogo tech="react"key={1}/>, <TechLogo tech="next"key={2}/>, <TechLogo tech="typescript"key={3}/>, <TechLogo tech="styled-components"key={4}/>]}
           />
           <ProjectCard
               title={translation[language].projects_section[3].title}
               description={translation[language].projects_section[3].desc}
               githubUrl="https://github.com/thiagoSalaberry/ppt-online"
               pageUrl="https://ppt-online-react.vercel.app/"              
-              techList={[<TechLogo tech="react"/>, <TechLogo tech="next"/>, <TechLogo tech="typescript"/>, <TechLogo tech="firebase"/>]}
+              techList={[<TechLogo tech="react" key={1}/>, <TechLogo tech="next" key={2}/>, <TechLogo tech="typescript" key={3}/>, <TechLogo tech="firebase" key={4}/>]}
           />
           <ProjectCard
               title={translation[language].projects_section[4].title}
               description={translation[language].projects_section[4].desc}
               githubUrl=""
               pageUrl=""
-              techList={[<TechLogo tech="react"/>, <TechLogo tech="next"/>, <TechLogo tech="typescript"/>, <TechLogo tech="postgresql"/>]}
+              techList={[<TechLogo tech="react" key={1}/>, <TechLogo tech="next" key={2}/>, <TechLogo tech="typescript" key={3}/>, <TechLogo tech="postgresql" key={4}/>]}
           />
         </div>
       </section>
