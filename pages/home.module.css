@@ -132,6 +132,10 @@
 /* PROJECTS SECTION */
 .projects-section {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
     .projects-container {
         display: flex;
         flex-direction: column;
@@ -202,6 +206,8 @@
 .contact-section {
     height: 100vh;
     text-align: center;
+    display: flex;
+    flex-direction: column;
     .my__mail {
         font-size: 20px;
         font-weight: 600;
@@ -217,11 +223,12 @@
         transform: scale(.97);
     }
     .contact__form {
+        height: 100%;
         display: flex;
         flex-direction: column;
-        gap: 15px;
         align-items: flex-end;
-        margin-top: 15px;
+        gap: 15px;
+        padding: 20px 0;
     }
     .success-container {
         background: var(--green-100);
@@ -229,7 +236,7 @@
         border-radius: 5px;
         box-shadow: 0 3px 0 0 var(--green-700);
         padding: 20px;
-        height: 704px;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -264,7 +271,4 @@
     text-align: center;
     /* font-family: "Big Shoulders Display"; */
     /* letter-spacing: 3px; */
-}
-.welcome-section, .techs-section, .projects-section, .about__me-section, .contact-section {
-    border: red solid 1px;
 }

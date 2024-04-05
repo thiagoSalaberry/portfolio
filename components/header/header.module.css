@@ -12,7 +12,6 @@
     align-items: center;
     padding: 15px;
     width: 100%;
-    border: red 1px solid;
 }
 .desktop {
     display: none;

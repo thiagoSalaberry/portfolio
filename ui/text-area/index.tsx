@@ -7,6 +7,7 @@ export const TextAreaStyled = styled.div`
     flex-direction: column;
     gap: 5px;
     width: 100%;
+    height: 100%;
     .textarea-label{
         color: #151515;
         letter-spacing: 2px;
@@ -21,9 +22,9 @@ export const TextAreaStyled = styled.div`
     }
     .textarea{
         width: 100%;
-        min-height: 300px;
         border-radius: 5px;
         padding: 10px;
+        height: 100%;
         background: var(--background);
         border: 3px solid var(--grey-300);
         box-shadow: 0 3px 0 0 var(--grey);
