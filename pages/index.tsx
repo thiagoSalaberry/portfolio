@@ -166,8 +166,8 @@ export default function Home() {
             <Navigation href="https://www.linkedin.com/in/thiago-salaberry/" style="button" icon="linkedin"/>
             <Button which="IconButton" onClick={()=>{}}>CV <Download size={30}/></Button>
           </div>
+          <img src="3.png" alt="me.png" className={styles["about__me-img"]}/>
         </div>
-        <img src="3.png" alt="me.png" className={styles["about__me-img"]}/>
       </section>
       <section className={styles["contact-section"]} id="contact">
         <h3 className={styles["section-title"]}>{translation[language].contact_section.title}</h3>
