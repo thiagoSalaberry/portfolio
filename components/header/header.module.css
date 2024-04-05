@@ -9,7 +9,6 @@
     display: none;
 }
 /* 768px */
-/* 1280px */
 @media (min-width: 768px) {
     .desktop {
         display: inherit;
@@ -47,6 +46,12 @@
     .header__rigth__content {
         align-items: center;
         flex-direction: row-reverse;
+    }
+}
+/* 1280px */
+@media (min-width: 1280px) {
+    .header {
+        padding: 15px 300px;
     }
 }
 .header__rigth__content {
