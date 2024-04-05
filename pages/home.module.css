@@ -39,6 +39,17 @@
         line-height: 84px;
         text-align: center;
     }
+    @media (min-width: 768px) {
+        .welcome__title {
+            font-size: 120px;
+            line-height: 105px;
+            letter-spacing: 2px;
+        }
+        .welcome__location {
+            display: flex;
+            flex-direction: row;
+        }
+    }
     @media (min-width: 1280px) {
         .welcome__title {
             font-size: 200px;
@@ -83,6 +94,14 @@
         gap: 20px;
         padding-top: 170px;
     }
+    @media (min-width: 768px) {
+        .welcome-buttons-container {
+            padding-top: 167px;
+        }
+        .welcome__pic {
+            transform: translate(-50%, -17%);
+        }
+    }
 }
 @media (min-width: 1280px) {
     .welcome-section {
@@ -118,6 +137,16 @@
         gap: 15px;
     }
 }
+@media (min-width: 768px) {
+    .techs-section {
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    .techs-container {
+        max-width: 600px;
+    }
+}
 @media (min-width: 1280px) {
     .techs-section {
         justify-content: center;
@@ -140,6 +169,22 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+    }
+}
+@media (min-width: 768px) {
+    .projects-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100vh;
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            max-width: 600px;
+            min-height: 500px;
+        }
     }
 }
 @media (min-width: 1280px) {
@@ -254,6 +299,17 @@
         line-height: 50px;
     }
 }
+@media (min-width: 768px) {
+    .contact-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .contact__form, .success-container {
+        width: 600px;
+    }
+}
 @media (min-width: 1280px) {
     .contact-section {
         display: flex;
@@ -272,3 +328,6 @@
     /* font-family: "Big Shoulders Display"; */
     /* letter-spacing: 3px; */
 }
+/* .welcome-section, .techs-section, .projects-section, .about__me-section, .contact-section {
+    border: 1px solid red;
+} */

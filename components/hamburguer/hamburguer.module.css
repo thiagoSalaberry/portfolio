@@ -12,7 +12,7 @@
     background: none;
     border: none;
 }
-@media (min-width: 1280px) {
+@media (min-width: 768px) {
     .hamburguer__container {
         display: none;
     }
