@@ -30,6 +30,6 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background: var(--background);
-  background-image: url("/dots.png");
+  background-image: url('/background.png');
   font-family: "Poppins";
 }
