@@ -15,6 +15,7 @@ import { useRecoilValue } from "recoil";
 import { CircularProgress, dividerClasses } from "@mui/material";
 import { languajeState } from "@/atoms/languageState";
 import copy from "copy-to-clipboard";
+import { sendEmail } from "@/lib/api-calls";
 export default function Home() {
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState<{
@@ -67,22 +68,36 @@ export default function Home() {
       [input.name]: true
     })
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
+    const sent = await sendEmail(form.name, form.email, form.company, form.message);
+    if (!sent){
+      alert('Ocorreu um erro ao enviar o formulário! Tente novamente mais tarde');
       setSubmitting(false);
-      setSuccess(true)
-      setTimeout(() => {
-        setForm({
-          name:"",
-          email:"",
-          company: "",
-          message: ""
-        })
-      setSuccess(false)
-      }, 5000);
-    }, 3000);
+    } else {
+      console.log(sent)
+        setSubmitting(false);
+        setSuccess(true)
+          setTimeout(() => {
+            setForm({
+              name:"",
+              email:"",
+              company: "",
+              message: ""
+            })
+          setSuccess(false)
+          }, 5000);
+    }
+  };
+  const handleDownload = () => {
+    const cvPDF = "/cv.pdf";
+    const link = document.createElement("a");
+    link.href = cvPDF;
+    link.download = "cv.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
   const scrollToSection = (section:string) => {
     const sectionEl = document.getElementById(section);
@@ -164,7 +179,7 @@ export default function Home() {
           <div className={styles["about__me-buttons-container"]}>
             <Navigation href="https://github.com/thiagoSalaberry" style="button" icon="github"/>
             <Navigation href="https://www.linkedin.com/in/thiago-salaberry/" style="button" icon="linkedin"/>
-            <Button which="IconButton" onClick={()=>{}}>CV <Download size={30}/></Button>
+            <Button which="IconButton" onClick={handleDownload}>CV <Download size={30}/></Button>
           </div>
           <img src="3.png" alt="me.png" className={styles["about__me-img"]}/>
         </div>
