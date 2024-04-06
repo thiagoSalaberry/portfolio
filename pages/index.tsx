@@ -89,6 +89,15 @@ export default function Home() {
           setSuccess(false)
           }, 5000);
     }
+  };
+  const handleDownload = () => {
+    const cvPDF = "/cv.pdf";
+    const link = document.createElement("a");
+    link.href = cvPDF;
+    link.download = "cv.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
   const scrollToSection = (section:string) => {
     const sectionEl = document.getElementById(section);
@@ -170,7 +179,7 @@ export default function Home() {
           <div className={styles["about__me-buttons-container"]}>
             <Navigation href="https://github.com/thiagoSalaberry" style="button" icon="github"/>
             <Navigation href="https://www.linkedin.com/in/thiago-salaberry/" style="button" icon="linkedin"/>
-            <Button which="IconButton" onClick={()=>{}}>CV <Download size={30}/></Button>
+            <Button which="IconButton" onClick={handleDownload}>CV <Download size={30}/></Button>
           </div>
           <img src="3.png" alt="me.png" className={styles["about__me-img"]}/>
         </div>
