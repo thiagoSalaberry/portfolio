@@ -15,6 +15,7 @@ import { useRecoilValue } from "recoil";
 import { CircularProgress, dividerClasses } from "@mui/material";
 import { languajeState } from "@/atoms/languageState";
 import copy from "copy-to-clipboard";
+import { sendEmail } from "@/lib/api-calls";
 export default function Home() {
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState<{
@@ -67,22 +68,27 @@ export default function Home() {
       [input.name]: true
     })
   };
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
+    const sent = await sendEmail(form.name, form.email, form.company, form.message);
+    if (!sent){
+      alert('Ocorreu um erro ao enviar o formulário! Tente novamente mais tarde');
       setSubmitting(false);
-      setSuccess(true)
-      setTimeout(() => {
-        setForm({
-          name:"",
-          email:"",
-          company: "",
-          message: ""
-        })
-      setSuccess(false)
-      }, 5000);
-    }, 3000);
+    } else {
+      console.log(sent)
+        setSubmitting(false);
+        setSuccess(true)
+          setTimeout(() => {
+            setForm({
+              name:"",
+              email:"",
+              company: "",
+              message: ""
+            })
+          setSuccess(false)
+          }, 5000);
+    }
   }
   const scrollToSection = (section:string) => {
     const sectionEl = document.getElementById(section);
