@@ -12,6 +12,11 @@
     background: none;
     border: none;
 }
+@media (min-width: 768px) {
+    .hamburguer__container {
+        display: none;
+    }
+}
 .hamburguer__bar {
     background: #000;
     width: 100%;
@@ -60,6 +65,7 @@
     border: none;
     width: fit-content;
     height: fit-content;
+    cursor: pointer;
 }
 .menu__me-container {
     display: flex;
@@ -177,16 +183,19 @@
 .item-title {
     font-size: 24px;
     cursor: pointer;
+    z-index: 1000;
 }
 .item-desc {
     opacity: 0;
     max-height: 0;
     transition: opacity 0.2s ease, max-height 0.2s ease, margin-top 0.2s ease;
+    visibility: hidden;
 }
 .show-desc {
     opacity: 1;
     max-height: 200px; /* ajusta la altura máxima según sea necesario */
     margin-top: 10px;
+    visibility: visible;
 }
 .closed {
     display: none;

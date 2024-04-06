@@ -43,7 +43,10 @@
       "form_message": "Mensaje",
       "form_message_placeholder": "Hola Thiago, queremos contratarte!",
       "form_send": "Enviar",
-      "form_error_message": "Completá este campo."
+      "form_error_message": "Completá este campo.",
+      "success_greeting": "Hola",
+      "success_message_1": "gracias por comunicarte. Te estaré respondiendo a",
+      "success_message_2": "a la brevedad. Saludos."
     }
   },
   "en": {
@@ -54,7 +57,7 @@
       "secondary_button": "Contact"
     },
     "techs_section": {
-      "title": "SKILLS"
+      "title": "TECHS"
     },
     "projects_section": {
       "title": "PROJECTS",
@@ -90,7 +93,10 @@
       "form_message": "Message",
       "form_message_placeholder": "Hi Thiago, we want to hire you!",
       "form_send": "Send",
-      "form_error_message": "This field is required."
+      "form_error_message": "This field is required.",
+      "success_greeting": "Hi",
+      "success_message_1": "thanks for communicating. I'll be responding to",
+      "success_message_2": "as soon as possible. Greetings."
     }
   }
 }
