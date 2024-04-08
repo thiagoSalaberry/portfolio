@@ -237,7 +237,7 @@
         top: 50%;
         transform: translateY(-50%);
         mask-image: linear-gradient(
-            black 80%,
+            black 90%,
             transparent
         );
         z-index: 1;
@@ -263,7 +263,7 @@
         .about__me-img {
             position: inherit;
             mask-image: linear-gradient(
-                black 80%,
+                black 90%,
                 transparent
             );
             z-index: 1;
