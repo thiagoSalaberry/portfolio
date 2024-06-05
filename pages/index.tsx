@@ -91,7 +91,7 @@ export default function Home() {
     }
   };
   const handleDownload = () => {
-    const cvPDF = "/cv.pdf";
+    const cvPDF = language == "es" ? "/cv.pdf" : "/cv-english.pdf";
     const link = document.createElement("a");
     link.href = cvPDF;
     link.download = "cv.pdf";
