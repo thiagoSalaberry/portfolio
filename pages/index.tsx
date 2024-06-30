@@ -73,7 +73,6 @@ export default function Home() {
     setSubmitting(true);
     const sent = await sendEmail(form.name, form.email, form.company, form.message);
     if (!sent){
-      alert('Ocorreu um erro ao enviar o formulário! Tente novamente mais tarde');
       setSubmitting(false);
     } else {
       console.log(sent)
@@ -150,6 +149,13 @@ export default function Home() {
               techList={[<TechLogo tech="react" key={1}/>, <TechLogo tech="next" key={2}/>, <TechLogo tech="typescript" key={3}/>, <TechLogo tech="firebase" key={4}/>]}
           />
           <ProjectCard
+              title={translation[language].projects_section[4].title}
+              description={translation[language].projects_section[4].desc}
+              githubUrl="https://github.com/thiagoSalaberry/url-shortener"
+              pageUrl="https://teoxys-url.vercel.app/"
+              techList={[<TechLogo tech="react" key={1}/>, <TechLogo tech="next" key={2}/>, <TechLogo tech="typescript" key={3}/>, <TechLogo tech="postgresql" key={4}/>]}
+          />
+          <ProjectCard
               title={translation[language].projects_section[2].title}
               description={translation[language].projects_section[2].desc}
               githubUrl="https://github.com/thiagoSalaberry/landing-page"
@@ -162,13 +168,6 @@ export default function Home() {
               githubUrl="https://github.com/thiagoSalaberry/ppt-online"
               pageUrl="https://ppt-online-react.vercel.app/"              
               techList={[<TechLogo tech="react" key={1}/>, <TechLogo tech="next" key={2}/>, <TechLogo tech="typescript" key={3}/>, <TechLogo tech="firebase" key={4}/>]}
-          />
-          <ProjectCard
-              title={translation[language].projects_section[4].title}
-              description={translation[language].projects_section[4].desc}
-              githubUrl=""
-              pageUrl=""
-              techList={[<TechLogo tech="react" key={1}/>, <TechLogo tech="next" key={2}/>, <TechLogo tech="typescript" key={3}/>, <TechLogo tech="postgresql" key={4}/>]}
           />
         </div>
       </section>
