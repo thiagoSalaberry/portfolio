@@ -16,3 +16,28 @@ export type ButtonProps = {
     | "text";
   onClick: () => void;
 };
+
+export type InputProps = {
+  label?: string;
+  type: "text" | "number" | "email" | "password";
+  name: string;
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  id?: string;
+  missing?: boolean;
+  disabled?: boolean;
+  onChange: (value: string) => void;
+};
+
+export type TextareaProps = {
+  label?: string;
+  name: string;
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  id?: string;
+  missing?: boolean;
+  disabled?: boolean;
+  onChange: (value: string) => void;
+};

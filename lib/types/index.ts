@@ -1,3 +1,3 @@
-import { ButtonProps } from "./ui";
+import { ButtonProps, InputProps, TextareaProps } from "./ui";
 
-export type { ButtonProps };
+export type { ButtonProps, InputProps, TextareaProps };

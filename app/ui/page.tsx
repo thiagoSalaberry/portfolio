@@ -1,16 +1,65 @@
 "use client";
 import styles from "./styles.module.css";
-import { Button } from "@/ui";
+import { Button, Input, Textarea } from "@/ui";
 import { Paintbrush } from "lucide-react";
 import { useState } from "react";
 
+function useTestForm() {
+    const [form, setForm] = useState<{
+        name: string;
+        email: string;
+        company: string;
+        message: string;
+    }>({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+    });
+    const [missing, setMissing] = useState<{
+        name: boolean;
+        email: boolean;
+        company: boolean;
+        message: boolean;
+    }>({
+        name: false,
+        email: false,
+        company: false,
+        message: false,
+    })
+    return {form, setForm, missing, setMissing}
+};
+
 export default function Page() {
     const [disabled, setDisabled] = useState<boolean>(false);
+    const {form, setForm, missing, setMissing} = useTestForm();
     const handleDisable = () => {
         setDisabled(true);
         setTimeout(() => {
             setDisabled(false);
         }, 2000);
+    };
+    const handleChange = (fieldName: keyof typeof form, value:string):void => {
+        setForm({
+            ...form,
+            [fieldName]: value
+        });
+        setMissing({
+            ...missing,
+            [fieldName]: false
+        })
+    };
+    const handleInvalid = (e:React.FormEvent<HTMLFormElement>):void => {
+        e.preventDefault();
+        const inputName = (e.target as HTMLInputElement).name as keyof typeof missing;
+        setMissing({
+            ...missing,
+            [inputName]: true
+        });
+    };
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>):void => {
+        e.preventDefault();
+        console.log(form);
     }
     return (
         <div className={styles.page}>
@@ -27,6 +76,55 @@ export default function Page() {
                 <Button disabled={disabled} variant="tertiary_icon" onClick={()=>console.log("Main Button")}><Paintbrush size={20}/></Button>
                 <Button disabled={disabled} variant="text" onClick={()=>console.log("Main Button")}>Text Button</Button>
             </section>
+            <section className={styles.section}>
+                <form onInvalid={handleInvalid} onSubmit={handleSubmit}>
+                    <Input
+                        label="Nombre"
+                        type="text"
+                        name="name"
+                        value={form.name}
+                        disabled={disabled}
+                        missing={missing.name}
+                        required={true}
+                        placeholder="ej. Thiago Salaberry"
+                        onChange={(value) => handleChange("name", value)}
+                    />
+                    <Input
+                        label="E-Mail"
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        disabled={disabled}
+                        missing={missing.email}
+                        required={true}
+                        placeholder="ej. ejemplo@gmail.com"
+                        onChange={(value) => handleChange("email", value)}
+                    />
+                    <Input
+                        label="Compañía"
+                        type="text"
+                        name="company"
+                        value={form.company}
+                        disabled={disabled}
+                        missing={missing.company}
+                        required={true}
+                        placeholder="ej. Amazon"
+                        onChange={(value) => handleChange("company", value)}
+                    />
+                    <Textarea
+                        label="Mensaje"
+                        name="message"
+                        value={form.message}
+                        disabled={disabled}
+                        missing={missing.message}
+                        required={true}
+                        placeholder="ej. Thiago Salaberry"
+                        onChange={(value) => handleChange("message", value)}
+                    />
+                    <Button type="submit" variant="main" onClick={()=>handleSubmit}>Enviar</Button>
+                </form>
+            </section>
+            {/* <p>Name: {form.name} | E-Mail: {form.email} | Company: {form.company} | Message: {form.message}</p> */}
         </div>
     )
 };
