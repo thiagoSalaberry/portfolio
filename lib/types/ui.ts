@@ -30,6 +30,11 @@ export type InputProps = {
   onChange: (value: string) => void;
 };
 
+export type NavigationProps = {
+  href: string;
+  children: React.ReactNode;
+};
+
 export type TextareaProps = {
   label?: string;
   name: string;
