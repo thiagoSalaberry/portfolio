@@ -124,7 +124,6 @@ export default function Page() {
                     <Button type="submit" variant="main" onClick={()=>handleSubmit}>Enviar</Button>
                 </form>
             </section>
-            {/* <p>Name: {form.name} | E-Mail: {form.email} | Company: {form.company} | Message: {form.message}</p> */}
         </div>
     )
 };
