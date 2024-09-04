@@ -90,7 +90,7 @@ export default function Home() {
     }
   };
   const handleDownload = () => {
-    const cvPDF = language == "es" ? "/cv.pdf" : "/cv-english.pdf";
+    const cvPDF = language == "es" ? "/cv.pdf" : "/cv-eng.pdf";
     const link = document.createElement("a");
     link.href = cvPDF;
     link.download = "cv.pdf";
