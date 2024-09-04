@@ -1,0 +1,26 @@
+.container {
+   display: flex;
+   gap: 5px;
+   position: relative;
+}
+.button {
+    background: none;
+    border: none;
+    color: var(--grey-200);
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+}
+.button.selected {
+    color: var(--black);
+}
+.current {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--black);
+    transition: width 0.4s ease, left 0.4s ease;
+    z-index: 10;
+}
