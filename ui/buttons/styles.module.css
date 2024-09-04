@@ -1,0 +1,125 @@
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    transition: all .2s;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    letter-spacing: 1.5px;
+}
+/* MAIN & ICON_MAIN */
+.main, .mainIcon, .main_icon {
+    background: var(--brand);
+    color: var(--white);
+}
+.main:hover, .mainIcon:hover, .main_icon:hover {
+    background: var(--brand-500);    
+}
+.main:active, .mainIcon:active, .main_icon:active {
+    background: var(--brand-600);    
+}
+/* SECONDARY & ICON_SECONDARY */
+.secondary, .secondaryIcon, .secondary_icon {
+    border: 1px solid var(--brand);
+    color: var(--brand);
+}
+.secondary:hover, .secondaryIcon:hover .secondary_icon:hover {
+    border: 1px solid var(--brand-500);
+    color: var(--brand-500);
+}
+.secondary:active, .secondaryIcon:active, .secondary_icon:active {
+    border: 1px solid var(--brand-600);
+    color: var(--brand-600);
+}
+/* TERTIARY & ICON_TERTIARY */
+.tertiary, .tertiaryIcon, .tertiary_icon {
+    color: var(--brand);
+}
+.tertiary:hover, .tertiaryIcon:hover, .tertiary_icon:hover {
+    background: var(--brand-100);
+}
+.tertiary:active, .tertiaryIcon:active, .tertiary_icon:active {
+    background: var(--brand-200);
+}
+/* TEXT & ICON_TEXT */
+.text {
+    width: fit-content;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0;
+    text-wrap: nowrap;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    color: var(--brand);
+}
+.text::after {
+    content: attr(data);
+    width: 100%;
+    height: 1px;
+    background: var(--color-primary);
+    transform: translateY(2px);
+    transition: all .2s;
+}
+.text:hover {
+    color: var(--brand-500);
+}
+.text:hover::after {
+    background: var(--brand-500);
+    transform: translateY(0px);
+}
+.text:active {
+    color: var(--brand-600);
+}
+.text:active::after {
+    background: var(--brand-600);
+}
+.icon {
+    width: 47px;
+    height: 47px;
+    padding: 0;
+}
+.disabled {
+    opacity: .5;
+    cursor: inherit;
+    user-select: none;
+}
+/* RIPPLE EFFECT */
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        width: 300px;
+        height: 300px;
+    }
+}
+.ripple {
+    position: absolute;
+    background: var(--brand-100);
+    /* left: 50%;
+    top: 50%; */
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    animation: appear .75s forwards;
+    z-index: -1;
+}
+.ripple.tertiary {
+    background: var(--brand-50);
+}
