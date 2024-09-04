@@ -1,0 +1,11 @@
+.link {
+    text-decoration: none;
+    color: var(--black);
+    transition: all .2s;
+}
+.link:hover {
+    transform: scale(1.05);
+}
+.link:active {
+    transform: scale(.95);
+}

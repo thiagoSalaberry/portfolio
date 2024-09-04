@@ -1,8 +1,10 @@
 "use client";
 import styles from "./styles.module.css";
-import { Button, Input, Textarea } from "@/ui";
+import { Button, Input, Navigation, Textarea } from "@/ui";
 import { Paintbrush } from "lucide-react";
 import { useState } from "react";
+import { Github } from "react-bootstrap-icons";
+import { Linkedin as LinkedInLucide } from "lucide-react";
 
 function useTestForm() {
     const [form, setForm] = useState<{
@@ -63,6 +65,10 @@ export default function Page() {
     }
     return (
         <div className={styles.page}>
+            <section className={styles.section}>
+                <Navigation href=""><Github size={30}/></Navigation>
+                <Navigation href=""><LinkedInLucide size={30}/></Navigation>
+            </section>
             <section className={styles.section}>
                 <Button disabled={disabled} variant="main" onClick={handleDisable}>Disable all</Button>
                 <Button disabled={disabled} variant="main" onClick={()=>console.log("Main Button")}>Main Button</Button>
