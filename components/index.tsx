@@ -1,5 +1,6 @@
+import { Header } from "./header";
 import { LanguageSwitch } from "./language-switch";
 import { Navbar } from "./navbar";
 import { ThemeSwitch } from "./theme-switch";
 
-export { LanguageSwitch, Navbar, ThemeSwitch };
+export { Header, LanguageSwitch, Navbar, ThemeSwitch };
