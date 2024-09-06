@@ -28,7 +28,7 @@ export default function Page() {
       };
       return {};
     });
-    setCellStyles(newStyles);
+    setCellStyles(newStyles as typeof cellStyles);
   }
   const handleSectionClick = (index:number) => {
     setSelected(prev => prev == index ? null : index);
@@ -48,104 +48,8 @@ export default function Page() {
   return (
     <div className={styles.page}>
       <div ref={containerRef} className={styles.container}>
-        {/* <section className={`${styles.cell} ${styles.PROYECTOS}`} ref={cellRefs[0]}></section>
-        <section className={`${styles.cell} ${styles.SOBRE_MÍ}`} ref={cellRefs[1]}></section>
-        <section className={`${styles.cell} ${styles.TECNOLOGÍAS}`} ref={cellRefs[2]}></section>
-        <section className={`${styles.cell} ${styles.CONTACTO}`} ref={cellRefs[3]}></section>
-        <section className={`${styles.cell} ${styles.FILL}`} ref={cellRefs[4]}></section>
-        <div
-          className={styles.inner_content}
-          ref={cellRefs[0]}
-          onClick={()=>setSelected(selected == 0 ? null : 0)}
-          style={
-            selected == 0 ? {
-              top: 0,
-              left: 0,
-              width: containerRef.current?.offsetWidth,
-              height: containerRef.current?.offsetHeight,
-            } : {
-              top: cellStyles[0]?.top,
-              left: cellStyles[0]?.left,
-              width: cellStyles[0]?.width,
-              height: cellStyles[0]?.height,
-            }
-          }
-        >PROYECTOS</div>
-        <div
-          className={styles.inner_content}
-          ref={cellRefs[1]}
-          onClick={()=>setSelected(selected == 1 ? null : 1)}
-          style={
-            selected == 1 ? {
-              top: 0,
-              left: 0,
-              width: containerRef.current?.offsetWidth,
-              height: containerRef.current?.offsetHeight,
-            } : {
-              top: cellStyles[1]?.top,
-              left: cellStyles[1]?.left,
-              width: cellStyles[1]?.width,
-              height: cellStyles[1]?.height,
-            }
-          }
-        >SOBRE MÍ</div>
-        <div
-          className={styles.inner_content}
-          ref={cellRefs[2]}
-          onClick={()=>setSelected(selected == 2 ? null : 2)}
-          style={
-            selected == 2 ? {
-              top: 0,
-              left: 0,
-              width: containerRef.current?.offsetWidth,
-              height: containerRef.current?.offsetHeight,
-            } : {
-              top: cellStyles[2]?.top,
-              left: cellStyles[2]?.left,
-              width: cellStyles[2]?.width,
-              height: cellStyles[2]?.height,
-            }
-          }
-        >TECNOLOGÍAS</div>
-        <div
-          className={styles.inner_content}
-          ref={cellRefs[3]}
-          onClick={()=>setSelected(selected == 3 ? null : 3)}
-          style={
-            selected == 3 ? {
-              top: 0,
-              left: 0,
-              width: containerRef.current?.offsetWidth,
-              height: containerRef.current?.offsetHeight,
-            } : {
-              top: cellStyles[3]?.top,
-              left: cellStyles[3]?.left,
-              width: cellStyles[3]?.width,
-              height: cellStyles[3]?.height,
-            }
-          }
-        >CONTACTO</div>
-        <div
-          className={styles.inner_content}
-          ref={cellRefs[4]}
-          onClick={()=>setSelected(selected == 4 ? null : 4)}
-          style={
-            selected == 4 ? {
-              top: 0,
-              left: 0,
-              width: containerRef.current?.offsetWidth,
-              height: containerRef.current?.offsetHeight,
-            } : {
-              top: cellStyles[4]?.top,
-              left: cellStyles[4]?.left,
-              width: cellStyles[4]?.width,
-              height: cellStyles[4]?.height,
-            }
-          }
-        >FILL</div> */}
         {cellRefs.map((cellRef, index) => {
           const cellClass = classMap[index + 1 as keyof typeof classMap];
-          console.log(cellClass);
           return (
             <>
               <section
