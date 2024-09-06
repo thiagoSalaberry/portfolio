@@ -1,3 +1,13 @@
+import { HTMLProps } from "react";
+
+export type ProjectProps = {
+  index: number;
+  title: string;
+  description: string;
+  techs: string[];
+  link: string;
+  githubLink: string;
+};
 export type SectionProps = {
   index: number;
   children: React.ReactNode;

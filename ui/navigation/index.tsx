@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Navigation(props:NavigationProps) {
     return (
-        <Link href={props.href} target="_blank" className={styles.link}>{props.children}</Link>        
+        <Link {...props} href={props.href} target="_blank" className={styles.link}>{props.children}</Link>        
     );
 };
                         

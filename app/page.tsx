@@ -5,6 +5,7 @@ import { Header, Section } from '@/components'
 import { Button } from '@/ui';
 import { Maximize2, Minimize2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { sections } from './sections';
 
 export default function Home() {
   const gridRef = useRef<HTMLElement>(null);
@@ -79,7 +80,7 @@ export default function Home() {
                 index={index}
                 onClick={()=>handleSelect(index)}
                 opened={selected == index}
-                title={`${index + 1}`}
+                title={sections[index].title || "asd"}
                 mainRef={gridRef}
                 sectionRef={cellRef}
                 style={{
@@ -89,7 +90,7 @@ export default function Home() {
                   height: cellStyles[index]?.height
                 }}
                 key={`${cellNumber}a sd`}
-              >{index + 1}</Section>
+              >{sections[index].content || "asd"}</Section>
             </>
           )
         })}
