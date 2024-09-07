@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import { HTMLProps } from "react";
 
 export type ProjectProps = {
@@ -24,3 +25,10 @@ export type SectionProps = {
   };
   onClick: () => void;
 };
+
+export type TechCardProps = {
+  title: string;
+  tag: string;
+  description: string;
+  img: StaticImageData | string;
+}

@@ -11,14 +11,15 @@
 }
 .section_title {
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: .8rem;
+    top: .8rem;
     font-size: 48px;
+    font-size: 2.2em;
 }
 .button_container {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: .8rem;
+    right: .8rem;
 }
 /* @keyframes zindex {
     from {

@@ -1,0 +1,22 @@
+.container {
+    display: grid;
+    border: 1px solid var(--grey-300);
+    border-radius: 10px;
+    padding: 1rem;
+    grid-template-rows: auto auto 1fr;
+    min-height: 200px;
+    gap: 10px;
+}
+.title {
+    font-size: 1.75rem;
+}
+.tag {
+    padding: 3px 12px;
+    background: var(--grey-200);
+    color: var(--grey-800);
+    width: fit-content;
+    border-radius: 20px;
+}
+.description {
+    align-self: flex-end;
+}
