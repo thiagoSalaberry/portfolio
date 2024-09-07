@@ -1,3 +1,9 @@
+import { SectionProps } from "./components";
 import { ButtonProps, InputProps, NavigationProps, TextareaProps } from "./ui";
-
-export type { ButtonProps, InputProps, NavigationProps, TextareaProps };
+export type {
+  SectionProps,
+  ButtonProps,
+  InputProps,
+  NavigationProps,
+  TextareaProps,
+};

@@ -82,5 +82,10 @@
 }
 body {
   background: var(--base);
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
