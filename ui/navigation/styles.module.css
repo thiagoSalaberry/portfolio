@@ -2,6 +2,9 @@
     text-decoration: none;
     color: var(--black);
     transition: all .2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .link:hover {
     transform: scale(1.05);

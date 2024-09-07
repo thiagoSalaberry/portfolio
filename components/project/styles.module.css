@@ -1,0 +1,62 @@
+.wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.project_container {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    height: 100%;
+    transform: translateY(90%);
+    transition: all .7s cubic-bezier(1,0,0,1);
+}
+.project_container.hovering {
+    transform: translateY(0%);
+}
+.title_wrapper {
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+@keyframes title_movement {
+    from {
+        transform: translateX(100%)
+    }
+    to {
+        transform: translateX(-100%)
+    }
+}
+.title {
+    font-weight: 900;
+    font-size: 30px;
+    text-wrap: nowrap;
+    animation: title_movement 4s linear infinite;
+    display: inline-block;
+    padding-right: 10%;
+}
+.desc {
+
+}
+.techs_container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+.tech {
+    
+}
+.links_container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}

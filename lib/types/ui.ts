@@ -1,3 +1,5 @@
+import { HTMLProps } from "react";
+
 export type ButtonProps = {
   type?: "button" | "submit";
   children: React.ReactNode;
@@ -33,7 +35,7 @@ export type InputProps = {
 export type NavigationProps = {
   href: string;
   children: React.ReactNode;
-};
+} & HTMLProps<HTMLAnchorElement>;
 
 export type TextareaProps = {
   label?: string;
