@@ -26,13 +26,13 @@ export function Section(props:SectionProps) {
                 }
             }
         >
-        <h2 className={`${styles.section_title} ${bigShouldersDisplay.className}`}>{props.title}</h2>
-        <div className={styles.button_container}>
-            <Button
-                onClick={props.onClick}
-                variant="main_icon"
-            >{props.opened ? <Minimize2 /> : <Maximize2 />}</Button>
-        </div>
+            <h2 className={`${styles.section_title} ${bigShouldersDisplay.className}`}>{props.title}</h2>
+            <div className={styles.button_container}>
+                <Button
+                    onClick={props.onClick}
+                    variant="main_icon"
+                >{props.opened ? <Minimize2 /> : <Maximize2 />}</Button>
+            </div>
             {props.children}
         </div>
     );
