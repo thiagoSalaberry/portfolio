@@ -1,23 +1,53 @@
 "use client";
 import Image from 'next/image'
 import styles from './page.module.css'
-import { Header } from '@/components'
+import { Header, Section } from '@/components'
 import { Button } from '@/ui';
 import { Maximize2, Minimize2 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
-  const [selected, setSelected] = useState<1 | 2 | 3 | 4 | 5 | null>(null);
-  const handleSelect = (id: keyof typeof selected):void => {
-    if(selected == id) return setSelected(null);
-    setSelected(id);
+  const gridRef = useRef<HTMLElement>(null);
+  const cellRefs = [...Array(5)].map(() => useRef<HTMLTableSectionElement>(null));
+  const [selected, setSelected] = useState<number | null>(null);
+  const [cellStyles, setCellStyles] = useState<{
+    left:number,
+    top:number,
+    width:number,
+    height:number,
+  }[]>([])
+  const updateCellStyles =  () => {
+    const newStyles = cellRefs.map(cellRef => {
+     const cell = cellRef.current;
+     if(cell) {
+      const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = cell;
+      return {left: offsetLeft, top: offsetTop, width: offsetWidth, height: offsetHeight };
+     }
+     return {}      
+    });
+    setCellStyles(newStyles as typeof cellStyles);
   }
+  const handleSelect = (index: number):void => {
+    setSelected(prev => prev == index ? null : index)
+  };
+  useEffect(()=>{
+    updateCellStyles();
+    window.addEventListener("resize", updateCellStyles);
+    return () => window.removeEventListener("resize", updateCellStyles)
+  }, []);
+  const classMap = {
+    0: "projects",
+    1: "about_me",
+    2: "techs",
+    3: "contact",
+    4: "fill",
+  };
   return (
     <>
       <Header/>
-      <main className={`${styles.main} ${selected && styles.complete}`}>
+      <main ref={gridRef} className={`${styles.main}`}>
         {/* TEST */}
-          {sections.map(section => {
+          {/* {sections.map(section => {
             if(selected && selected !== section.id) return;
             return (
               <div
@@ -33,33 +63,38 @@ export default function Home() {
                 </div>
               </div>
             )
-          })}
+          })} */}
         {/* TEST */}
+        {cellRefs.map((cellRef, index) => {
+          // if(index > 0) return;
+          const cellNumber = `cell_${index + 1}`;
+          return (
+            <>
+              <section
+                className={`${styles.cell} ${styles[cellNumber]}`}
+                ref={cellRef}
+                key={cellNumber}
+              ></section>
+              <Section
+                index={index}
+                onClick={()=>handleSelect(index)}
+                opened={selected == index}
+                title={`${index + 1}`}
+                mainRef={gridRef}
+                sectionRef={cellRef}
+                style={{
+                  top: cellStyles[index]?.top,
+                  left: cellStyles[index]?.left,
+                  width: cellStyles[index]?.width,
+                  height: cellStyles[index]?.height
+                }}
+                key={`${cellNumber}a sd`}
+              >{index + 1}</Section>
+            </>
+          )
+        })}
+        {/* <section className={`${styles.cell} ${styles.cell_1}`}></section> */}
       </main>
     </>
   )
 }
-// TEST
-const sections = [
-  {
-    id: 1,
-    title: 'PROJECTS',
-  },
-  {
-    id: 2,
-    title: 'ABOUT ME',
-  },
-  {
-    id: 3,
-    title: 'TECHNOLOGIES',
-  },
-  {
-    id: 4,
-    title: 'CONTACT',
-  },
-  {
-    id: 5,
-    title: 'FILL',
-  },
-]
-// TEST
