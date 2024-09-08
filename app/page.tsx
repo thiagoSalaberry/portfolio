@@ -80,7 +80,7 @@ export default function Home() {
                 index={index}
                 onClick={()=>handleSelect(index)}
                 opened={selected == index}
-                title={sections[index].title || "asd"}
+                title={sections[index].title}
                 mainRef={gridRef}
                 sectionRef={cellRef}
                 style={{
@@ -89,6 +89,7 @@ export default function Home() {
                   width: cellStyles[index]?.width,
                   height: cellStyles[index]?.height
                 }}
+                expandable={index !== 4}
                 key={`${cellNumber}a sd`}
               >{sections[index].content || "asd"}</Section>
             </>

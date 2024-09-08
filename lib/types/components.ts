@@ -23,6 +23,7 @@ export type SectionProps = {
     width: number;
     height: number;
   };
+  expandable?: boolean;
   onClick: () => void;
 };
 

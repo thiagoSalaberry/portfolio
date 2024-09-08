@@ -55,7 +55,7 @@ export const sections:Section[] = [
         )
     },
     {
-        title: "FILL",
+        title: "EDUCACIÓN",
         content: (
             <div className={styles.fill_container}>
                 <b>E-COMMERCE</b>
