@@ -4,7 +4,10 @@ import { Button } from "@/ui";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { useState } from "react";
 import { bigShouldersDisplay } from "@/lib/fonts";
-
+import Image from "next/image";
+import img1 from "@/public/man_1.jpg";
+import img2 from "@/public/man_2.jpg";
+import img3 from "@/public/man_3.jpg";
 export function Section(props:SectionProps) {
     return (
         <div
@@ -37,4 +40,13 @@ export function Section(props:SectionProps) {
         </div>
     );
 };
-                        
+
+// function AboutMeSection() {
+//     return (
+//         <div className={styles.about_me_container}>
+//             <div className={styles.img_container}>
+//                 <Image src={img1} alt="me.jpg"/>
+//             </div>
+//         </div>
+//     )
+// }

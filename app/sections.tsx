@@ -1,10 +1,13 @@
+"use client";
 import styles from "./page.module.css";
 import { Project } from "@/components";
-import { Box } from "lucide-react";
+import { Button } from "@/ui";
+import { Box, Linkedin } from "lucide-react";
+import { Download, Github } from "react-bootstrap-icons";
 type Section = {
     title: string;
     content: JSX.Element;
-}
+};
 export const sections:Section[] = [
     {
         title: "PROYECTOS",
@@ -21,10 +24,11 @@ export const sections:Section[] = [
         title: "SOBRE MÍ",
         content: (
             <div className={styles.about_me_container}>
-                <b>E-COMMERCE</b>
-                <b>URL SHORTENER</b>
-                <b>TEOXYS TATTOO</b>
-                <b>PIEDRA PAPEL O TIJERA</b>
+                {/* <div className={styles.about_me_buttons_container}>
+                    <Button variant="main_icon" onClick={()=>{}}><Linkedin size={20}/></Button>
+                    <Button variant="main_icon" onClick={()=>{}}><Github size={20}/></Button>
+                    <Button variant="secondaryIcon" onClick={()=>{}}>CV <Download size={20}/></Button>
+                </div> */}
             </div>
         )
     },
