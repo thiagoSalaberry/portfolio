@@ -28,8 +28,9 @@ export type SectionProps = {
 };
 
 export type TechCardProps = {
+  size: "small" | "large";
   title: string;
   tag: string;
   description: string;
   img: StaticImageData | string;
-}
+};

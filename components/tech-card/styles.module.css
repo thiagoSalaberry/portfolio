@@ -1,3 +1,26 @@
+.small_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    gap: 3px;
+    border: 1px solid var(--grey-300);
+    padding: 10px;
+    transform: skewY(30deg);
+    border-radius: 10px;
+}
+.small_img_container {
+    width: 80px;
+    height: 80px;
+}
+.small_img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+.small_title {
+
+}
 .container {
     display: grid;
     border: 1px solid var(--grey-300);
