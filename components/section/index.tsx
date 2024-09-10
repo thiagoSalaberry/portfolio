@@ -85,64 +85,28 @@ function Technologies({opened}: {opened:boolean}) {
     return (
         <div className={styles.techs_container}>
             <div className={`${styles.grid} ${opened && styles.hidden}`}>
-                {[...Array(12)].map((_, i) => {
+                {[...Array(8)].map((_, i) => {
                     return (
                         <div className={styles.column} key={i}>
-                            <div className={styles.column_slider}>
-                                {[...Array(3)].map((_, j) => {
-                                    // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                    const index = (i % 3) * 3 + j;
-                                    return (
-                                        <BoxImage key={j}>
-                                            <img src={`/${techsMap[index as keyof typeof techsMap].img}.png`} alt=""/>
-                                            <p className={styles.box_title}>{techsMap[index as keyof typeof techsMap].name}</p>
-                                        </BoxImage>)
-                                })}
-                            </div>
-                            <div className={styles.column_slider}>
-                                {[...Array(3)].map((_, j) => {
-                                    // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                    const index = (i % 3) * 3 + j;
-                                    return (
-                                        <BoxImage key={j}>
-                                            <img src={`/${techsMap[index as keyof typeof techsMap]}.png`} alt=""/>
-                                            <p className={styles.box_title}>{techsMap[index as keyof typeof techsMap].name}</p>
-                                        </BoxImage>)
-                                })}
-                            </div>
-                            <div className={styles.column_slider}>
-                                {[...Array(3)].map((_, j) => {
-                                    // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                    const index = (i % 3) * 3 + j;
-                                    return (
-                                        <BoxImage key={j}>
-                                            <img src={`/${techsMap[index as keyof typeof techsMap]}.png`} alt=""/>
-                                            <p className={styles.box_title}>{techsMap[index as keyof typeof techsMap].name}</p>
-                                        </BoxImage>)
-                                })}
-                            </div>
-                            <div className={styles.column_slider}>
-                                {[...Array(3)].map((_, j) => {
-                                    // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                    const index = (i % 3) * 3 + j;
-                                    return (
-                                        <BoxImage key={j}>
-                                            <img src={`/${techsMap[index as keyof typeof techsMap]}.png`} alt=""/>
-                                            <p className={styles.box_title}>{techsMap[index as keyof typeof techsMap].name}</p>
-                                        </BoxImage>)
-                                })}
-                            </div>
-                            <div className={styles.column_slider}>
-                                {[...Array(3)].map((_, j) => {
-                                    // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                    const index = (i % 3) * 3 + j;
-                                    return (
-                                        <BoxImage key={j}>
-                                            <img src={`/${techsMap[index as keyof typeof techsMap]}.png`} alt=""/>
-                                            <p className={styles.box_title}>{techsMap[index as keyof typeof techsMap].name}</p>
-                                        </BoxImage>)
-                                })}
-                            </div>
+                            {[...Array(5)].map((_, sliderIndex) => (
+                                <div className={styles.column_slider} key={sliderIndex}>
+                                    {[...Array(3)].map((_, j) => {
+                                        const index = (i * 3 + j) % Object.keys(techsMap).length;
+                                        return (
+                                            <BoxImage key={j}>
+                                                <img
+                                                    style={{height: index == 15 ? "100%" : "", width: index == 15 ? "auto" : ""}}
+                                                    src={`/${techsMap[index as keyof typeof techsMap].img}.png`}
+                                                    alt={`/${techsMap[index as keyof typeof techsMap].name}`}
+                                                />
+                                                <b className={styles.box_title}>
+                                                    {techsMap[index as keyof typeof techsMap].name}
+                                                </b>
+                                            </BoxImage>
+                                        )
+                                    })}
+                                </div>
+                            ))}
                         </div>
                     )
                 })}

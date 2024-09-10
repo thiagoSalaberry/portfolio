@@ -16,7 +16,7 @@ export const techsMap = {
     name: "Express.js",
   },
   4: {
-    img: "node",
+    img: "nodejs",
     name: "Node.js",
   },
   5: {
@@ -37,7 +37,7 @@ export const techsMap = {
   },
   9: {
     img: "firebase",
-    name: "React.js",
+    name: "Firebase",
   },
   10: {
     img: "javascript",
