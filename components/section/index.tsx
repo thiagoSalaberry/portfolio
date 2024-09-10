@@ -1,13 +1,13 @@
 import styles from "./styles.module.css";
 import { SectionProps } from "@/lib/types";
 import { Button, Navigation } from "@/ui";
-import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, Maximize2, Minimize2 } from "lucide-react";
+import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, MapPin, Coffee, Book, Maximize2, Minimize2 } from "lucide-react";
 import { useState } from "react";
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import Image from "next/image";
 import img1 from "@/public/man_1.jpg";
 import img2 from "@/public/man_2.jpg";
-import img3 from "@/public/man_3.jpg";
+import img3 from "@/public/yo.png";
 import { Github } from "react-bootstrap-icons";
 import { Project } from "@/components";
 import { techsMap } from "@/lib/techsMap";
@@ -70,14 +70,66 @@ function Projects() {
 function AboutMe({opened}: {opened:boolean}) {
     return (
         <div className={`${styles.about_me_container} ${opened && styles.opened}`}>
-            {/* <div className={styles.img_container}>
-                <Image src={img3} alt="me.jpg" style={{height: "100%", width: "auto", objectFit: "scale-down", scale:".1", transform:"translate(1000px, 1000px)"}}/>
-            </div> */}
-            <div className={styles.about_me_buttons_container}>
-                <Button variant="main_icon" onClick={()=>{}}><Linkedin size={20}/></Button>
-                <Button variant="main_icon" onClick={()=>{}}><Github size={20}/></Button>
+            {/* <h3 className={styles.name}>THIAGO SALABERRY</h3> */}
+            {/* <ul className={`${styles.about_me_list} ${poppins.className}`}>
+                <li className={styles.about_me_item}>
+                    <MapPin size={18}/> Buenos Aires, <img src="/arg.png" alt="argentina" />
+                </li>
+                <li className={styles.about_me_item}>
+                    <Coffee size={18}/> Motorizado por mate y código
+                </li>
+                <li className={styles.about_me_item}>
+                    <MapPin size={18}/> Siempre aprendiendo, actualmente explorando ciencia de datos
+                </li>
+            </ul> */}
+            {/* <p className={`${poppins.className} ${styles.description}`}>
+                Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
+                tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales.
+            </p> */}
+            <div className={styles.name_skeleton}>
+                <h3 className={styles.name}>THIAGO SALABERRY</h3>
+            </div>
+            <div className={styles.list_skeleton}>
+                <ul className={`${styles.about_me_list} ${poppins.className}`}>
+                    <li className={styles.about_me_item}>
+                        <MapPin size={18}/> Buenos Aires, <img src="/arg.png" alt="argentina" />
+                    </li>
+                    <li className={styles.about_me_item}>
+                        <Coffee size={18}/> Motorizado por mate y código
+                    </li>
+                    <li className={styles.about_me_item}>
+                        <Book size={18}/> Siempre aprendiendo, actualmente explorando ciencia de datos
+                    </li>
+                </ul>
+            </div>
+            <div className={styles.description_skeleton}>
+                <p className={`${poppins.className} ${styles.description}`}>
+                    Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
+                    tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales.
+                </p>
+            </div>
+            <div className={styles.image_skeleton}>
+                <div className={styles.img_container}>
+                    {/* <Image src={img3} alt="/yo.png" style={{height: "auto", width: "100%"}}/> */}
+                    <img
+                        src="https://api.dicebear.com/9.x/notionists/svg?seed=Max"
+                        alt="avatar"
+                    />
+                </div>
+            </div>
+            <div className={styles.button_skeleton}>
                 <Button variant="secondaryIcon" onClick={()=>{}}>CV <Download size={20}/></Button>
             </div>
+            {/* <Button variant="secondaryIcon" onClick={()=>{}}>CV</Button> */}
+            {/* <div className={styles.img_container}>
+                <Image src={img3} alt="/yo.png" style={{height: "auto", width: "50%"}}/>
+            </div>
+            <p className={`${poppins.className} ${styles.country}`}>Buenos Aires, <img src="/arg.png" alt="argentina" /></p>
+            <p className={`${poppins.className} ${styles.description}`}>
+                Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
+                tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales.
+            </p> */}
+
         </div>
     )
 }

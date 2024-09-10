@@ -17,8 +17,8 @@
     top: .8rem;
     font-size: 48px;
     font-size: 2.2em;
-    padding: 3px 9px;
-    background: var(--base);
+    /* padding: 3px 9px; */
+    /* background: var(--base); */
     /* border-radius: 10px; */
     z-index: 2;
 }
@@ -65,12 +65,103 @@
 }
 /* ABOUT ME */
 .about_me_container {
-    /* position: relative; */
-    display: flex;
+    position: relative;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     width: 100%;
     height: 100%;
+    /* background: linear-gradient(225deg, rgb(30, 30, 29) 0%, rgb(15, 15, 15) 100%); */
+    display: grid;
+    padding: .8rem;
+    gap: .8rem;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas: 
+        "h h h h f f"
+        "n n n n f f"
+        "i i i i f f"
+        "i i i i f f"
+        "d d d d f f"
+        "d d d d f f"
+        "d d d d f f"
+        "d d d d b b"
+    ;
+    .country {
+        color: var(--white);
+        font-weight: 500;
+        position: absolute;
+        left: .8rem;
+        top: 4rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 18px;
+    }
+    .about_me_list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .about_me_item {
+        color: var(--white);
+        display: flex;
+        color: var(--grey);
+        font-size: 14px;
+        gap: 10px;
+    }
+    .description {
+        color: var(--black);
+        /* position: absolute;
+        right: .8rem;
+        top: .8rem; */
+        /* text-align: right; */
+        /* max-width: 40%; */
+        /* background: var(--grey-200); */
+        /* padding: 4rem .8rem .8rem .8rem;
+        border: 1px solid var(--grey-200);
+        border-radius: 10px; */
+    }
+    .image_skeleton, .name_skeleton, .list_skeleton, .description_skeleton, .button_skeleton {
+        grid-area: f;
+        /* background: red; */
+        border: 1px solid var(--grey);
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+    }
+    .image_skeleton {
+        display: grid;
+        place-content: center;
+        background: #202422;
+        background: var(--brand-950);
+        /* background: var(--black); */
+    }
+    .name_skeleton {
+        grid-area: n;
+        border: none;
+    }
+    .name {
+        color: var(--black);
+        font-size: 40px;
+        font-weight: 900;
+    }
+    .list_skeleton {
+        grid-area: i;
+        border: none;
+    }
+    .description_skeleton {
+        grid-area: d;
+        display: flex;
+        align-items: flex-end;
+        padding: .8rem;
+    }
+    .button_skeleton {
+        grid-area: b;
+        width: calc(100% - 45px - .8rem);
+        border: none;
+    }
     .about_me_buttons_container {
         display: flex;
         gap: 10px;
