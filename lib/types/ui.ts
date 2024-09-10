@@ -33,6 +33,7 @@ export type InputProps = {
 };
 
 export type NavigationProps = {
+  text?: string;
   href: string;
   children: React.ReactNode;
 } & HTMLProps<HTMLAnchorElement>;

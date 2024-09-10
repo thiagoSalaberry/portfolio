@@ -5,6 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 3px;
+    font-weight: 600;
 }
 .link:hover {
     transform: scale(1.05);
@@ -12,3 +14,4 @@
 .link:active {
     transform: scale(.95);
 }
+

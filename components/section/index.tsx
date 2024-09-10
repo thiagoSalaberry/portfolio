@@ -1,9 +1,9 @@
 import styles from "./styles.module.css";
 import { SectionProps } from "@/lib/types";
-import { Button } from "@/ui";
-import { Box, Download, Linkedin, LinkedinIcon, Maximize2, Minimize2 } from "lucide-react";
+import { Button, Navigation } from "@/ui";
+import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, Maximize2, Minimize2 } from "lucide-react";
 import { useState } from "react";
-import { bigShouldersDisplay } from "@/lib/fonts";
+import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import Image from "next/image";
 import img1 from "@/public/man_1.jpg";
 import img2 from "@/public/man_2.jpg";
@@ -11,6 +11,7 @@ import img3 from "@/public/man_3.jpg";
 import { Github } from "react-bootstrap-icons";
 import { Project } from "@/components";
 import { techsMap } from "@/lib/techsMap";
+import copy from "copy-to-clipboard";
 
 export function Section(props:SectionProps) {
     const sectionsMap = {
@@ -119,12 +120,22 @@ function BoxImage({children}: {children:React.ReactNode}) {
 }
 
 function Contact() {
+    const [copied, setCopied] = useState<boolean>(false);
+    const handleCopy = () => {
+        setCopied(true);
+        copy("thiagosalaberry99@gmail.com")
+        setTimeout(() => {
+            setCopied(false);            
+        }, 2000);
+    }
     return (
         <div className={styles.contact_container}>
+            <p className={`${styles.contact_p} ${poppins.className}`}>
+                Completá el formulario o enviame un <br/> mail a la siguiente dirección: <b onClick={handleCopy} className={styles.email}>thiagosalaberry99@gmail.com {copied ? <CopyCheck size={18}/> : <Copy size={18}/>}</b>
+            </p>
             <div className={styles.contact_buttons_container}>
-                <Button variant="main_icon" onClick={()=>{}}><LinkedinIcon size={20}/></Button>
-                <Button variant="main_icon" onClick={()=>{}}><Github size={20}/></Button>
-                <Button variant="secondaryIcon" onClick={()=>{}}>CV <Download size={20}/></Button>
+                <Navigation href="https://www.linkedin.com/in/thiago-salaberry/"><Linkedin size={24}/> LinkedIn</Navigation>
+                <Navigation href="https://github.com/thiagoSalaberry"><Github size={24}/> GitHub</Navigation>
             </div>
         </div>
     )
@@ -132,17 +143,18 @@ function Contact() {
 
 function Fill() {
     return (
-        <div className={styles.fill_container}>
+        <div className={`${styles.fill_container} ${poppins.className}`}>
             <div className={styles.education}>
                 <h4 className={styles.education_title}>Fullstack Software Developer</h4>
                 <p className={styles.education_info}>
-                    APX <span>2022 - 2024</span>
+                    APX | 2022 - 2024
                 </p>
             </div>
+            <div className={styles.divider}></div>
             <div className={styles.education}>
                 <h4 className={styles.education_title}>Tecnicatura en Programación</h4>
                 <p className={styles.education_info}>
-                    Universidad Tecnológica Nacional <span>2024 - presente</span>
+                    UTN | 2024 - presente
                 </p>
             </div>
         </div>
