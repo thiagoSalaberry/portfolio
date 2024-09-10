@@ -1,14 +1,14 @@
 import styles from "./styles.module.css";
 import { SectionProps } from "@/lib/types";
 import { Button, Navigation } from "@/ui";
-import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, MapPin, Coffee, Book, Maximize2, Minimize2 } from "lucide-react";
+import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, MapPin, Coffee, Book, Maximize2, Minimize2, BookCheck } from "lucide-react";
 import { useState } from "react";
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import Image from "next/image";
 import img1 from "@/public/man_1.jpg";
 import img2 from "@/public/man_2.jpg";
-import img3 from "@/public/yo.png";
-import { Github } from "react-bootstrap-icons";
+import img3 from "@/public/man_3.jpg";
+import { Github, Hourglass } from "react-bootstrap-icons";
 import { Project } from "@/components";
 import { techsMap } from "@/lib/techsMap";
 import copy from "copy-to-clipboard";
@@ -41,7 +41,7 @@ export function Section(props:SectionProps) {
                 }
             }
         >
-            <h2 className={`${styles.section_title} ${bigShouldersDisplay.className} ${props.opened && styles.opened} ${props.index == 1 && styles.white}`}>{props.title}</h2>
+            <h2 className={`${styles.section_title} ${bigShouldersDisplay.className} ${props.opened && styles.opened} ${props.index == 10 && styles.white}`}>{props.title}</h2>
             {props.expandable && (
                 <div className={`${styles.button_container} ${props.opened && styles.opened}`}>
                 <Button
@@ -70,29 +70,13 @@ function Projects() {
 function AboutMe({opened}: {opened:boolean}) {
     return (
         <div className={`${styles.about_me_container} ${opened && styles.opened}`}>
-            {/* <h3 className={styles.name}>THIAGO SALABERRY</h3> */}
-            {/* <ul className={`${styles.about_me_list} ${poppins.className}`}>
-                <li className={styles.about_me_item}>
-                    <MapPin size={18}/> Buenos Aires, <img src="/arg.png" alt="argentina" />
-                </li>
-                <li className={styles.about_me_item}>
-                    <Coffee size={18}/> Motorizado por mate y código
-                </li>
-                <li className={styles.about_me_item}>
-                    <MapPin size={18}/> Siempre aprendiendo, actualmente explorando ciencia de datos
-                </li>
-            </ul> */}
-            {/* <p className={`${poppins.className} ${styles.description}`}>
-                Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
-                tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales.
-            </p> */}
             <div className={styles.name_skeleton}>
                 <h3 className={styles.name}>THIAGO SALABERRY</h3>
             </div>
             <div className={styles.list_skeleton}>
                 <ul className={`${styles.about_me_list} ${poppins.className}`}>
                     <li className={styles.about_me_item}>
-                        <MapPin size={18}/> Buenos Aires, <img src="/arg.png" alt="argentina" />
+                        <MapPin size={18}/> Buenos Aires, <img className={styles.arg} src="/argentina.gif" alt="argentina" />
                     </li>
                     <li className={styles.about_me_item}>
                         <Coffee size={18}/> Motorizado por mate y código
@@ -110,26 +94,12 @@ function AboutMe({opened}: {opened:boolean}) {
             </div>
             <div className={styles.image_skeleton}>
                 <div className={styles.img_container}>
-                    {/* <Image src={img3} alt="/yo.png" style={{height: "auto", width: "100%"}}/> */}
-                    <img
-                        src="https://api.dicebear.com/9.x/notionists/svg?seed=Max"
-                        alt="avatar"
-                    />
+                    <img src="man_3.jpg" alt="" />
                 </div>
             </div>
             <div className={styles.button_skeleton}>
                 <Button variant="secondaryIcon" onClick={()=>{}}>CV <Download size={20}/></Button>
             </div>
-            {/* <Button variant="secondaryIcon" onClick={()=>{}}>CV</Button> */}
-            {/* <div className={styles.img_container}>
-                <Image src={img3} alt="/yo.png" style={{height: "auto", width: "50%"}}/>
-            </div>
-            <p className={`${poppins.className} ${styles.country}`}>Buenos Aires, <img src="/arg.png" alt="argentina" /></p>
-            <p className={`${poppins.className} ${styles.description}`}>
-                Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
-                tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales.
-            </p> */}
-
         </div>
     )
 }
@@ -197,14 +167,14 @@ function Fill() {
     return (
         <div className={`${styles.fill_container} ${poppins.className}`}>
             <div className={styles.education}>
-                <h4 className={styles.education_title}>Fullstack Software Developer</h4>
+                <h4 className={styles.education_title}>Fullstack Software Developer <span><BookCheck size={20}/></span></h4>
                 <p className={styles.education_info}>
                     APX | 2022 - 2024
                 </p>
             </div>
             <div className={styles.divider}></div>
             <div className={styles.education}>
-                <h4 className={styles.education_title}>Tecnicatura en Programación</h4>
+                <h4 className={styles.education_title}>Tecnicatura en Programación <span className={styles.animated}><Hourglass size={20}/></span></h4>
                 <p className={styles.education_info}>
                     UTN | 2024 - presente
                 </p>
