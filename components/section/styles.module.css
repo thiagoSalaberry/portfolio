@@ -374,8 +374,20 @@
     }
     .form_image {
         grid-area: im;
-        background: var(--brand-950);
+        /* background: var(--brand-950); */
         border-radius: 10px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: var(--border-clear);
+        overflow: hidden;
+    }
+    .form_image > img {
+        width: 150%;
+        height: auto;
+        object-fit: contain;
     }
     .form_sketch {
         width: 100%;

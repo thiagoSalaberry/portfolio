@@ -277,7 +277,9 @@ function Contact({opened}: {opened:boolean}) {
                     <div className={styles.submit_section}>
                         <Button disabled={disabled} type="submit" variant="mainIcon" onClick={()=>{}}>Enviar <Send size={20}/></Button>
                     </div>
-                    <div className={styles.form_image}></div>
+                    <div className={styles.form_image}>
+                        <img src="/hello.png" alt="contact.png" />
+                    </div>
                 </form>
                 // <div className={styles.form_sketch}>
                 //     <div className={styles.input_container_sketch}>
