@@ -8,6 +8,7 @@ export type ProjectProps = {
   techs: string[];
   link: string;
   githubLink: string;
+  opened: boolean;
 };
 export type SectionProps = {
   index: number;

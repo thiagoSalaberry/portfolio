@@ -17,7 +17,7 @@ import { Miss_Fajardose } from "next/font/google";
 
 export function Section(props:SectionProps) {
     const sectionsMap = {
-        0: <Projects/>,
+        0: <Projects opened={props.opened}/>,
         1: <AboutMe opened={props.opened}/>,
         2: <Technologies opened={props.opened}/>,
         3: <Contact opened={props.opened}/>,
@@ -58,7 +58,7 @@ export function Section(props:SectionProps) {
     );
 };
 
-function Projects() {
+function Projects({opened}: {opened:boolean}) {
     return (
         <div className={styles.projects_container}>
             <Project
@@ -67,7 +67,8 @@ function Projects() {
                 description="Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
                 githubLink="https://github.com/thiagoSalaberry/frontend"
                 link="https://frontend-seven-blond.vercel.app/"
-                techs={["react", "next", "typescript", "firebase"]}
+                techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
+                opened={opened}
             />
             <Project
                 index={1}
@@ -75,7 +76,8 @@ function Projects() {
                 description="Una web para recortar URLs largos y hacerlos más legibles y cómodos."
                 githubLink="https://github.com/thiagoSalaberry/url-shortener"
                 link="https://teoxys-url.vercel.app/"
-                techs={["react", "next", "typescript", "postgresql"]}
+                techs={["React.js", "Next.js", "TypeScript", "PostgreSQL"]}
+                opened={opened}
             />
             <Project
                 index={2}
@@ -83,7 +85,8 @@ function Projects() {
                 description="Una web para facilitar la reservación de turnos de tatuajes."
                 githubLink="https://github.com/thiagoSalaberry/landing-page"
                 link="https://landing-page-zeta-mauve.vercel.app/"
-                techs={["react", "next", "typescript", "styled-components"]}
+                techs={["React.js", "Next.js", "TypeScript", "Styled-Components"]}
+                opened={opened}
             />
             <Project
                 index={3}
@@ -91,7 +94,8 @@ function Projects() {
                 description="Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
                 githubLink="https://github.com/thiagoSalaberry/ppt-online"
                 link="https://ppt-online-react.vercel.app/"
-                techs={["react", "next", "typescript", "firebase"]}
+                techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
+                opened={opened}
             />
         </div>
     )

@@ -3,39 +3,60 @@
     overflow: hidden;
 }
 .project_container {
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
-    align-items: center;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 2.5%;
+    gap: 2.5%;
     position: relative;
     height: 100%;
-    transform: translateY(90%);
+    transform: translateY(50%);
     transition: transform .7s cubic-bezier(1,0,0,1);
+}
+.project_container.opened {
+    transform: translateY(0%);
 }
 .wrapper:hover .project_container.E-COMMERCE, .wrapper:hover .project_container.URL_SHORTENER, .wrapper:hover .project_container.TEOXYS_TATTOO, .wrapper:hover .project_container.PIEDRA_PAPEL_O_TIJERA {
     transform: translateY(0%);
-    /* background-image: url("/ecommerce.png");
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-position: 50% 50%; */
 }
-/* .wrapper:hover .project_container.URL_SHORTENER {
-    background-image: url("/urlshortener.png");
+.project_img_container {
+    width: 100%;
+    aspect-ratio: 1/1.2;
+    overflow: hidden;
+    border: var(--border-clear);
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .7s cubic-bezier(1,0,0,1);
 }
-.wrapper:hover .project_container.TEOXYS_TATTOO {
-    background-image: url("/teoxys-tattoo.png");
+.wrapper:hover .project_img_container, .project_img_container.opened {
+    opacity: 1;
+    visibility: visible;
 }
-.wrapper:hover .project_container.PIEDRA_PAPEL_O_TIJERA {
-    background-image: url("/ppt.png");
-} */
-/* .project_container.hovering {
-    transform: translateY(0%);
-} */
+.project_img_container > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+.project_img_container > img.URL_SHORTENER {
+    transform: translateY(-25%);
+}
+.project_img_container > img.TEOXYS_TATTOO {
+    transform: translateY(-15%);
+}
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    height: 100%;
+    gap: 1.25%;
+}
 .title_wrapper {
     overflow: hidden;
     width: 100%;
     white-space: nowrap;
     box-sizing: border-box;
+    /* border: var(--border-clear); */
 }
 @keyframes title_movement {
     from {
@@ -49,36 +70,30 @@
     font-weight: 900;
     font-size: 30px;
     text-wrap: nowrap;
-    animation: title_movement 4s linear infinite;
+    animation: title_movement 5s linear infinite;
     display: inline-block;
-    padding-right: 10%;
+    padding-right: 35%;
 }
 .desc {
-
+    color: var(--grey-800);
 }
 .techs_container {
-    position: absolute;
     display: flex;
-    flex-direction: column;
-    bottom: .8rem;
-    left: .8rem;
-    /* transform: translateY(-50%); */
-    gap: 10px;
-}
-.tech_container {
-    width: 3rem;
-    height: 3rem;
+    gap: 5px;
+    flex-wrap: wrap;
+    height: fit-content;
 }
 .tech {
-    width: 100%;
-    height: auto;
+    font-size: 14px;
+    color: var(--grey-600);
+    background: var(--grey-100);
+    border-radius: 20px;
+    padding: 3px 6px;
+    border: 0.5px solid var(--grey-300);
 }
 .links_container {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 5px;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
 }
