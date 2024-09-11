@@ -10,11 +10,27 @@
     position: relative;
     height: 100%;
     transform: translateY(90%);
-    transition: all .7s cubic-bezier(1,0,0,1);
+    transition: transform .7s cubic-bezier(1,0,0,1);
 }
-.project_container.hovering {
+.wrapper:hover .project_container.E-COMMERCE, .wrapper:hover .project_container.URL_SHORTENER, .wrapper:hover .project_container.TEOXYS_TATTOO, .wrapper:hover .project_container.PIEDRA_PAPEL_O_TIJERA {
     transform: translateY(0%);
+    /* background-image: url("/ecommerce.png");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: 50% 50%; */
 }
+/* .wrapper:hover .project_container.URL_SHORTENER {
+    background-image: url("/urlshortener.png");
+}
+.wrapper:hover .project_container.TEOXYS_TATTOO {
+    background-image: url("/teoxys-tattoo.png");
+}
+.wrapper:hover .project_container.PIEDRA_PAPEL_O_TIJERA {
+    background-image: url("/ppt.png");
+} */
+/* .project_container.hovering {
+    transform: translateY(0%);
+} */
 .title_wrapper {
     overflow: hidden;
     width: 100%;
@@ -44,12 +60,18 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
+    bottom: .8rem;
+    left: .8rem;
+    /* transform: translateY(-50%); */
+    gap: 10px;
+}
+.tech_container {
+    width: 3rem;
+    height: 3rem;
 }
 .tech {
-    
+    width: 100%;
+    height: auto;
 }
 .links_container {
     display: flex;

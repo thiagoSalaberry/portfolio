@@ -18,13 +18,14 @@
 }
 .input {
     width: 100%;
-    font-size: 20px;
+    font-size: 16px;
     background: var(--white);
     border: 1px solid var(--grey-300);
     border-radius: 8px;
     padding: 10px;
     color: var(--black);    
     transition: all .1s;
+    font-weight: 500;
 }
 .input:hover {
     border: 1px solid var(--brand-300);

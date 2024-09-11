@@ -10,7 +10,7 @@ export function Project(props:ProjectProps) {
     const [hovering, setHovering] = useState<boolean>(false);
     return (
         <div onMouseEnter={()=>setHovering(true)} onMouseLeave={()=>setHovering(false)} className={styles.wrapper} style={{borderRight: props.index !== 3 ? "1px solid var(--grey)" : ""}}>
-            <div className={`${styles.project_container} ${hovering && styles.hovering}`}>
+            <div className={`${styles.project_container} ${hovering && styles.hovering} ${styles[props.title.replaceAll(" ", "_")]}`}>
                 <div className={styles.title_wrapper}>
                     <h2 className={styles.title}>{props.title}</h2>
                 </div>
@@ -18,15 +18,15 @@ export function Project(props:ProjectProps) {
                 <div className={styles.techs_container}>
                     {props.techs.map(tech => {
                         return (
-                            <div key={tech} className={styles.tech}>
-                                {tech}
+                            <div key={tech} className={styles.tech_container}>
+                                <img className={styles.tech} src={`/${tech}.png`} alt={`${tech}`} />
                             </div>
                         )
                     })}
                 </div>
                 <div className={styles.links_container}>
-                    <Navigation style={{rotate: "45deg"}} href={props.link}><ArrowUpCircle size={20}/></Navigation>
-                    <Navigation href={props.githubLink}><Github size={20}/></Navigation>
+                    <Navigation style={{rotate: "45deg"}} href={props.link}><ArrowUpCircle size={30}/></Navigation>
+                    <Navigation href={props.githubLink}><Github size={30}/></Navigation>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
 import { TextareaProps } from "@/lib/types";
-import { bigShouldersDisplay } from "@/lib/fonts";
+import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 
 export function Textarea(props:TextareaProps) {
     const [focusing, setFocusing] = useState<boolean>(false);
@@ -30,7 +30,7 @@ export function Textarea(props:TextareaProps) {
                     required={props.required}
                     className={`
                         ${styles.textarea}
-                        ${bigShouldersDisplay.className}
+                        ${poppins.className}
                         ${props.value && styles.valued}
                         ${props.missing && styles.missing}
                         ${props.disabled && styles.disabled}

@@ -16,6 +16,7 @@
     overflow: hidden;
     z-index: 2;
     letter-spacing: 1.5px;
+    height: 100%;
 }
 /* MAIN & ICON_MAIN */
 .main, .mainIcon, .main_icon {

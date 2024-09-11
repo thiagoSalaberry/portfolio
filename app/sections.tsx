@@ -13,10 +13,10 @@ export const sections:Section[] = [
         title: "PROYECTOS",
         content: (
             <div className={styles.projects_container}>
-                <Project index={0} title="E-COMMERCE" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
+                {/* <Project index={0} title="E-COMMERCE" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
                 <Project index={1} title="URL SHORTENER" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
                 <Project index={2} title="TEOXYS TATTOO" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
-                <Project index={3} title="PIEDRA PAPEL O TIJERA" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
+                <Project index={3} title="PIEDRA PAPEL O TIJERA" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/> */}
             </div>
         )
     },

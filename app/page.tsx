@@ -89,7 +89,7 @@ export default function Home() {
                   width: cellStyles[index]?.width,
                   height: cellStyles[index]?.height
                 }}
-                expandable={index !== 4}
+                expandable={index !== 4 && index !== 1}
                 key={`${cellNumber}a sd`}
               >{sections[index].content || "asd"}</Section>
             </>

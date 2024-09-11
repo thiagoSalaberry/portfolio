@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import { SectionProps } from "@/lib/types";
-import { Button, Navigation } from "@/ui";
-import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, MapPin, Coffee, Book, Maximize2, Minimize2, BookCheck } from "lucide-react";
+import { Button, Input, Navigation, Textarea } from "@/ui";
+import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, MapPin, Coffee, Book, Maximize2, Minimize2, BookCheck, Send } from "lucide-react";
 import { useState } from "react";
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import Image from "next/image";
@@ -12,13 +12,15 @@ import { Github, Hourglass } from "react-bootstrap-icons";
 import { Project } from "@/components";
 import { techsMap } from "@/lib/techsMap";
 import copy from "copy-to-clipboard";
+import { useContactForm } from "@/hooks/useContactForm";
+import { Miss_Fajardose } from "next/font/google";
 
 export function Section(props:SectionProps) {
     const sectionsMap = {
         0: <Projects/>,
         1: <AboutMe opened={props.opened}/>,
         2: <Technologies opened={props.opened}/>,
-        3: <Contact/>,
+        3: <Contact opened={props.opened}/>,
         4: <Fill/>
     }
     return (
@@ -59,10 +61,38 @@ export function Section(props:SectionProps) {
 function Projects() {
     return (
         <div className={styles.projects_container}>
-            <Project index={0} title="E-COMMERCE" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
-            <Project index={1} title="URL SHORTENER" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
-            <Project index={2} title="TEOXYS TATTOO" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
-            <Project index={3} title="PIEDRA PAPEL O TIJERA" description="La descripción" githubLink="" link="" techs={[...Array(4)].map(tech => <Box size={25}/>)}/>
+            <Project
+                index={0}
+                title="E-COMMERCE"
+                description="Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
+                githubLink="https://github.com/thiagoSalaberry/frontend"
+                link="https://frontend-seven-blond.vercel.app/"
+                techs={["react", "next", "typescript", "firebase"]}
+            />
+            <Project
+                index={1}
+                title="URL SHORTENER"
+                description="Una web para recortar URLs largos y hacerlos más legibles y cómodos."
+                githubLink="https://github.com/thiagoSalaberry/url-shortener"
+                link="https://teoxys-url.vercel.app/"
+                techs={["react", "next", "typescript", "postgresql"]}
+            />
+            <Project
+                index={2}
+                title="TEOXYS TATTOO"
+                description="Una web para facilitar la reservación de turnos de tatuajes."
+                githubLink="https://github.com/thiagoSalaberry/landing-page"
+                link="https://landing-page-zeta-mauve.vercel.app/"
+                techs={["react", "next", "typescript", "styled-components"]}
+            />
+            <Project
+                index={3}
+                title="PIEDRA PAPEL O TIJERA"
+                description="Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
+                githubLink="https://github.com/thiagoSalaberry/ppt-online"
+                link="https://ppt-online-react.vercel.app/"
+                techs={["react", "next", "typescript", "firebase"]}
+            />
         </div>
     )
 }
@@ -141,8 +171,36 @@ function BoxImage({children}: {children:React.ReactNode}) {
     return <div className={styles.box}>{children}</div>
 }
 
-function Contact() {
+function Contact({opened}: {opened:boolean}) {
+    const { form, setForm, disabled, setDisabled } = useContactForm();
     const [copied, setCopied] = useState<boolean>(false);
+    const handleChange = (fieldName: keyof typeof form, value:string):void => {
+        setForm({
+            ...form,
+            [fieldName]: {
+                value: value,
+                missing: false
+            }
+        })
+    };
+    const handleInvalid = (e:React.FormEvent<HTMLFormElement>):void => {
+        e.preventDefault();
+        const input = e.target as HTMLInputElement | HTMLTextAreaElement;
+        setForm({
+            ...form,
+            [input.name]: {
+                value: input.value,
+                missing: true
+            }
+        })
+    };
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>):void => {
+        e.preventDefault();
+        setDisabled(true);
+        setTimeout(() => {
+            setDisabled(false)
+        }, 2000);
+    }
     const handleCopy = () => {
         setCopied(true);
         copy("thiagosalaberry99@gmail.com")
@@ -153,12 +211,91 @@ function Contact() {
     return (
         <div className={styles.contact_container}>
             <p className={`${styles.contact_p} ${poppins.className}`}>
-                Completá el formulario o enviame un <br/> mail a la siguiente dirección: <b onClick={handleCopy} className={styles.email}>thiagosalaberry99@gmail.com {copied ? <CopyCheck size={18}/> : <Copy size={18}/>}</b>
+                Completá el formulario o enviame un mail a la siguiente dirección: <b onClick={handleCopy} className={styles.email}>thiagosalaberry99@gmail.com {copied ? <CopyCheck size={18}/> : <Copy size={18}/>}</b>
             </p>
-            <div className={styles.contact_buttons_container}>
+            <div className={styles.contact_links_container}>
                 <Navigation href="https://www.linkedin.com/in/thiago-salaberry/"><Linkedin size={24}/> LinkedIn</Navigation>
                 <Navigation href="https://github.com/thiagoSalaberry"><Github size={24}/> GitHub</Navigation>
             </div>
+            {opened && (
+                <form className={`${styles.contact_form} ${poppins.className}`} onInvalid={handleInvalid} onSubmit={handleSubmit}>
+                    <div className={styles.name_section}>
+                        <Input
+                            label="Nombre"
+                            name="name"
+                            type="text"
+                            value={form.name.value}
+                            placeholder="ej. Thiago Salaberry"
+                            disabled={disabled}
+                            missing={form.name.missing}
+                            onChange={(value:string) => handleChange("name", value)}
+                            required={true}
+                        />
+                    </div>
+                    <div className={styles.email_section}>
+                        <Input
+                            label="E-Mail"
+                            name="email"
+                            type="email"
+                            value={form.email.value}
+                            placeholder="ej. thiagosalaberry99@gmail.com"
+                            disabled={disabled}
+                            missing={form.email.missing}
+                            onChange={(value:string) => handleChange("email", value)}
+                            required={true}
+                        />
+                    </div>
+                    <div className={styles.company_section}>
+                        <Input
+                            label="Compañía"
+                            name="company"
+                            type="text"
+                            value={form.company.value}
+                            placeholder="ej. Amazon"
+                            disabled={disabled}
+                            missing={form.company.missing}
+                            onChange={(value:string) => handleChange("company", value)}
+                            required={true}
+                        />
+                    </div>
+                    <div className={styles.message_section}>
+                        <Textarea
+                            label="Mensaje"
+                            name="message"
+                            value={form.message.value}
+                            placeholder="ej. ¡Hola Thiago, queremos contratarte!"
+                            disabled={disabled}
+                            missing={form.message.missing}
+                            onChange={(value:string) => handleChange("message", value)}
+                            required={true}
+                        />
+                    </div>
+                    <div className={styles.submit_section}>
+                        <Button disabled={disabled} type="submit" variant="mainIcon" onClick={()=>{}}>Enviar <Send size={20}/></Button>
+                    </div>
+                    <div className={styles.form_image}></div>
+                </form>
+                // <div className={styles.form_sketch}>
+                //     <div className={styles.input_container_sketch}>
+                //         <div className={styles.label_sketch}></div>
+                //         <div className={styles.input_sketch}></div>
+                //     </div>
+                //     <div className={styles.input_container_sketch}>
+                //         <div className={styles.label_sketch}></div>
+                //         <div className={styles.input_sketch}></div>
+                //     </div>
+                //     <div className={styles.input_container_sketch}>
+                //         <div className={styles.label_sketch}></div>
+                //         <div className={styles.input_sketch}></div>
+                //     </div>
+                //     <div className={styles.input_container_sketch}>
+                //         <div className={styles.label_sketch}></div>
+                //         <div className={styles.textarea_sketch}></div>
+                //     </div>
+                //     <div className={styles.img_sketch}></div>
+                //     <div className={styles.button_sketch}></div>
+                // </div>
+            )}
         </div>
     )
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
 import { InputProps } from "@/lib/types";
-import { bigShouldersDisplay } from "@/lib/fonts";
+import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 
 export function Input(props:InputProps) {
     const [focusing, setFocusing] = useState<boolean>(false);
@@ -35,7 +35,7 @@ export function Input(props:InputProps) {
                     required={props.required}
                     className={`
                         ${styles.input}
-                        ${bigShouldersDisplay.className}
+                        ${poppins.className}
                         ${props.value && styles.valued}
                         ${props.missing && styles.missing}
                         ${props.disabled && styles.disabled}
