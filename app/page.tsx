@@ -6,6 +6,8 @@ import { Button } from '@/ui';
 import { Maximize2, Minimize2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { sections } from './sections';
+import { useRecoilState } from 'recoil';
+import { sectionAtom } from '@/lib/atoms';
 
 export default function Home() {
   const gridRef = useRef<HTMLElement>(null);
@@ -17,6 +19,7 @@ export default function Home() {
     width:number,
     height:number,
   }[]>([])
+  const [section, setSection] = useRecoilState(sectionAtom);
   const updateCellStyles =  () => {
     const newStyles = cellRefs.map(cellRef => {
      const cell = cellRef.current;
@@ -29,7 +32,8 @@ export default function Home() {
     setCellStyles(newStyles as typeof cellStyles);
   }
   const handleSelect = (index: number):void => {
-    setSelected(prev => prev == index ? null : index)
+    setSelected(prev => prev == index ? null : index);
+    setSection(classMap[index as keyof typeof section]);
   };
   useEffect(()=>{
     updateCellStyles();
@@ -41,7 +45,6 @@ export default function Home() {
     1: "about_me",
     2: "techs",
     3: "contact",
-    4: "fill",
   };
   return (
     <>

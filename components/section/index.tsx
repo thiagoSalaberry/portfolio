@@ -14,6 +14,8 @@ import { techsMap } from "@/lib/techsMap";
 import copy from "copy-to-clipboard";
 import { useContactForm } from "@/hooks/useContactForm";
 import { Miss_Fajardose } from "next/font/google";
+import { useRecoilValue } from "recoil";
+import { languageAtom, sectionAtom } from "@/lib/atoms";
 
 export function Section(props:SectionProps) {
     const sectionsMap = {
@@ -46,9 +48,9 @@ export function Section(props:SectionProps) {
             <h2 className={`${styles.section_title} ${bigShouldersDisplay.className} ${props.opened && styles.opened} ${props.index == 10 && styles.white}`}>{props.title}</h2>
             {props.expandable && (
                 <div className={`${styles.button_container} ${props.opened && styles.opened}`}>
-                <Button
-                    onClick={props.onClick}
-                    variant="main_icon"
+                    <Button
+                        onClick={props.onClick}
+                        variant="main_icon"
                     >{props.opened ? <Minimize2 /> : <Maximize2 />}</Button>
                 </div>
             )}
@@ -102,6 +104,8 @@ function Projects({opened}: {opened:boolean}) {
 }
 
 function AboutMe({opened}: {opened:boolean}) {
+    const languageState = useRecoilValue(languageAtom);
+    const sectionState = useRecoilValue(sectionAtom);
     return (
         <div className={`${styles.about_me_container} ${opened && styles.opened}`}>
             <div className={styles.name_skeleton}>
@@ -117,6 +121,12 @@ function AboutMe({opened}: {opened:boolean}) {
                     </li>
                     <li className={styles.about_me_item}>
                         <Book size={18}/> Siempre aprendiendo, actualmente explorando ciencia de datos
+                    </li>
+                    <li className={styles.about_me_item}>
+                        Idioma: {languageState}
+                    </li>
+                    <li className={styles.about_me_item}>
+                        Sección actual: {sectionState ? sectionState : "No hay sección expandida"}
                     </li>
                 </ul>
             </div>
