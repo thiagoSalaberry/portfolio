@@ -9,7 +9,7 @@ import img1 from "@/public/man_1.jpg";
 import img2 from "@/public/man_2.jpg";
 import img3 from "@/public/man_3.jpg";
 import { Github, Hourglass } from "react-bootstrap-icons";
-import { Project } from "@/components";
+import { Project, TechCard } from "@/components";
 import { techsMap } from "@/lib/techsMap";
 import copy from "copy-to-clipboard";
 import { useContactForm } from "@/hooks/useContactForm";
@@ -140,40 +140,82 @@ function AboutMe({opened}: {opened:boolean}) {
 
 function Technologies({opened}: {opened:boolean}) {
     return (
-        <div className={styles.techs_container}>
-            <div className={`${styles.grid} ${opened && styles.hidden}`}>
-                {[...Array(8)].map((_, i) => {
-                    return (
-                        <div className={styles.column} key={i}>
-                            {[...Array(5)].map((_, sliderIndex) => (
-                                <div className={styles.column_slider} key={sliderIndex}>
-                                    {[...Array(3)].map((_, j) => {
-                                        const index = (i * 3 + j) % Object.keys(techsMap).length;
-                                        return (
-                                            <BoxImage key={j}>
-                                                <img
-                                                    style={{height: index == 15 ? "100%" : "", width: index == 15 ? "auto" : ""}}
-                                                    src={`/${techsMap[index as keyof typeof techsMap].img}.png`}
-                                                    alt={`/${techsMap[index as keyof typeof techsMap].name}`}
+        <div className={`${styles.techs_container} ${opened && styles.opened}`}>
+            {!opened ? (
+                <div className={`${styles.grid} ${opened && styles.hidden}`}>
+                    {[...Array(9)].map((_, i) => {
+                        return (
+                            <div className={styles.column} key={i}>
+                                {[...Array(5)].map((_, sliderIndex) => (
+                                    <div className={styles.column_slider} key={sliderIndex}>
+                                        {[...Array(3)].map((_, j) => {
+                                            const index = (i * 3 + j) % Object.keys(techsMap).length;
+                                            return (
+                                                <TechCard
+                                                    key={j}
+                                                    size="small"
+                                                    index={index}
                                                 />
-                                                <b className={styles.box_title}>
-                                                    {techsMap[index as keyof typeof techsMap].name}
-                                                </b>
-                                            </BoxImage>
-                                        )
-                                    })}
-                                </div>
-                            ))}
-                        </div>
-                    )
-                })}
-            </div>
+                                                // <BoxImage key={j}>
+                                                //     <img
+                                                //         style={{height: index == 15 ? "100%" : "", width: index == 15 ? "auto" : ""}}
+                                                //         src={`/${techsMap[index as keyof typeof techsMap].img}.png`}
+                                                //         alt={`/${techsMap[index as keyof typeof techsMap].name}`}
+                                                //     />
+                                                //     <b className={styles.box_title}>
+                                                //         {techsMap[index as keyof typeof techsMap].name}
+                                                //     </b>
+                                                // </BoxImage>
+                                            )
+                                        })}
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    })}
+                </div>
+            ) : (
+                <>
+                    <div className={styles.concept_container}>
+                        <h4>Conceptos clave</h4>
+                        <p className={poppins.className}>Además de las tecnologías detalladas, comprendo y aplico conceptos fundamentales que son cruciales para desarrollar de manera efectiva:</p>
+                        <ul className={styles.concept_list}>
+                            <li>
+                                <b>Programación Orientada a Objetos</b>
+                                <p className={poppins.className}>Este paradigma me permite estructurar el código de manera modular y reutilizable, organizando funcionalidades en clases y objetos. Gracias a la POO, puedo crear aplicaciones más escalables y mantenibles.</p>
+                            </li>
+                            <li>
+                                <b>Arquitectura de aplicaciones:</b>
+                                <p className={poppins.className}>Comprendo cómo estructurar una aplicación web, desde un patrón de diseño frontend-backend como MVC hasta la implementación de microservicios, lo que facilita la creación de sistemas más grandes y complejos.</p>
+                            </li>
+                            <li>
+                                <b>Control de estado y gestión de datos:</b>
+                                <p className={poppins.className}>Tanto en aplicaciones nativas como en aplicaciones desarrolladas sobre React.js, manejo eficientemente el estado de la aplicación de forma nativa o mediante herramientas como Recoil o Redux, lo que me permite mantener la lógica y los datos sincronizados a lo largo de toda la interfaz.</p>
+                            </li>
+                            <li>
+                                <b>Optimización y buenas prácticas:</b>
+                                <p className={poppins.className}>Tengo en cuenta principios como DRY y SOLID, lo que me ayuda a escribir código más limpio y eficiente. Además, estoy familizarizado con conceptos de optimización de rendimiento tanto en el lado del cliente como en el lado del servidor.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={styles.cards_container}>
+                        {[...Array(18)].map((_, index) => {
+                            return (
+                                <TechCard
+                                size="large"
+                                index={index}
+                                />
+                            )
+                        })}
+                    </div>
+                </>
+            )}
         </div>
     )
 };
-function BoxImage({children}: {children:React.ReactNode}) {
-    return <div className={styles.box}>{children}</div>
-}
+// function BoxImage({children}: {children:React.ReactNode}) {
+//     return <div className={styles.box}>{children}</div>
+// }
 
 function Contact({opened}: {opened:boolean}) {
     const { form, setForm, disabled, setDisabled } = useContactForm();

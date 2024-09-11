@@ -29,9 +29,10 @@ export type SectionProps = {
 };
 
 export type TechCardProps = {
+  index: number;
   size: "small" | "large";
-  title: string;
-  tag: string;
-  description: string;
-  img: StaticImageData | string;
+  title?: string;
+  tag?: string;
+  description?: string;
+  img?: StaticImageData | string;
 };

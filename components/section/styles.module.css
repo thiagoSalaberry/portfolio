@@ -237,14 +237,16 @@
     z-index: 3;
 }
 .techs_container {
-    background-image: url('/background.png');
-    background-repeat: repeat;
+    /* background-image: url('/background.png');
+    background-repeat: repeat; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .grid {
     display: flex;
     gap: 9px;
     height: 300%;
-    border: 1px solid blue;
     transform: rotateX(30deg) rotateZ(-45deg);
     opacity: 1;
     visibility: visible;
@@ -312,6 +314,48 @@
 .hidden {
     opacity: 0;
     visibility: hidden;
+}
+.techs_container.opened {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 75%;
+    height: 100%;
+    padding: 1rem;
+    /* overflow: scroll; */
+}
+.concept_container, .cards_container {
+    width: 100%;
+    height: 100%;
+    border: var(--border-clear);
+    border-radius: 10px;
+}
+.concept_container {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    padding: 1rem;
+    gap: 1rem;
+}
+.concept_container > h4 {
+    font-size: 30px;
+}
+.concept_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding-left: 1rem;
+}
+.concept_list > li > b {
+    font-size: 20px;
+}
+.cards_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    /* padding: 1rem; */
+    border: none;
+    /* overflow: scroll; */
 }
 /* CONTACTO */
 .contact_container {

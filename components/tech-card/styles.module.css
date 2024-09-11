@@ -1,37 +1,69 @@
 .small_container {
+    width: 115px;
+    height: 115px;
+    border: 1px solid var(--grey-300);
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: fit-content;
-    gap: 3px;
-    border: 1px solid var(--grey-300);
-    padding: 10px;
+    font-size: 24px;
     transform: skewY(30deg);
-    border-radius: 10px;
+    padding: 10px;
+    background: var(--base);
 }
 .small_img_container {
-    width: 80px;
-    height: 80px;
-}
-.small_img {
-    width: 100%;
+    width: 60%;
     height: auto;
     object-fit: contain;
+    filter: saturate(.4);
+}
+.small_img {
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+    filter: saturate(.4);
+}
+.small_container:hover .small_img {
+    filter: saturate(1);
 }
 .small_title {
-
+    font-size: 20px;
+    color: var(--black);
 }
-.container {
-    display: grid;
+/* LARGE */
+.large_container_wrapper {
+    overflow: hidden;
+    position: relative;
+}
+.large_container {
     border: 1px solid var(--grey-300);
     border-radius: 10px;
-    padding: 1rem;
-    grid-template-rows: auto auto 1fr;
-    min-height: 200px;
-    gap: 10px;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    /* min-height: 200px; */
+    gap: .5rem;
+    position: relative;
+    overflow: hidden;
+    /* transform: translateY(90%); */
+    transition: transform .7s cubic-bezier(1,0,0,1);
+    z-index: 3;
+}
+.large_container:hover .large_container {
+    transform: translateY(0);
+}
+.large_container:hover .large_img {
+    opacity: 1;
 }
 .title {
     font-size: 1.75rem;
+    z-index: 2;
+}
+.large_container:hover .title {
+    /* color: var(--brand); */
 }
 .tag {
     padding: 3px 12px;
@@ -39,7 +71,20 @@
     color: var(--grey-800);
     width: fit-content;
     border-radius: 20px;
+    z-index: 2;
+    font-size: 14px;
 }
 .description {
-    align-self: flex-end;
+    align-self: flex-start;
+    z-index: 2;
+}
+.large_img {
+    position: absolute;
+    left: -10%;
+    top: 25%;
+    scale: 1.5;
+    rotate: 20deg;
+    z-index: 1;
+    opacity: .5;
+    transition: opacity .3s;
 }
