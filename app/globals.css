@@ -91,4 +91,7 @@ body {
   flex-direction: column;
   gap: 10px;
 }
-
+::selection {
+  background: var(--brand);
+  color: var(--white);
+}
