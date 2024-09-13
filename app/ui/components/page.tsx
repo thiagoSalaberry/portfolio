@@ -2,6 +2,9 @@
 import styles from "./styles.module.css";
 import { Header, Section, TechCard } from "@/components";
 import react from "@/public/react.png";
+import translation from "@/lib/translation.json"
+import { poppins } from "@/lib/fonts";
+
 export default function Page() {
     const imageMap = {
         0: "react.png",
@@ -13,6 +16,7 @@ export default function Page() {
     }
     return (
         <div className={styles.page}>
+            
             {/* <Header /> */}
             {/* <div className={styles.wrapper}>
                 <div className={styles.small_cards_container}>
@@ -43,6 +47,12 @@ export default function Page() {
                 })}
             </div> */}
             <div className={styles.contenedor_wrapper}>
+                <p className={poppins.className}>
+                {translation.en.about_me_section.desc.split("&").map((text, index) => {
+                    if(index != 1 && index != 3) return text
+                    return <b>{text}</b>
+                })}
+                </p>
                 <div className={styles.column}> {/* LOGOS */}
                     <div className={styles.contenedor}> {/* LOGOS_SLIDE */}
                         <div className={styles.contenedor_image}>

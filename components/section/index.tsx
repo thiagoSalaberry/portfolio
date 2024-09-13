@@ -147,7 +147,10 @@ function AboutMe({opened, language}: {opened:boolean, language: "es" | "en"}) {
                 <p className={`${poppins.className} ${styles.description}`}>
                     {/* Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
                     tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales. */}
-                    {translation[language].about_me_section.desc}
+                    {translation[language].about_me_section.desc.split("&").map((text, index) => {
+                        if(index != 1 && index != 3) return text
+                        return <b>{text}</b>
+                    })}
                 </p>
             </div>
             <div className={styles.image_skeleton}>
