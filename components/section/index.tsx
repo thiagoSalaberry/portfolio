@@ -126,6 +126,15 @@ function Projects({opened, language}: {opened:boolean, language: "es" | "en"}) {
 }
 
 function AboutMe({opened, language}: {opened:boolean, language: "es" | "en"}) {
+    const handleDownload = () => {
+        const cvPDF = language == "es" ? "/CV - Sep.pdf" : "/CV- Sep Eng.pdf" ;
+        const link = document.createElement("a");
+        link.href = cvPDF;
+        link.download = "CV - Thiago Salaberry.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
     return (
         <div className={`${styles.about_me_container} ${opened && styles.opened}`}>
             <div className={styles.name_skeleton}>
@@ -160,7 +169,7 @@ function AboutMe({opened, language}: {opened:boolean, language: "es" | "en"}) {
                 </div>
             </div>
             <div className={styles.button_skeleton}>
-                <Button variant="secondaryIcon" onClick={()=>{}}>CV <Download size={20}/></Button>
+                <Button variant="secondaryIcon" onClick={handleDownload}>CV <Download size={20}/></Button>
             </div>
         </div>
     )
