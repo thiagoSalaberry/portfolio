@@ -17,6 +17,7 @@ import { Miss_Fajardose } from "next/font/google";
 import { useRecoilValue } from "recoil";
 import { languageAtom, sectionAtom } from "@/lib/atoms";
 import translation from "@/lib/translation.json"
+import {motion, AnimatePresence} from "framer-motion";
 
 export function Section(props:SectionProps) {
     const language = useRecoilValue(languageAtom)
@@ -166,31 +167,44 @@ function AboutMe({opened, language}: {opened:boolean, language: "es" | "en"}) {
 }
 
 function Technologies({opened, language}: {opened:boolean, language: "es" | "en"}) {
+    const techsAnimation = {
+        initial: {
+            opacity: 0
+        },
+        animate: {
+            opacity: 1
+        },
+        exit: {
+            opacity: 1
+        }
+    }
     return (
         <div className={`${styles.techs_container} ${opened && styles.opened}`}>
             {!opened ? (
-                <div className={`${styles.grid} ${opened && styles.hidden}`}>
-                    {[...Array(9)].map((_, i) => {
-                        return (
-                            <div className={styles.column} key={i}>
-                                {[...Array(5)].map((_, sliderIndex) => (
-                                    <div className={styles.column_slider} key={sliderIndex}>
-                                        {[...Array(3)].map((_, j) => {
-                                            const index = (i * 3 + j) % Object.keys(techsMap).length;
-                                            return (
-                                                <TechCard
-                                                    key={j}
-                                                    size="small"
-                                                    index={index}
-                                                />
-                                            )
-                                        })}
-                                    </div>
-                                ))}
-                            </div>
-                        )
-                    })}
-                </div>
+                <AnimatePresence>
+                    <motion.div initial={techsAnimation.initial} animate={techsAnimation.animate} exit={techsAnimation.exit} transition={{duration: 1}} className={`${styles.grid} ${opened && styles.hidden}`}>
+                        {[...Array(9)].map((_, i) => {
+                            return (
+                                <div className={styles.column} key={i}>
+                                    {[...Array(5)].map((_, sliderIndex) => (
+                                        <div className={styles.column_slider} key={sliderIndex}>
+                                            {[...Array(3)].map((_, j) => {
+                                                const index = (i * 3 + j) % Object.keys(techsMap).length;
+                                                return (
+                                                    <TechCard
+                                                        key={j}
+                                                        size="small"
+                                                        index={index}
+                                                    />
+                                                )
+                                            })}
+                                        </div>
+                                    ))}
+                                </div>
+                            )
+                        })}
+                    </motion.div>
+                </AnimatePresence>
             ) : (
                 <>
                     <div className={styles.concept_container}>
