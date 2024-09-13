@@ -16,6 +16,7 @@
     overflow: hidden;
     z-index: 2;
     letter-spacing: 1.5px;
+    height: 100%;
 }
 /* MAIN & ICON_MAIN */
 .main, .mainIcon, .main_icon {
@@ -85,9 +86,10 @@
     background: var(--brand-600);
 }
 .icon {
-    width: 47px;
-    height: 47px;
+    min-width: 47px;
+    min-height: 47px;
     padding: 0;
+    width: fit-content;
 }
 .disabled {
     opacity: .5;

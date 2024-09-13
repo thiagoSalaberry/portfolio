@@ -1,0 +1,182 @@
+{
+  "es": {
+    "header_nav": ["PROYECTOS", "TECNOLOGÍAS", "CONTACTO"],
+    "hero_section": {
+      "heading_quote": "mi nombre es Thiago y soy",
+      "main_button": "Proyectos",
+      "secondary_button": "Contacto"
+    },
+    "techs_section": {
+      "title": "TECNOLOGÍAS",
+      "key_concepts": {
+        "title": "Conceptos clave",
+        "desc": "Además de las tecnologías detalladas, comprendo y aplico conceptos fundamentales que son cruciales para desarrollar de manera efectiva:",
+        "list": [
+          {
+            "title": "Programación Orientada a Objetos:",
+            "desc": "Este paradigma me permite estructurar el código de manera modular y reutilizable, organizando funcionalidades en clases y objetos. Gracias a la POO, puedo crear aplicaciones más escalables y mantenibles."
+          },
+          {
+            "title": "Arquitectura de aplicaciones:",
+            "desc": "Comprendo cómo estructurar una aplicación web, desde un patrón de diseño frontend-backend como MVC hasta la implementación de microservicios, lo que facilita la creación de sistemas más grandes y complejos."
+          },
+          {
+            "title": "Control de estado y gestión de datos:",
+            "desc": "Tanto en aplicaciones nativas como en aplicaciones desarrolladas sobre React.js, manejo eficientemente el estado de la aplicación de forma nativa o mediante herramientas como Recoil o Redux, lo que me permite mantener la lógica y los datos sincronizados a lo largo de toda la interfaz."
+          },
+          {
+            "title": "Optimización y buenas prácticas:",
+            "desc": "Tengo en cuenta principios como DRY y SOLID, lo que me ayuda a escribir código más limpio y eficiente. Además, estoy familizarizado con conceptos de optimización de rendimiento tanto en el lado del cliente como en el lado del servidor."
+          }
+        ]
+      }
+    },
+    "projects_section": {
+      "title": "PROYECTOS",
+      "1": {
+        "title": "E-COMMERCE",
+        "desc": "Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
+      },
+      "2": {
+        "title": "URL SHORTENER",
+        "desc": "Una web para recortar URLs largos y hacerlos más legibles y cómodos."
+      },
+      "3": {
+        "title": "TEOXYS TATTOO",
+        "desc": "Una web para facilitar la reservación de turnos de tatuajes."
+      },
+      "4": {
+        "title": "PIEDRA PAPEL O TIJERA",
+        "desc": "Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
+      }
+    },
+    "about_me_section": {
+      "title": "SOBRE MÍ",
+      "desc": "Soy un &Desarrollador Web Fullstack& especializado en el desarrollo de aplicaciones web nativas y en el uso tecnologías avanzadas como &React& para ofrecer experiencias de usuario excepcionales.",
+      "list": [
+        "Motorizado por mate y código",
+        "Siempre aprendiendo, actualmente explorando ciencia de datos"
+      ]
+    },
+    "contact_section": {
+      "title": "CONTACTO",
+      "contact_section_quote": "Completá el formulario o enviame un mail a la siguiente dirección:",
+      "form_name": "Nombre",
+      "form_name_placeholder": "ej. Thiago Salaberry",
+      "form_email": "E-Mail",
+      "form_email_placeholder": "ej. thiagosalaberry99@gmail.com",
+      "form_company": "Compañía",
+      "form_company_placeholder": "ej. Amazon",
+      "form_message": "Mensaje",
+      "form_message_placeholder": "¡Hola Thiago, queremos contratarte!",
+      "form_send": "Enviar",
+      "form_error_message": "Completá este campo.",
+      "success_greeting": "Hola",
+      "success_message_1": "gracias por comunicarte. Te estaré respondiendo a",
+      "success_message_2": "a la brevedad. Saludos."
+    },
+    "education_section": {
+      "title": "EDUCACIÓN",
+      "list": [
+        {
+          "title": "Fullstack Software Developer",
+          "lapse": "APX | 2022 - 2024"
+        },
+        {
+          "title": "Tecnicatura en Programación",
+          "lapse": "UTN | 2024 - presente"
+        }
+      ]
+    }
+  },
+  "en": {
+    "header_nav": ["PROJECTS", "TECHS", "CONTACT"],
+    "hero_section": {
+      "heading_quote": "my name is Thiago and i'm",
+      "main_button": "Projects",
+      "secondary_button": "Contact"
+    },
+    "techs_section": {
+      "title": "TECHS",
+      "key_concepts": {
+        "title": "Key concepts",
+        "desc": "In addition to the detailed techs, I understand and apply fundamental concepts that are crucial for effective development:",
+        "list": [
+          {
+            "title": "Object-Oriented Programming:",
+            "desc": "This paradigm allows me to structure code in a modular and reusable way, organizing functionalities into classes and objects. Thanks to OOP, I can create more scalable and maintainable applications."
+          },
+          {
+            "title": "Application Architecture:",
+            "desc": "I understand how to structure a web application, from a frontend-backend design pattern like MVC to the implementation of microservices, which facilitates the creation of larger and more complex systems."
+          },
+          {
+            "title": "State Management and Data Handling:",
+            "desc": "In both native applications and those developed with React.js, I efficiently manage application state either natively or with tools like Recoil or Redux, which allows me to keep logic and data synchronized across the entire interface."
+          },
+          {
+            "title": "Optimization and Best Practices:",
+            "desc": "I adhere to principles like DRY and SOLID, which helps me write cleaner and more efficient code. Additionally, I am familiar with performance optimization concepts on both the client and server sides."
+          }
+        ]
+      }
+    },
+    "projects_section": {
+      "title": "PROJECTS",
+      "1": {
+        "title": "E-COMMERCE",
+        "desc": "An E-Commerce to publish products and buy using MercadoPago."
+      },
+      "2": {
+        "title": "URL SHORTENER",
+        "desc": "A web to shorten long URLs and make them readable an more appealing."
+      },
+      "3": {
+        "title": "TEOXYS TATTOO",
+        "desc": "A web to facilitate the scheduling of tattoo appointments."
+      },
+      "4": {
+        "title": "ROCK PAPER & SCISSORS",
+        "desc": "An online Rock Paper and Scissors to play with your friends in real time."
+      }
+    },
+    "about_me_section": {
+      "title": "ABOUT ME",
+      "desc": "I am a &Fullstack Web Developer& specialized in native and advanced technologies like &React& built-in applications development to offer exceptional user experiences.",
+      "list": [
+        "Fueled by mate and code",
+        "Always learning, currently exploring data science"
+      ]
+    },
+    "contact_section": {
+      "title": "CONTACT",
+      "contact_section_quote": "Complete the form or send me an email to the following address:",
+      "form_name": "Name",
+      "form_name_placeholder": "e.g. Thiago Salaberry",
+      "form_email": "E-Mail",
+      "form_email_placeholder": "e.g. thiagosalaberry99@gmail.com",
+      "form_company": "Company",
+      "form_company_placeholder": "e.g. MercadoLibre",
+      "form_message": "Message",
+      "form_message_placeholder": "Hi Thiago, we want to hire you!",
+      "form_send": "Send",
+      "form_error_message": "This field is required.",
+      "success_greeting": "Hi",
+      "success_message_1": "thanks for communicating. I'll be responding to",
+      "success_message_2": "as soon as possible. Greetings."
+    },
+    "education_section": {
+      "title": "EDUCATION",
+      "list": [
+        {
+          "title": "Fullstack Software Developer",
+          "lapse": "APX | 2022 - 2024"
+        },
+        {
+          "title": "Technical Degree in Programming",
+          "lapse": "UTN | 2024 - present"
+        }
+      ]
+    }
+  }
+}

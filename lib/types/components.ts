@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import { HTMLProps } from "react";
 
 export type ProjectProps = {
@@ -7,6 +8,8 @@ export type ProjectProps = {
   techs: string[];
   link: string;
   githubLink: string;
+  opened: boolean;
+  language: "es" | "en";
 };
 export type SectionProps = {
   index: number;
@@ -22,5 +25,15 @@ export type SectionProps = {
     width: number;
     height: number;
   };
+  expandable?: boolean;
   onClick: () => void;
+};
+
+export type TechCardProps = {
+  index: number;
+  size: "small" | "large";
+  title?: string;
+  tag?: string;
+  description?: string;
+  img?: StaticImageData | string;
 };

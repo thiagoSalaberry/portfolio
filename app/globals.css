@@ -74,6 +74,9 @@
   --blue-800: #191BB4;
   --blue-900: #1A1E8E;
   --blue-950: #151556;
+  /* UTILITES */
+  --border: 1px solid var(--grey);
+  --border-clear: 1px solid var(--grey-300);
 }
 * {
   box-sizing: border-box;
@@ -82,10 +85,13 @@
 }
 body {
   background: var(--base);
-  padding: 20px;
+  padding: 10px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
-
+::selection {
+  background: var(--brand);
+  color: var(--white);
+}
