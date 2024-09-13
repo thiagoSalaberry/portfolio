@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import { SectionProps } from "@/lib/types";
 import { Button, Input, Navigation, Textarea } from "@/ui";
-import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, MapPin, Coffee, Book, Maximize2, Minimize2, BookCheck, Send } from "lucide-react";
+import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, MapPin, Coffee, Book, Maximize2, Minimize2, BookCheck, Send, LayoutGridIcon } from "lucide-react";
 import { useState } from "react";
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import Image from "next/image";
@@ -16,13 +16,15 @@ import { useContactForm } from "@/hooks/useContactForm";
 import { Miss_Fajardose } from "next/font/google";
 import { useRecoilValue } from "recoil";
 import { languageAtom, sectionAtom } from "@/lib/atoms";
+import translation from "@/lib/translation.json"
 
 export function Section(props:SectionProps) {
+    const language = useRecoilValue(languageAtom)
     const sectionsMap = {
-        0: <Projects opened={props.opened}/>,
-        1: <AboutMe opened={props.opened}/>,
+        0: <Projects language={language} opened={props.opened}/>,
+        1: <AboutMe language={language} opened={props.opened}/>,
         2: <Technologies opened={props.opened}/>,
-        3: <Contact opened={props.opened}/>,
+        3: <Contact language={language} opened={props.opened}/>,
         4: <Fill/>
     }
     return (
@@ -60,52 +62,62 @@ export function Section(props:SectionProps) {
     );
 };
 
-function Projects({opened}: {opened:boolean}) {
+function Projects({opened, language}: {opened:boolean, language: "es" | "en"}) {
     return (
         <div className={styles.projects_container}>
             <Project
                 index={0}
-                title="E-COMMERCE"
-                description="Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
+                // title="E-COMMERCE"
+                // description="Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
+                title={translation[language].projects_section[1].title}
+                description={translation[language].projects_section[1].desc}
                 githubLink="https://github.com/thiagoSalaberry/frontend"
                 link="https://frontend-seven-blond.vercel.app/"
                 techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
                 opened={opened}
+                language={language}
             />
             <Project
                 index={1}
-                title="URL SHORTENER"
-                description="Una web para recortar URLs largos y hacerlos más legibles y cómodos."
+                // title="URL SHORTENER"
+                // description="Una web para recortar URLs largos y hacerlos más legibles y cómodos."
+                title={translation[language].projects_section[2].title}
+                description={translation[language].projects_section[2].desc}
                 githubLink="https://github.com/thiagoSalaberry/url-shortener"
                 link="https://teoxys-url.vercel.app/"
                 techs={["React.js", "Next.js", "TypeScript", "PostgreSQL"]}
                 opened={opened}
+                language={language}
             />
             <Project
                 index={2}
-                title="TEOXYS TATTOO"
-                description="Una web para facilitar la reservación de turnos de tatuajes."
+                // title="TEOXYS TATTOO"
+                // description="Una web para facilitar la reservación de turnos de tatuajes."
+                title={translation[language].projects_section[3].title}
+                description={translation[language].projects_section[3].desc}
                 githubLink="https://github.com/thiagoSalaberry/landing-page"
                 link="https://landing-page-zeta-mauve.vercel.app/"
                 techs={["React.js", "Next.js", "TypeScript", "Styled-Components"]}
                 opened={opened}
+                language={language}
             />
             <Project
                 index={3}
-                title="PIEDRA PAPEL O TIJERA"
-                description="Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
+                // title="PIEDRA PAPEL O TIJERA"
+                // description="Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
+                title={translation[language].projects_section[4].title}
+                description={translation[language].projects_section[4].desc}
                 githubLink="https://github.com/thiagoSalaberry/ppt-online"
                 link="https://ppt-online-react.vercel.app/"
                 techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
                 opened={opened}
+                language={language}
             />
         </div>
     )
 }
 
-function AboutMe({opened}: {opened:boolean}) {
-    const languageState = useRecoilValue(languageAtom);
-    const sectionState = useRecoilValue(sectionAtom);
+function AboutMe({opened, language}: {opened:boolean, language: "es" | "en"}) {
     return (
         <div className={`${styles.about_me_container} ${opened && styles.opened}`}>
             <div className={styles.name_skeleton}>
@@ -117,17 +129,18 @@ function AboutMe({opened}: {opened:boolean}) {
                         <MapPin size={18}/> Buenos Aires, <img className={styles.arg} src="/argentina.gif" alt="argentina" />
                     </li>
                     <li className={styles.about_me_item}>
-                        <Coffee size={18}/> Motorizado por mate y código
+                        <Coffee size={18}/> {translation[language].about_me_section.list[0]}
                     </li>
                     <li className={styles.about_me_item}>
-                        <Book size={18}/> Siempre aprendiendo, actualmente explorando ciencia de datos
+                        <Book size={18}/> {translation[language].about_me_section.list[1]}
                     </li>
                 </ul>
             </div>
             <div className={styles.description_skeleton}>
                 <p className={`${poppins.className} ${styles.description}`}>
-                    Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
-                    tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales.
+                    {/* Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
+                    tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales. */}
+                    {translation[language].about_me_section.desc}
                 </p>
             </div>
             <div className={styles.image_skeleton}>
@@ -221,7 +234,7 @@ function Technologies({opened}: {opened:boolean}) {
 //     return <div className={styles.box}>{children}</div>
 // }
 
-function Contact({opened}: {opened:boolean}) {
+function Contact({opened, language}: {opened:boolean, language: "es" | "en"}) {
     const { form, setForm, disabled, setDisabled } = useContactForm();
     const [copied, setCopied] = useState<boolean>(false);
     const handleChange = (fieldName: keyof typeof form, value:string):void => {
@@ -261,7 +274,8 @@ function Contact({opened}: {opened:boolean}) {
     return (
         <div className={styles.contact_container}>
             <p className={`${styles.contact_p} ${poppins.className}`}>
-                Completá el formulario o enviame un mail a la siguiente dirección: <b onClick={handleCopy} className={styles.email}>thiagosalaberry99@gmail.com {copied ? <CopyCheck size={18}/> : <Copy size={18}/>}</b>
+                {/* Completá el formulario o enviame un mail a la siguiente dirección: <b onClick={handleCopy} className={styles.email}>thiagosalaberry99@gmail.com {copied ? <CopyCheck size={18}/> : <Copy size={18}/>}</b> */}
+                {translation[language].contact_section.contact_section_quote} <b onClick={handleCopy} className={styles.email}>thiagosalaberry99@gmail.com {copied ? <CopyCheck size={18}/> : <Copy size={18}/>}</b>
             </p>
             <div className={styles.contact_links_container}>
                 <Navigation href="https://www.linkedin.com/in/thiago-salaberry/"><Linkedin size={24}/> LinkedIn</Navigation>

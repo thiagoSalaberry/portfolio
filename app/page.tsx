@@ -6,8 +6,9 @@ import { Button } from '@/ui';
 import { Maximize2, Minimize2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { sections } from './sections';
-import { useRecoilState } from 'recoil';
-import { sectionAtom } from '@/lib/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { languageAtom, sectionAtom } from '@/lib/atoms';
+import translation from "@/lib/translation.json";
 
 export default function Home() {
   const gridRef = useRef<HTMLElement>(null);
@@ -19,6 +20,7 @@ export default function Home() {
     height:number,
   }[]>([])
   const [section, setSection] = useRecoilState(sectionAtom);
+  const language = useRecoilValue(languageAtom);
   const updateCellStyles =  () => {
     const newStyles = cellRefs.map(cellRef => {
      const cell = cellRef.current;
@@ -48,6 +50,7 @@ export default function Home() {
     2: "techs",
     3: "contact",
   };
+  console.log(translation[language]);
   return (
     <>
       <Header/>

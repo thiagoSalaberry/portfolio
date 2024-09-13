@@ -33,7 +33,7 @@ export function Project(props:ProjectProps) {
                         })}
                     </div>
                     <div className={styles.links_container}>
-                        <Navigation href={props.link}><ExternalLink size={30}/> Ver</Navigation>
+                        <Navigation href={props.link}><ExternalLink size={30}/> {props.language == "es" ? "Ver" : "View"}</Navigation>
                         <Navigation href={props.githubLink}><Github size={30}/> GitHub</Navigation>
                     </div>
                 </div>
