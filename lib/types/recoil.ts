@@ -4,5 +4,5 @@ export type RecoilSectionProps =
   | ""
   | "projects"
   | "techs"
-  | "about_me"
+  // | "about_me"
   | "contact";

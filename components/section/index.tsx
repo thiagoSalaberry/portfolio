@@ -29,10 +29,10 @@ export function Section(props:SectionProps) {
         <div
             className={`
                 ${styles.inner_content}
-                ${props.opened && styles.opened}
+                ${(props.expandable && props.opened) && styles.opened}
             `}
             style={
-                props.opened ? {
+                props.expandable && props.opened ? {
                     top: props.mainRef.current?.offsetTop,
                     left: props.mainRef.current?.offsetLeft,
                     width: props.mainRef.current?.offsetWidth,
@@ -121,12 +121,6 @@ function AboutMe({opened}: {opened:boolean}) {
                     </li>
                     <li className={styles.about_me_item}>
                         <Book size={18}/> Siempre aprendiendo, actualmente explorando ciencia de datos
-                    </li>
-                    <li className={styles.about_me_item}>
-                        Idioma: {languageState}
-                    </li>
-                    <li className={styles.about_me_item}>
-                        Sección actual: {sectionState ? sectionState : "No hay sección expandida"}
                     </li>
                 </ul>
             </div>

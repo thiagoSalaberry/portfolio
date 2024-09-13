@@ -18,6 +18,10 @@ export function Navbar() {
             currentDiv.style.width = `${itemWidth}px`;
             currentDiv.style.left = `${itemLeft}px`;
         }
+        if(currentDiv && section == null) {
+            currentDiv.style.width = '0px';
+            currentDiv.style.left = '0px';
+        }
     }, [section])
     return (
         <nav className={styles.nav}>
@@ -28,9 +32,9 @@ export function Navbar() {
                 <li id="techs" onClick={()=>setSection("techs")} className={styles.nav_list_item}>
                     <p className={bigShouldersDisplay.className} data-content="TECNOLOGÍAS">TECNOLOGÍAS</p>
                 </li>
-                <li id="about_me" onClick={()=>setSection("about_me")} className={styles.nav_list_item}>
+                {/* <li id="about_me" onClick={()=>setSection("about_me")} className={styles.nav_list_item}>
                     <p className={bigShouldersDisplay.className} data-content="SOBRE MÍ">SOBRE MÍ</p>
-                </li>
+                </li> */}
                 <li id="contact" onClick={()=>setSection("contact")} className={styles.nav_list_item}>
                     <p className={bigShouldersDisplay.className} data-content="CONTACTO">CONTACTO</p>
                 </li>

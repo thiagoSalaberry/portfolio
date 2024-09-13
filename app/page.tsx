@@ -12,7 +12,6 @@ import { sectionAtom } from '@/lib/atoms';
 export default function Home() {
   const gridRef = useRef<HTMLElement>(null);
   const cellRefs = [...Array(5)].map(() => useRef<HTMLTableSectionElement>(null));
-  const [selected, setSelected] = useState<number | null>(null);
   const [cellStyles, setCellStyles] = useState<{
     left:number,
     top:number,
@@ -32,14 +31,17 @@ export default function Home() {
     setCellStyles(newStyles as typeof cellStyles);
   }
   const handleSelect = (index: number):void => {
-    setSelected(prev => prev == index ? null : index);
-    setSection(classMap[index as keyof typeof section]);
+    //@ts-ignore
+    setSection(prev => prev == classMap[index as keyof typeof section] ? null : classMap[index as keyof typeof section]);
   };
   useEffect(()=>{
     updateCellStyles();
     window.addEventListener("resize", updateCellStyles);
     return () => window.removeEventListener("resize", updateCellStyles)
   }, []);
+  useEffect(()=>{
+    setSection(section)
+  }, [section])
   const classMap = {
     0: "projects",
     1: "about_me",
@@ -50,27 +52,7 @@ export default function Home() {
     <>
       <Header/>
       <main ref={gridRef} className={`${styles.main}`}>
-        {/* TEST */}
-          {/* {sections.map(section => {
-            if(selected && selected !== section.id) return;
-            return (
-              <div
-                key={section.id}
-                id={section.id.toString()}
-                className={`${styles.section_test} ${selected == section.id && styles.selected} ${selected && selected !== section.id && styles.unselected}`}
-              >
-                <h2 className={styles.title}>{section.title}</h2>
-                <div className={styles.action_button}>
-                  <Button variant='main_icon' onClick={()=>handleSelect(section.id as keyof typeof selected)}>
-                    {selected == section.id ? <Minimize2 size={20}/> : <Maximize2 size={20}/>}
-                  </Button>
-                </div>
-              </div>
-            )
-          })} */}
-        {/* TEST */}
         {cellRefs.map((cellRef, index) => {
-          // if(index > 0) return;
           const cellNumber = `cell_${index + 1}`;
           return (
             <>
@@ -82,7 +64,8 @@ export default function Home() {
               <Section
                 index={index}
                 onClick={()=>handleSelect(index)}
-                opened={selected == index}
+                //@ts-ignore
+                opened={section == classMap[index as keyof typeof section]}
                 title={sections[index].title}
                 mainRef={gridRef}
                 sectionRef={cellRef}
