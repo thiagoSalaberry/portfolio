@@ -23,9 +23,16 @@ export function Section(props:SectionProps) {
     const sectionsMap = {
         0: <Projects language={language} opened={props.opened}/>,
         1: <AboutMe language={language} opened={props.opened}/>,
-        2: <Technologies opened={props.opened}/>,
+        2: <Technologies language={language} opened={props.opened}/>,
         3: <Contact language={language} opened={props.opened}/>,
-        4: <Fill/>
+        4: <Education language={language}/>
+    };
+    const titleMap = {
+        0: translation[language].projects_section.title,
+        1: translation[language].about_me_section.title,
+        2: translation[language].techs_section.title,
+        3: translation[language].contact_section.title,
+        4: translation[language].education_section.title,
     }
     return (
         <div
@@ -47,7 +54,7 @@ export function Section(props:SectionProps) {
                 }
             }
         >
-            <h2 className={`${styles.section_title} ${bigShouldersDisplay.className} ${props.opened && styles.opened} ${props.index == 10 && styles.white}`}>{props.title}</h2>
+            <h2 className={`${styles.section_title} ${bigShouldersDisplay.className} ${props.opened && styles.opened}`}>{titleMap[props.index as keyof typeof titleMap]}</h2>
             {props.expandable && (
                 <div className={`${styles.button_container} ${props.opened && styles.opened}`}>
                     <Button
@@ -155,7 +162,7 @@ function AboutMe({opened, language}: {opened:boolean, language: "es" | "en"}) {
     )
 }
 
-function Technologies({opened}: {opened:boolean}) {
+function Technologies({opened, language}: {opened:boolean, language: "es" | "en"}) {
     return (
         <div className={`${styles.techs_container} ${opened && styles.opened}`}>
             {!opened ? (
@@ -173,16 +180,6 @@ function Technologies({opened}: {opened:boolean}) {
                                                     size="small"
                                                     index={index}
                                                 />
-                                                // <BoxImage key={j}>
-                                                //     <img
-                                                //         style={{height: index == 15 ? "100%" : "", width: index == 15 ? "auto" : ""}}
-                                                //         src={`/${techsMap[index as keyof typeof techsMap].img}.png`}
-                                                //         alt={`/${techsMap[index as keyof typeof techsMap].name}`}
-                                                //     />
-                                                //     <b className={styles.box_title}>
-                                                //         {techsMap[index as keyof typeof techsMap].name}
-                                                //     </b>
-                                                // </BoxImage>
                                             )
                                         })}
                                     </div>
@@ -194,24 +191,24 @@ function Technologies({opened}: {opened:boolean}) {
             ) : (
                 <>
                     <div className={styles.concept_container}>
-                        <h4>Conceptos clave</h4>
-                        <p className={poppins.className}>Además de las tecnologías detalladas, comprendo y aplico conceptos fundamentales que son cruciales para desarrollar de manera efectiva:</p>
+                        <h4>{translation[language].techs_section.key_concepts.title}</h4>
+                        <p className={poppins.className}>{translation[language].techs_section.key_concepts.desc}</p>
                         <ul className={styles.concept_list}>
                             <li>
-                                <b>Programación Orientada a Objetos</b>
-                                <p className={poppins.className}>Este paradigma me permite estructurar el código de manera modular y reutilizable, organizando funcionalidades en clases y objetos. Gracias a la POO, puedo crear aplicaciones más escalables y mantenibles.</p>
+                                <b>{translation[language].techs_section.key_concepts.list[0].title}</b>
+                                <p className={poppins.className}>{translation[language].techs_section.key_concepts.list[0].desc}</p>
                             </li>
                             <li>
-                                <b>Arquitectura de aplicaciones:</b>
-                                <p className={poppins.className}>Comprendo cómo estructurar una aplicación web, desde un patrón de diseño frontend-backend como MVC hasta la implementación de microservicios, lo que facilita la creación de sistemas más grandes y complejos.</p>
+                                <b>{translation[language].techs_section.key_concepts.list[1].title}</b>
+                                <p className={poppins.className}>{translation[language].techs_section.key_concepts.list[1].desc}</p>
                             </li>
                             <li>
-                                <b>Control de estado y gestión de datos:</b>
-                                <p className={poppins.className}>Tanto en aplicaciones nativas como en aplicaciones desarrolladas sobre React.js, manejo eficientemente el estado de la aplicación de forma nativa o mediante herramientas como Recoil o Redux, lo que me permite mantener la lógica y los datos sincronizados a lo largo de toda la interfaz.</p>
+                                <b>{translation[language].techs_section.key_concepts.list[2].title}</b>
+                                <p className={poppins.className}>{translation[language].techs_section.key_concepts.list[2].desc}</p>
                             </li>
                             <li>
-                                <b>Optimización y buenas prácticas:</b>
-                                <p className={poppins.className}>Tengo en cuenta principios como DRY y SOLID, lo que me ayuda a escribir código más limpio y eficiente. Además, estoy familizarizado con conceptos de optimización de rendimiento tanto en el lado del cliente como en el lado del servidor.</p>
+                                <b>{translation[language].techs_section.key_concepts.list[3].title}</b>
+                                <p className={poppins.className}>{translation[language].techs_section.key_concepts.list[3].desc}</p>
                             </li>
                         </ul>
                     </div>
@@ -230,9 +227,6 @@ function Technologies({opened}: {opened:boolean}) {
         </div>
     )
 };
-// function BoxImage({children}: {children:React.ReactNode}) {
-//     return <div className={styles.box}>{children}</div>
-// }
 
 function Contact({opened, language}: {opened:boolean, language: "es" | "en"}) {
     const { form, setForm, disabled, setDisabled } = useContactForm();
@@ -285,11 +279,11 @@ function Contact({opened, language}: {opened:boolean, language: "es" | "en"}) {
                 <form className={`${styles.contact_form} ${poppins.className}`} onInvalid={handleInvalid} onSubmit={handleSubmit}>
                     <div className={styles.name_section}>
                         <Input
-                            label="Nombre"
+                            label={translation[language].contact_section.form_name}
                             name="name"
                             type="text"
                             value={form.name.value}
-                            placeholder="ej. Thiago Salaberry"
+                            placeholder={translation[language].contact_section.form_name_placeholder}
                             disabled={disabled}
                             missing={form.name.missing}
                             onChange={(value:string) => handleChange("name", value)}
@@ -298,11 +292,11 @@ function Contact({opened, language}: {opened:boolean, language: "es" | "en"}) {
                     </div>
                     <div className={styles.email_section}>
                         <Input
-                            label="E-Mail"
+                            label={translation[language].contact_section.form_email}
                             name="email"
                             type="email"
                             value={form.email.value}
-                            placeholder="ej. thiagosalaberry99@gmail.com"
+                            placeholder={translation[language].contact_section.form_email_placeholder}
                             disabled={disabled}
                             missing={form.email.missing}
                             onChange={(value:string) => handleChange("email", value)}
@@ -311,11 +305,11 @@ function Contact({opened, language}: {opened:boolean, language: "es" | "en"}) {
                     </div>
                     <div className={styles.company_section}>
                         <Input
-                            label="Compañía"
+                            label={translation[language].contact_section.form_company}
                             name="company"
                             type="text"
                             value={form.company.value}
-                            placeholder="ej. Amazon"
+                            placeholder={translation[language].contact_section.form_company_placeholder}
                             disabled={disabled}
                             missing={form.company.missing}
                             onChange={(value:string) => handleChange("company", value)}
@@ -324,10 +318,10 @@ function Contact({opened, language}: {opened:boolean, language: "es" | "en"}) {
                     </div>
                     <div className={styles.message_section}>
                         <Textarea
-                            label="Mensaje"
+                            label={translation[language].contact_section.form_message}
                             name="message"
                             value={form.message.value}
-                            placeholder="ej. ¡Hola Thiago, queremos contratarte!"
+                            placeholder={translation[language].contact_section.form_message_placeholder}
                             disabled={disabled}
                             missing={form.message.missing}
                             onChange={(value:string) => handleChange("message", value)}
@@ -335,38 +329,18 @@ function Contact({opened, language}: {opened:boolean, language: "es" | "en"}) {
                         />
                     </div>
                     <div className={styles.submit_section}>
-                        <Button disabled={disabled} type="submit" variant="mainIcon" onClick={()=>{}}>Enviar <Send size={20}/></Button>
+                        <Button disabled={disabled} type="submit" variant="mainIcon" onClick={()=>{}}>{language == "es" ? "Enviar" : "Send"} <Send size={20}/></Button>
                     </div>
                     <div className={styles.form_image}>
                         <img src="/hello.png" alt="contact.png" />
                     </div>
                 </form>
-                // <div className={styles.form_sketch}>
-                //     <div className={styles.input_container_sketch}>
-                //         <div className={styles.label_sketch}></div>
-                //         <div className={styles.input_sketch}></div>
-                //     </div>
-                //     <div className={styles.input_container_sketch}>
-                //         <div className={styles.label_sketch}></div>
-                //         <div className={styles.input_sketch}></div>
-                //     </div>
-                //     <div className={styles.input_container_sketch}>
-                //         <div className={styles.label_sketch}></div>
-                //         <div className={styles.input_sketch}></div>
-                //     </div>
-                //     <div className={styles.input_container_sketch}>
-                //         <div className={styles.label_sketch}></div>
-                //         <div className={styles.textarea_sketch}></div>
-                //     </div>
-                //     <div className={styles.img_sketch}></div>
-                //     <div className={styles.button_sketch}></div>
-                // </div>
             )}
         </div>
     )
 };
 
-function Fill() {
+function Education({language}: {language:"es" | "en"}) {
     return (
         <div className={`${styles.fill_container} ${poppins.className}`}>
             <div className={styles.education}>
@@ -377,9 +351,9 @@ function Fill() {
             </div>
             <div className={styles.divider}></div>
             <div className={styles.education}>
-                <h4 className={styles.education_title}>Tecnicatura en Programación <span className={styles.animated}><Hourglass size={20}/></span></h4>
+                <h4 className={styles.education_title}>{translation[language].education_section.list[1].title} <span className={styles.animated}><Hourglass size={20}/></span></h4>
                 <p className={styles.education_info}>
-                    UTN | 2024 - presente
+                {translation[language].education_section.list[1].lapse}
                 </p>
             </div>
         </div>

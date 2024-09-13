@@ -34,16 +34,16 @@ export function Navbar() {
         <nav className={styles.nav}>
             <ul className={styles.nav_list}>
                 <li id="projects" onClick={()=>setSection("projects")} className={styles.nav_list_item}>
-                    <p className={bigShouldersDisplay.className} data-content="PROYECTOS">{content.projects}</p>
+                    <p className={bigShouldersDisplay.className} data-content={content.projects}>{content.projects}</p>
                 </li>
                 <li id="techs" onClick={()=>setSection("techs")} className={styles.nav_list_item}>
-                    <p className={bigShouldersDisplay.className} data-content="TECNOLOGÍAS">{content.techs}</p>
+                    <p className={bigShouldersDisplay.className} data-content={content.techs}>{content.techs}</p>
                 </li>
                 {/* <li id="about_me" onClick={()=>setSection("about_me")} className={styles.nav_list_item}>
                     <p className={bigShouldersDisplay.className} data-content="SOBRE MÍ">SOBRE MÍ</p>
                 </li> */}
                 <li id="contact" onClick={()=>setSection("contact")} className={styles.nav_list_item}>
-                    <p className={bigShouldersDisplay.className} data-content="CONTACTO">{content.contact}</p>
+                    <p className={bigShouldersDisplay.className} data-content={content.contact}>{content.contact}</p>
                 </li>
                 <div ref={currentRef} className={styles.current}></div>
             </ul>
