@@ -39,9 +39,6 @@ export function Navbar() {
                 <li id="techs" onClick={()=>setSection("techs")} className={styles.nav_list_item}>
                     <p className={bigShouldersDisplay.className} data-content={content.techs}>{content.techs}</p>
                 </li>
-                {/* <li id="about_me" onClick={()=>setSection("about_me")} className={styles.nav_list_item}>
-                    <p className={bigShouldersDisplay.className} data-content="SOBRE MÍ">SOBRE MÍ</p>
-                </li> */}
                 <li id="contact" onClick={()=>setSection("contact")} className={styles.nav_list_item}>
                     <p className={bigShouldersDisplay.className} data-content={content.contact}>{content.contact}</p>
                 </li>

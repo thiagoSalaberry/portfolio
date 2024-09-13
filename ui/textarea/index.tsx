@@ -2,8 +2,12 @@ import { useState } from "react";
 import styles from "./styles.module.css";
 import { TextareaProps } from "@/lib/types";
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
+import translation from "@/lib/translation.json"
+import { useRecoilValue } from "recoil";
+import { languageAtom } from "@/lib/atoms";
 
 export function Textarea(props:TextareaProps) {
+    const language = useRecoilValue(languageAtom)
     const [focusing, setFocusing] = useState<boolean>(false);
     const handleChange = (e:React.ChangeEvent<HTMLTextAreaElement>):void => {
         const value:string = e.target.value;
@@ -19,7 +23,7 @@ export function Textarea(props:TextareaProps) {
                     <label
                         htmlFor={props.name}
                         className={`${styles.label} ${bigShouldersDisplay.className}`}
-                    >{props.label}<span className={styles.error_message}>{props.missing && "Completá este campo"}</span></label>
+                    >{props.label}<span className={styles.error_message}>{props.missing && translation[language].contact_section.form_error_message}</span></label>
                 )}
                 <textarea
                     name={props.name}

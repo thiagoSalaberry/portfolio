@@ -85,11 +85,11 @@
 }
 body {
   background: var(--base);
-  padding: 10px;
+  padding: .5rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: .5rem;
 }
 ::selection {
   background: var(--brand);

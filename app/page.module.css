@@ -3,7 +3,7 @@
     border-radius: 20px;
     width: 100%;
     height: 100%;
-    gap: 10px;
+    gap: .5rem;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
     grid-template-areas: 
@@ -42,42 +42,3 @@
 .cell.cell_5 {
     grid-area: f;
 }
-/* SECCIONES */
-/* .projects_container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    height: 100%;
-    width: 100%;
-}
-.project { */
-    /* border: 1px solid salmon; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all .2s;
-}
-.project:hover {
-    background: var(--grey-200);
-}
-.about_me_container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    .about_me_buttons_container {
-        display: flex;
-        gap: 10px;
-        position: absolute;
-        bottom: 15px;
-        left: 15px;
-    }
-}
-.techs_container {
-
-}
-.contact_container {
-
-}
-.fill_container {
-
-} */

@@ -2,8 +2,11 @@ import { useState } from "react";
 import styles from "./styles.module.css";
 import { InputProps } from "@/lib/types";
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
-
+import translation from "@/lib/translation.json"
+import { useRecoilValue } from "recoil";
+import { languageAtom } from "@/lib/atoms";
 export function Input(props:InputProps) {
+    const language = useRecoilValue(languageAtom)
     const [focusing, setFocusing] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>):void => {
@@ -23,7 +26,7 @@ export function Input(props:InputProps) {
                     <label
                         htmlFor={props.name}
                         className={`${styles.label} ${bigShouldersDisplay.className}`}
-                    >{props.label}<span className={styles.error_message}>{props.missing && "Completá este campo"}</span></label>
+                    >{props.label}<span className={styles.error_message}>{props.missing && translation[language].contact_section.form_error_message}</span></label>
                 )}
                 <input
                     type={props.type}
