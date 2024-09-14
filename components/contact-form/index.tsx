@@ -111,7 +111,7 @@ export function ContactForm({language}: {language: "es" | "en"}) {7
                         />
                     </div>
                     <div className={styles.submit_section}>
-                        <Button disabled={disabled} type="submit" submitting={disabled} variant="mainIcon" onClick={()=>{}} loadingText="Enviando">{language == "es" ? "Enviar" : "Send"} <Send size={20}/></Button>
+                        <Button disabled={disabled} type="submit" submitting={disabled} variant="mainIcon" onClick={()=>{}} loadingText={language == "es" ? "Enviando" : "Sending"}>{language == "es" ? "Enviar" : "Send"} <Send size={20}/></Button>
                     </div>
                     <div className={styles.form_image}>
                         <img src="/hello.png" alt="contact.png" />

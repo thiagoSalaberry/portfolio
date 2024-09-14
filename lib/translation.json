@@ -73,7 +73,8 @@
       "form_error_message": "Completá este campo",
       "success_greeting": "Hola",
       "success_message_1": "Gracias por comunicarte. Te estaré respondiendo a",
-      "success_message_2": "a la brevedad. Saludos."
+      "success_message_2": "a la brevedad. Saludos.",
+      "loading_message": "Enviando"
     },
     "education_section": {
       "title": "EDUCACIÓN",
@@ -163,7 +164,8 @@
       "form_error_message": "This field is required",
       "success_greeting": "Hi",
       "success_message_1": "Thanks for communicating. I'll be responding to",
-      "success_message_2": "as soon as possible. Greetings."
+      "success_message_2": "as soon as possible. Greetings.",
+      "loading_message": "Sending"
     },
     "education_section": {
       "title": "EDUCATION",
