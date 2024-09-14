@@ -28,7 +28,7 @@
     transition: all .1s;
     resize: none;
     /* field-sizing: content; */
-    min-height: 200px;
+    /* min-height: 200px; */
     height: 100%;
     font-weight: 500;
 }
@@ -41,6 +41,9 @@
 }
 .textarea::placeholder {
     color: var(--grey-300);
+}
+.textarea.missing::placeholder {
+    color: var(--red-300);
 }
 .textarea.valued {
     border: 1px solid var(--brand-300);

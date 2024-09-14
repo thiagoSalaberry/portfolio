@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { useMouse } from "@/hooks/useMouse";
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import { ButtonProps } from "@/lib/types";
+import { Loading } from "@/components";
 
 export function Button(props:ButtonProps) {
     const {x, y} = useMouse()
@@ -36,7 +37,7 @@ export function Button(props:ButtonProps) {
                 ${props.variant.toLowerCase().includes("_") && styles.icon}
             `}
         >
-            {props.children}
+            {props.submitting ? <Loading text={props.loadingText || ""}/> : props.children}
         </button>
     )
 }

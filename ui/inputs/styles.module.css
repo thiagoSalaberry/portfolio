@@ -37,6 +37,9 @@
 .input::placeholder {
     color: var(--grey-300);
 }
+.input.missing::placeholder {
+    color: var(--red-300);
+}
 .input.valued {
     border: 1px solid var(--brand-300);
 }

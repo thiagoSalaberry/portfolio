@@ -9,7 +9,7 @@ import img1 from "@/public/man_1.jpg";
 import img2 from "@/public/man_2.jpg";
 import img3 from "@/public/man_3.jpg";
 import { Github, Hourglass } from "react-bootstrap-icons";
-import { Project, TechCard } from "@/components";
+import { ContactForm, Project, TechCard } from "@/components";
 import { techsMap } from "@/lib/techsMap";
 import copy from "copy-to-clipboard";
 import { useContactForm } from "@/hooks/useContactForm";
@@ -301,67 +301,7 @@ function Contact({opened, language}: {opened:boolean, language: "es" | "en"}) {
                 <Navigation href="https://github.com/thiagoSalaberry"><Github size={24}/> GitHub</Navigation>
             </div>
             {opened && (
-                <AnimatePresence>
-                    <motion.form initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{delay: .3}} className={`${styles.contact_form} ${poppins.className}`} onInvalid={handleInvalid} onSubmit={handleSubmit}>
-                        <div className={styles.name_section}>
-                            <Input
-                                label={translation[language].contact_section.form_name}
-                                name="name"
-                                type="text"
-                                value={form.name.value}
-                                placeholder={translation[language].contact_section.form_name_placeholder}
-                                disabled={disabled}
-                                missing={form.name.missing}
-                                onChange={(value:string) => handleChange("name", value)}
-                                required={true}
-                            />
-                        </div>
-                        <div className={styles.email_section}>
-                            <Input
-                                label={translation[language].contact_section.form_email}
-                                name="email"
-                                type="email"
-                                value={form.email.value}
-                                placeholder={translation[language].contact_section.form_email_placeholder}
-                                disabled={disabled}
-                                missing={form.email.missing}
-                                onChange={(value:string) => handleChange("email", value)}
-                                required={true}
-                            />
-                        </div>
-                        <div className={styles.company_section}>
-                            <Input
-                                label={translation[language].contact_section.form_company}
-                                name="company"
-                                type="text"
-                                value={form.company.value}
-                                placeholder={translation[language].contact_section.form_company_placeholder}
-                                disabled={disabled}
-                                missing={form.company.missing}
-                                onChange={(value:string) => handleChange("company", value)}
-                                required={true}
-                            />
-                        </div>
-                        <div className={styles.message_section}>
-                            <Textarea
-                                label={translation[language].contact_section.form_message}
-                                name="message"
-                                value={form.message.value}
-                                placeholder={translation[language].contact_section.form_message_placeholder}
-                                disabled={disabled}
-                                missing={form.message.missing}
-                                onChange={(value:string) => handleChange("message", value)}
-                                required={true}
-                            />
-                        </div>
-                        <div className={styles.submit_section}>
-                            <Button disabled={disabled} type="submit" variant="mainIcon" onClick={()=>{}}>{language == "es" ? "Enviar" : "Send"} <Send size={20}/></Button>
-                        </div>
-                        <div className={styles.form_image}>
-                            <img src="/hello.png" alt="contact.png" />
-                        </div>
-                    </motion.form>
-                </AnimatePresence>
+                <ContactForm language={language}/>
             )}
         </div>
     )

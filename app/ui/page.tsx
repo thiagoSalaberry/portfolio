@@ -5,6 +5,7 @@ import { Paintbrush } from "lucide-react";
 import { useState } from "react";
 import { Github } from "react-bootstrap-icons";
 import { Linkedin as LinkedInLucide } from "lucide-react";
+import { Loading } from "@/components";
 
 function useTestForm() {
     const [form, setForm] = useState<{
@@ -65,6 +66,7 @@ export default function Page() {
     }
     return (
         <div className={styles.page}>
+            <Loading />
             <section className={styles.section}>
                 <Navigation href=""><Github size={30}/></Navigation>
                 <Navigation href=""><LinkedInLucide size={30}/></Navigation>

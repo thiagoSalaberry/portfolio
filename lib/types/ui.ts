@@ -5,6 +5,7 @@ export type ButtonProps = {
   children: React.ReactNode;
   id?: string;
   disabled?: boolean;
+  submitting?: boolean;
   variant:
     | "main"
     | "secondary"
@@ -17,6 +18,7 @@ export type ButtonProps = {
     | "tertiary_icon"
     | "text";
   onClick: () => void;
+  loadingText?: string;
 };
 
 export type InputProps = {

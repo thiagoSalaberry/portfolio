@@ -33,7 +33,7 @@ export function Input(props:InputProps) {
                     name={props.name}
                     id={props.id || ""}
                     value={props.value}
-                    placeholder={props.placeholder}
+                    placeholder={props.missing ? `${translation[language].contact_section.form_error_message}: ${props.placeholder}` : props.placeholder}
                     disabled={props.disabled}
                     required={props.required}
                     className={`
