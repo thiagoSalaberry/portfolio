@@ -5,77 +5,23 @@ import { useState } from "react";
 
 
 export default function Page() {
-    const [opened, setOpened] = useState<boolean>(false);
-    const imageMap = {
-        0: "react",
-        1: "next",
-        2: "bash",
-        3: "postman",
-        4: "git",
-        5: "github",
-        6: "postgresql",
-        7: "figma",
-        8: "python"
+    const [selected, setSelected] = useState<number | null>(null);
+    const handleSelect = (index:number):void => {
+        setSelected(prev => prev == index ? null: index);
     }
-    // 0 1 2
-    // 3 4 5
-    // 6 7 8
     return (
         <div className={styles.page}>
-            <section className={styles.techs_section}>
-                <h2 className={styles.title}>TECNOLOGÍAS</h2>
-                <div className={styles.button_container}>
-                    <Button variant="main" onClick={()=>setOpened(!opened)}>Expandir</Button>
-                </div>
-                <div className={`${styles.grid} ${!opened && styles.hidden}`}>
-                    {[...Array(9)].map((_, i) => {
-                        return (
-                            <div className={styles.column} key={i}>
-                                <div className={styles.column_slider}>
-                                    {[...Array(3)].map((_, j) => {
-                                        // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                        const index = (i % 3) * 3 + j;
-                                        return <Box key={j}><img src={`/${imageMap[index as keyof typeof imageMap]}.png`} alt=""/></Box>
-                                    })}
-                                </div>
-                                <div className={styles.column_slider}>
-                                    {[...Array(3)].map((_, j) => {
-                                        // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                        const index = (i % 3) * 3 + j;
-                                        return <Box key={j}><img src={`/${imageMap[index as keyof typeof imageMap]}.png`} alt=""/></Box>
-                                    })}
-                                </div>
-                                <div className={styles.column_slider}>
-                                    {[...Array(3)].map((_, j) => {
-                                        // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                        const index = (i % 3) * 3 + j;
-                                        return <Box key={j}><img src={`/${imageMap[index as keyof typeof imageMap]}.png`} alt=""/></Box>
-                                    })}
-                                </div>
-                                <div className={styles.column_slider}>
-                                    {[...Array(3)].map((_, j) => {
-                                        // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                        const index = (i % 3) * 3 + j;
-                                        return <Box key={j}><img src={`/${imageMap[index as keyof typeof imageMap]}.png`} alt=""/></Box>
-                                    })}
-                                </div>
-                                <div className={styles.column_slider}>
-                                    {[...Array(3)].map((_, j) => {
-                                        // Acá necesito del 0 al 8 considerando que j == 0 | 1 | 2;
-                                        const index = (i % 3) * 3 + j;
-                                        return <Box key={j}><img src={`/${imageMap[index as keyof typeof imageMap]}.png`} alt=""/></Box>
-                                    })}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-                <p className={`${styles.abierto} ${opened && styles.hidden}`}>Abrido</p>
-            </section>
+            <div className={`${styles.container} ${selected && styles.selected}`}>
+                <Box cell="uno" selected={selected == 0} unselected={selected !== null && selected != 0} onSelect={()=>handleSelect(0)}/>
+                <Box cell="dos" selected={selected == 1} unselected={selected !== null && selected != 1} onSelect={()=>handleSelect(1)}/>
+                <Box cell="tres" selected={selected == 2} unselected={selected !== null && selected != 2} onSelect={()=>handleSelect(2)}/>
+                <Box cell="cuatro" selected={selected == 3} unselected={selected !== null && selected != 3} onSelect={()=>handleSelect(3)}/>
+                <Box cell="cinco" selected={selected == 4} unselected={selected !== null && selected != 4} onSelect={()=>handleSelect(4)}/>
+            </div>
         </div>
     )
 };
 
-function Box({children}: {children:React.ReactNode}) {
-    return <div className={styles.box}>{children}</div>
+function Box({selected, unselected, cell, onSelect}: {selected:boolean, unselected:boolean, cell:string, onSelect():void}) {
+    return <div onClick={onSelect} className={`${styles.box} ${styles[cell]} ${selected && styles.selected} ${unselected && styles.unselected}`}/>
 }

@@ -10,17 +10,65 @@ export default function Page() {
     const [opened, setOpened] = useState<number | null>(null);
     const handleOpened = (index:number):void => {
         setOpened(prev => prev == index ? null : index)
+    };
+    const [cellStyles, setCellStyles] = useState<{
+        left:number,
+        top:number,
+        width:number,
+        height:number,
+      }[]>([])
+    const refs:React.RefObject<HTMLTableSectionElement>[] = [...Array(5)].map(_ => useRef<HTMLTableSectionElement>(null))
+    const [currentRef, setCurrentRef] = useState<number | null>(null);
+    const updateCellStyles =  () => {
+        const newStyles = refs.map(cellRef => {
+         const cell = cellRef.current;
+         if(cell) {
+          const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = cell;
+          return {left: offsetLeft, top: offsetTop, width: offsetWidth, height: offsetHeight };
+         }
+         return {}      
+        });
+        setCellStyles(newStyles as typeof cellStyles);
+      }
+      const handleSelect = (index:number):void => {
+        setCurrentRef(prev => prev == index ? null : index)
+      }
+      useEffect(()=>{
+        updateCellStyles();
+        window.addEventListener("resize", updateCellStyles);
+        return () => window.removeEventListener("resize", updateCellStyles)
+      }, []);
+    const sectionMap = {
+        0: "SOBRE MÍ",
+        1: "PROYECTOS",
+        2: "TECNOLOGÍAS",
+        3: "EDUCACIÓN",
+        4: "CONTACTO",
     }
     return (
         <div className={styles.page}>
             <Header/>
             <Navbar/>
             <main ref={mainRef} className={styles.grid}>
-                <SectionSketch onOpen={()=>handleOpened(0)} gridRef={mainRef} title="SOBRE MÍ" opened={opened == 0}>.</SectionSketch>
-                <SectionSketch onOpen={()=>handleOpened(1)} gridRef={mainRef} title="PROYECTO" opened={opened == 1}>.</SectionSketch>
-                <SectionSketch onOpen={()=>handleOpened(2)} gridRef={mainRef} title="TECNOLOGÍAS" opened={opened == 2}>.</SectionSketch>
-                <SectionSketch onOpen={()=>handleOpened(3)} gridRef={mainRef} title="EDUCACIÓN" opened={opened == 3}>.</SectionSketch>
-                <SectionSketch onOpen={()=>handleOpened(4)} gridRef={mainRef} title="CONTACTO" opened={opened == 4}>.</SectionSketch>
+                {refs.map((cellRef, index) => {
+                    const cellNumber = `cell_${index + 1}`;
+                    return (
+                        <>
+                            <section
+                                className={`${styles.section_skeleton} ${styles[cellNumber]}`}
+                                ref={cellRef}
+                                key={cellNumber}
+                            ></section>
+                            <Content
+                                title={sectionMap[index as keyof typeof sectionMap]}
+                                gridRef={mainRef}
+                                selfRef={cellRef}
+                                opened={currentRef == index}
+                                onClick={()=>handleSelect(index)}
+                            >asd</Content>
+                        </>
+                    )
+                })}
             </main>
         </div>
     )
@@ -88,27 +136,47 @@ type SectionSketchProps = {
     title: string;
     children: React.ReactNode;
     opened:boolean;
+    selfRef: React.RefObject<HTMLTableSectionElement>;
     gridRef: React.RefObject<HTMLMediaElement>;
-    onOpen: () => void;
+    onClick: () => void;
 }
-function SectionSketch(props:SectionSketchProps) {
+function Content(props:SectionSketchProps) {
     return (
-        <>
-            <section
-                style={props.opened ? {
-                    top: `${props.gridRef.current?.offsetTop}px`,
-                    left: `${props.gridRef.current?.offsetLeft}px`,
-                    width: `${props.gridRef.current?.offsetWidth}px`,
-                    height: `${props.gridRef.current?.offsetHeight}px`
-                } : {}}
-                className={styles.section}>
-                <div className={styles.section_header}>
-                    <h2 className={styles.section_title}>{props.title}</h2>
-                    <div className={styles.section_button_container}>
-                        <Button variant="mainIcon" onClick={props.onOpen}>{props.opened ? <Minimize2 /> : <Maximize2 />}</Button>
-                    </div>
-                </div>
-            </section>
-        </>
+        <div
+            className={`
+                ${styles.inner_content}
+                ${props.opened && styles.opened}
+            `}
+            style={
+                props.opened ? {
+                    top: 0,
+                    left: 0,
+                    width: props.gridRef.current?.offsetWidth,
+                    height: props.gridRef.current?.offsetHeight,
+                } : {
+                    top: props.selfRef.current?.offsetTop,
+                    left: props.selfRef.current?.offsetLeft,
+                    width: props.selfRef.current?.offsetWidth,
+                    height: props.selfRef.current?.offsetHeight,
+                }
+            }
+        >
+            <h2
+                className={`
+                    ${styles.section_title}
+                    ${bigShouldersDisplay.className}
+                    ${props.opened && styles.opened}
+                `}
+            >
+                {props.title}
+            </h2>
+            <div className={`${styles.button_container} ${props.opened && styles.opened}`}>
+                <Button
+                    onClick={props.onClick}
+                    variant="main_icon"
+                >{props.opened ? <Minimize2 /> : <Maximize2 />}</Button>
+            </div>
+            {props.title}
+        </div>
     )
 }
