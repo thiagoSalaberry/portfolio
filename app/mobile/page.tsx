@@ -43,7 +43,7 @@ export default function Page() {
         updateCellStyles();
         window.addEventListener("resize", updateCellStyles);
         return () => window.removeEventListener("resize", updateCellStyles)
-      });
+      }, []);
     const sectionMap = {
         0: {
             title: "SOBRE MÍ",
