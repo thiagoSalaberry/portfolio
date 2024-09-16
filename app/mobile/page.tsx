@@ -2,7 +2,7 @@
 import { Book, BookCheck, ChevronDown, ChevronRight, Coffee, Download, ExternalLink, Hourglass, Linkedin, MapPin, Maximize2, Minimize2, Network } from "lucide-react";
 import styles from "./styles.module.css";
 import { Github } from "react-bootstrap-icons";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { bigShouldersDisplay, poppins, inter } from "@/lib/fonts";
 import { Button, Input, Navigation, Textarea } from "@/ui";
 import { useContactForm } from "@/hooks/useContactForm";
@@ -14,18 +14,17 @@ const concepts = translation.es.techs_section.key_concepts.list;
 
 export default function Page() {
     const mainRef = useRef<HTMLMediaElement>(null);
-    const [opened, setOpened] = useState<number | null>(null);
-    const handleOpened = (index:number):void => {
-        setOpened(prev => prev == index ? null : index)
-    };
     const [cellStyles, setCellStyles] = useState<{
         left:number,
         top:number,
         width:number,
         height:number,
       }[]>([])
-    const refs:React.RefObject<HTMLTableSectionElement>[] = [...Array(5)].map(_ => useRef<HTMLTableSectionElement>(null))
+
+    // const refs:React.RefObject<HTMLTableSectionElement>[] = [...Array(5)].map(_ => useRef<HTMLTableSectionElement>(null))
+    const refs = [...Array(5)].map(_ => React.createRef<HTMLTableSectionElement>())
     const [currentRef, setCurrentRef] = useState<number | null>(null);
+
     const updateCellStyles =  () => {
         const newStyles = refs.map(cellRef => {
          const cell = cellRef.current;
@@ -44,7 +43,7 @@ export default function Page() {
         updateCellStyles();
         window.addEventListener("resize", updateCellStyles);
         return () => window.removeEventListener("resize", updateCellStyles)
-      }, []);
+      });
     const sectionMap = {
         0: {
             title: "SOBRE MÍ",
@@ -76,6 +75,7 @@ export default function Page() {
                     const cellNumber = `cell_${index + 1}`;
                     return (
                         <Section
+                            key={cellNumber}
                             index={index}
                             gridRef={mainRef}
                             selfRef={refs[index]}
@@ -129,33 +129,33 @@ function Header() {
 
 
 
-function Navbar() {
-    const [selected, setSelected] = useState<number | null>(null);
-    const handleSelect = (index:number):void => {
-        setSelected(prev => prev == index ? null : index);
-    }
-    return (
-        <nav className={styles.navbar}>
-            <ul className={styles.navbar_list}>
-                <li onClick={()=>handleSelect(0)} className={`${styles.navbar_item} ${selected == 0 && styles.selected}`}>
-                    SOBRE MÍ
-                </li>
-                <li onClick={()=>handleSelect(1)} className={`${styles.navbar_item} ${selected == 1 && styles.selected}`}>
-                    PROYECTOS
-                </li>
-                <li onClick={()=>handleSelect(2)} className={`${styles.navbar_item} ${selected == 2 && styles.selected}`}>
-                    TECNOLOGÍAS
-                </li>
-                <li onClick={()=>handleSelect(3)} className={`${styles.navbar_item} ${selected == 3 && styles.selected}`}>
-                    EDUCACIÓN
-                </li>
-                <li onClick={()=>handleSelect(4)} className={`${styles.navbar_item} ${selected == 4 && styles.selected}`}>
-                    CONTACTO
-                </li>
-            </ul>
-        </nav>
-    )
-}
+// function Navbar() {
+//     const [selected, setSelected] = useState<number | null>(null);
+//     const handleSelect = (index:number):void => {
+//         setSelected(prev => prev == index ? null : index);
+//     }
+//     return (
+//         <nav className={styles.navbar}>
+//             <ul className={styles.navbar_list}>
+//                 <li onClick={()=>handleSelect(0)} className={`${styles.navbar_item} ${selected == 0 && styles.selected}`}>
+//                     SOBRE MÍ
+//                 </li>
+//                 <li onClick={()=>handleSelect(1)} className={`${styles.navbar_item} ${selected == 1 && styles.selected}`}>
+//                     PROYECTOS
+//                 </li>
+//                 <li onClick={()=>handleSelect(2)} className={`${styles.navbar_item} ${selected == 2 && styles.selected}`}>
+//                     TECNOLOGÍAS
+//                 </li>
+//                 <li onClick={()=>handleSelect(3)} className={`${styles.navbar_item} ${selected == 3 && styles.selected}`}>
+//                     EDUCACIÓN
+//                 </li>
+//                 <li onClick={()=>handleSelect(4)} className={`${styles.navbar_item} ${selected == 4 && styles.selected}`}>
+//                     CONTACTO
+//                 </li>
+//             </ul>
+//         </nav>
+//     )
+// }
 
 
 
@@ -228,7 +228,7 @@ function AboutMe({opened, unselected}: {opened:boolean, unselected:boolean}) {
                         <p className={styles.about_me_desc}>
                             {translation["es"].about_me_section.desc.split("&").map((text, index) => {
                                 if(index != 1 && index != 3) return text
-                                return <b>{text}</b>
+                                return <b key={text}>{text}</b>
                             })}
                         </p>
                     </div>
@@ -326,7 +326,7 @@ function ProjectCard(props:ProjectCardProp) {
                     <p className={`${styles.desc} ${poppins.className}`}>{props.desc}</p>
                     <ul className={styles.techs_list}>
                         {props.techs.map(tech => {
-                            return <li className={`${styles.tech} ${poppins.className}`}>{tech}</li>
+                            return <li key={tech.toString()} className={`${styles.tech} ${poppins.className}`}>{tech}</li>
                         })}
                     </ul>
                     <div className={styles.links_container}>
@@ -370,9 +370,9 @@ function Education({opened, unselected, concepts}: {opened:boolean, unselected:b
                     </h3>
                     <div className={styles.concepts_wrapper}>
                         <ul className={styles.concepts_list}>
-                            {concepts.map((concept, index) => {
+                            {concepts.map((concept:any, index) => {
                                 return (
-                                    <Concept key={concept.title} title={concept.title} desc={concept.desc} index={index + 1} total={concepts.length - 1}/>
+                                    <Concept key={concept.title} title={concept.title} desc={concept.desc} index={index + 1} total={concepts.length}/>
                                 )
                             })}
                         </ul>

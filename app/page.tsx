@@ -4,7 +4,7 @@ import styles from './page.module.css'
 import { Header, Section } from '@/components'
 import { Button } from '@/ui';
 import { Maximize2, Minimize2 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { sections } from './sections';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { languageAtom, sectionAtom } from '@/lib/atoms';
@@ -12,7 +12,8 @@ import translation from "@/lib/translation.json";
 
 export default function Home() {
   const gridRef = useRef<HTMLElement>(null);
-  const cellRefs = [...Array(5)].map(() => useRef<HTMLTableSectionElement>(null));
+  // const cellRefs = [...Array(5)].map(() => useRef<HTMLTableSectionElement>(null));
+  const cellRefs = [...Array(5)].map(_ => React.createRef<HTMLTableSectionElement>());
   const [cellStyles, setCellStyles] = useState<{
     left:number,
     top:number,
