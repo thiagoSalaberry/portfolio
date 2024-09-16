@@ -10,7 +10,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { languageAtom, sectionAtom } from '@/lib/atoms';
 import translation from "@/lib/translation.json";
 
-export default function Home() {
+export default function Page() {
   const gridRef = useRef<HTMLElement>(null);
   // const cellRefs = [...Array(5)].map(() => useRef<HTMLTableSectionElement>(null));
   const cellRefs = [...Array(5)].map(_ => React.createRef<HTMLTableSectionElement>());
@@ -51,7 +51,6 @@ export default function Home() {
     2: "techs",
     3: "contact",
   };
-  console.log(translation[language]);
   return (
     <>
       <Header/>
@@ -59,11 +58,10 @@ export default function Home() {
         {cellRefs.map((cellRef, index) => {
           const cellNumber = `cell_${index + 1}`;
           return (
-            <>
+            <React.Fragment key={cellNumber}>
               <section
                 className={`${styles.cell} ${styles[cellNumber]}`}
                 ref={cellRef}
-                key={cellNumber}
               ></section>
               <Section
                 index={index}
@@ -80,9 +78,8 @@ export default function Home() {
                   height: cellStyles[index]?.height
                 }}
                 expandable={index !== 4 && index !== 1}
-                key={`${cellNumber}a sd`}
               >{sections[index].content || "asd"}</Section>
-            </>
+            </React.Fragment>
           )
         })}
         {/* <section className={`${styles.cell} ${styles.cell_1}`}></section> */}
