@@ -1,52 +1,20 @@
 .contact_form {
-    /* width: 100%;
-    max-width: 750px; */
-    width: 60%;
-    height: 60%;
     display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr) 44px;
-    grid-template-areas:
-        "na na na na im im "
-        "em em em em im im "
-        "co co co co im im "
-        "me me me me im im "
-        "me me me me im im "
-        "me me me me bu bu "
-    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto) 1fr auto;
+    gap: .5rem;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
-.name_section {
-    grid-area: na;
-}
-.email_section {
-    grid-area: em;
-}
-.company_section {
-    grid-area: co;
+.name_section, .email_section, .company_section, .message_section, .submit_section {
+    width: 100%;
 }
 .message_section {
-    grid-area: me;
-}
-.submit_section {
-    grid-area: bu;
+    height: 100%;
 }
 .form_image {
-    grid-area: im;
-    /* background: var(--brand-950); */
-    border-radius: 10px;
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: var(--border-clear);
-    overflow: hidden;
-}
-.form_image > img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    display: none;
 }
 .success_container {
     display: flex;
@@ -56,4 +24,65 @@
 }
 .success_container > h3 {
     font-size: 2rem;
+}  
+@media (min-width: 768px) {
+    .contact_form {
+        /* width: 100%;
+        max-width: 750px; */
+        width: 60%;
+        height: 60%;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(5, 1fr) 44px;
+        grid-template-areas:
+            "na na na na im im "
+            "em em em em im im "
+            "co co co co im im "
+            "me me me me im im "
+            "me me me me im im "
+            "me me me me bu bu "
+        ;
+    }
+    .name_section {
+        grid-area: na;
+    }
+    .email_section {
+        grid-area: em;
+    }
+    .company_section {
+        grid-area: co;
+    }
+    .message_section {
+        grid-area: me;
+    }
+    .submit_section {
+        grid-area: bu;
+    }
+    .form_image {
+        grid-area: im;
+        /* background: var(--brand-950); */
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: var(--border-clear);
+        overflow: hidden;
+    }
+    .form_image > img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    .success_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .success_container > h3 {
+        font-size: 2rem;
+    }    
 }
