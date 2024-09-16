@@ -157,8 +157,8 @@ function AboutMe({opened, language}: {opened:boolean, language: "es" | "en"}) {
                     {/* Soy un <b>Desarrollador Web Fullstack</b> especializado en el desarrollo de aplicaciones web nativas y en el uso
                     tecnologías avanzadas como <b>React</b> para ofrecer experiencias de usuario excepcionales. */}
                     {translation[language].about_me_section.desc.split("&").map((text, index) => {
-                        if(index != 1 && index != 3) return text
-                        return <b>{text}</b>
+                        if(index != 1 && index != 3) return <span key={index}>{text}</span>
+                        return <b key={index}>{text}</b>
                     })}
                 </p>
             </div>
@@ -200,7 +200,7 @@ function Technologies({opened, language}: {opened:boolean, language: "es" | "en"
                                                 const index = (i * 3 + j) % Object.keys(techsMap).length;
                                                 return (
                                                     <TechCard
-                                                        key={j}
+                                                        key={index}
                                                         size="small"
                                                         index={index}
                                                     />
@@ -241,8 +241,9 @@ function Technologies({opened, language}: {opened:boolean, language: "es" | "en"
                         {[...Array(18)].map((_, index) => {
                             return (
                                 <TechCard
-                                size="large"
-                                index={index}
+                                    size="large"
+                                    index={index}
+                                    key={index}
                                 />
                             )
                         })}
