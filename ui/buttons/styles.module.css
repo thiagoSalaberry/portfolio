@@ -86,10 +86,11 @@
     background: var(--brand-600);
 }
 .icon {
-    min-width: 47px;
-    min-height: 47px;
-    padding: 0;
-    width: fit-content;
+    /* min-width: 47px;
+    min-height: 47px; */
+    /* padding: 0; */
+    padding: .5rem;
+    border-radius: 50%;
 }
 .disabled {
     opacity: .5;

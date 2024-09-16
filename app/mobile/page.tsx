@@ -193,7 +193,7 @@ function Section(props:SectionSketchProps) {
                     <Button
                         onClick={props.onClick}
                         variant="main_icon"
-                        >{props.opened ? <Minimize2 /> : <Maximize2 />}</Button>
+                        >{props.opened ? <Minimize2 size={20}/> : <Maximize2 size={20}/>}</Button>
                 </div>
             </div>
             {!props.unselected && props.children}
