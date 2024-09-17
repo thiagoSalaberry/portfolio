@@ -1,5 +1,5 @@
 /* PROJECTS */
-.projects_container {
+.projects_container.opened {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -69,4 +69,14 @@
 .links_container {
     display: flex;
     justify-content: space-between;
+}
+/* CONTAINED */
+.projects_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* background: var(--brand-900); */
+}
+.projects_title {
+    /* color: var(--white); */
 }

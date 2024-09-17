@@ -10,8 +10,8 @@ export function ProjectsSection({opened}: {opened:boolean}) {
         setSelected(prev => prev == index ? null : index);
     }
     return (
-        <div className={styles.projects_container}>
-            {opened && (
+        <div className={`${styles.projects_container} ${opened && styles.opened}`}>
+            {opened ? (
                 <>
                     <ProjectCard
                         selected={selected == 0}
@@ -54,6 +54,13 @@ export function ProjectsSection({opened}: {opened:boolean}) {
                         github=""
                     />
                 </>
+            ) : (
+                <div className={styles.projects_container}>
+                    <h3 className={styles.projects_title}>E-COMMERCE</h3>
+                    <h3 className={styles.projects_title}>URL SHORTENER</h3>
+                    <h3 className={styles.projects_title}>TEOXYS TATTOO</h3>
+                    <h3 className={styles.projects_title}>PIEDRA PAPEL O TIJERA</h3>
+                </div>
             )}
         </div>
     )

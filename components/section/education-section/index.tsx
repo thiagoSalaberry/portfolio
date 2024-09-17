@@ -6,8 +6,8 @@ import { BookCheck, Hourglass, Network } from "lucide-react";
 export function EducationSection({opened, concepts}: {opened:boolean, concepts: {title:string, desc:string}[]}) {
     return (
         <>
-            {opened && (
-                <div className={styles.education_container}>
+            {opened ? (
+                <div className={`${styles.education_container} ${styles.opened}`}>
                     <div className={`${styles.education} ${styles.in_progress}`}>
                         <h4 className={`${styles.education_title} ${poppins.className}`}>Tecnicatura en Programación <span><Hourglass color="var(--grey)" size={20}/></span></h4>
                         <p className={`${styles.education_lapse} ${poppins.className}`}>UTN | 2024 - presente</p>
@@ -26,6 +26,11 @@ export function EducationSection({opened, concepts}: {opened:boolean, concepts: 
                             })}
                         </ul>
                     </div>
+                </div>
+            ) : (
+                <div className={styles.education_container}>
+                    <h4 className={`${styles.education_title} ${poppins.className} ${styles.opened}`}>Fullstack Web Developer <BookCheck color="var(--green)" size={20}/></h4>
+                    <h4 className={`${styles.education_title} ${poppins.className} ${styles.opened}`}>Tecnicatura en Programación <span><Hourglass color="var(--grey)" size={20}/></span></h4>
                 </div>
             )}
         </>

@@ -1,5 +1,5 @@
 /* EDUCATION */
-.education_container {
+.education_container.opened {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto) 1fr;
@@ -80,4 +80,19 @@
 }
 .concept_desc {
     padding-left: 1.75rem;
+}
+
+.education_container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.title_wrapper {
+    overflow-x: hidden;
+    display: flex;
+}
+.education_title.opened {
+    line-height: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
 }

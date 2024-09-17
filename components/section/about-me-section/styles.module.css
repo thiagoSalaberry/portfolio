@@ -77,3 +77,17 @@
 .about_me_button_container {
     grid-area: b;
 }
+
+/* CONTAINED */
+.container_contained {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.contained_img {
+    width: 100%;
+    height: 100%;
+    background: var(--brand-900);
+    border-radius: 10px;
+}

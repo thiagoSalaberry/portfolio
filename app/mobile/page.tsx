@@ -174,6 +174,7 @@ type SectionSketchProps = {
 
 function Section(props:SectionSketchProps) {
     const cellNumber = `cell_${props.index + 1}`;
+    console.log(props.title)
     return (
         <>
             <section
@@ -183,6 +184,7 @@ function Section(props:SectionSketchProps) {
             <div
                 className={`
                     ${styles.inner_content}
+                    ${styles[props.title.replaceAll(" ", "_")]}
                     ${props.opened && styles.opened}
                     ${props.unselected && styles.unselected}
                 `}
@@ -204,6 +206,7 @@ function Section(props:SectionSketchProps) {
                     <h2
                         className={`
                             ${styles.section_title}
+                            ${styles[props.title.replaceAll(" ", "_")]}
                             ${bigShouldersDisplay.className}
                         `}
                     >

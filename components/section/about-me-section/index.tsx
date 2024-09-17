@@ -18,7 +18,7 @@ const animation = {
 export function AboutMeSection({opened}: {opened:boolean}) {
     return (
         <>
-            {opened && (
+            {opened ? (
                 <AnimatePresence>
                     <motion.div initial={animation.initial} animate={animation.animate} exit={animation.exit} transition={{duration: 1}} className={`${styles.about_me_container} ${poppins.className}`}>
                         <div className={styles.name_container}>
@@ -58,6 +58,11 @@ export function AboutMeSection({opened}: {opened:boolean}) {
                         </div>
                     </motion.div>
                 </AnimatePresence>
+            ) : (
+                <div className={styles.container_contained}>
+                    <h2 className={`${styles.name} ${bigShouldersDisplay.className}`}>THIAGO SALABERRY</h2>
+                    <div className={styles.contained_img}></div>
+                </div>
             )}
         </>
     )

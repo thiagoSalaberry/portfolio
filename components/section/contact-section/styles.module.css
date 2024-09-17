@@ -1,6 +1,6 @@
 
 /* CONTACT */
-.contact_container {
+.contact_container.opened {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
@@ -11,4 +11,13 @@
 }
 .contact_desc {
     text-align: center;
+}
+.contact_container {
+    width: 100%;
+}
+.mail {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: .2rem;
 }

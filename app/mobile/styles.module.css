@@ -81,6 +81,13 @@
     border: 1px solid var(--grey);
     overflow: hidden;
     width: 100%;
+    background: var(--base);
+}
+.inner_content.CONTACTO {
+    background: var(--brand-700);
+}
+.inner_content.CONTACTO.opened {
+    background: var(--base);
 }
 .inner_content_header {
     display: flex;
@@ -92,6 +99,9 @@
     font-size: 1.75em;
     z-index: 2;
 }
+/* .section_title.CONTACTO {
+    color: var(--white);
+} */
 .button_container {
     /* position: absolute;
     bottom: .8rem;
