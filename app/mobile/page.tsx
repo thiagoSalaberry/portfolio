@@ -9,6 +9,7 @@ import { useContactForm } from "@/hooks/useContactForm";
 import { ContactForm } from "@/components";
 import arrow from "@/public/arrow-1.svg"
 import translation from "@/lib/translation.json";
+import { techsMap } from "@/lib/techsMap";
 
 const concepts = translation.es.techs_section.key_concepts.list;
 
@@ -343,12 +344,29 @@ function ProjectCard(props:ProjectCardProp) {
 
 function Techs({opened, unselected}: {opened:boolean, unselected:boolean}) {
     return (
-        <div className={styles.about_me_container}>
-
+        <>
+            {opened && (
+                <div className={styles.techs_wrapper}>
+                    <div className={styles.techs_container}>
+                        {Object.values(techsMap).map((tech, index) => {
+                            return <Tech img={tech.img} title={tech.name}/>
+                        })}
+                    </div>
+                </div>
+            )}
+        </>
+    )
+}
+function Tech({title, img}: {title:string, img:string}) {
+    return (
+        <div className={styles.tech_container}>
+            <div className={styles.tech_img_container}>
+                <img src={`/${img}.png`} alt={title} className={styles.tech_img} />
+            </div>
+            <b className={styles.tech_title}>{title}</b>
         </div>
     )
 }
-
 
 
 function Education({opened, unselected, concepts}: {opened:boolean, unselected:boolean, concepts: {title:string, desc:string}[]}) {
