@@ -1,0 +1,79 @@
+.about_me_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(7, auto) 1fr;
+    grid-template-areas: 
+        "n n n n n"
+        "l l l l l"
+        "l l l l l"
+        "w w w f f"
+        "w w w f f"
+        "w w w f f"
+        "b b b f f"
+        "d d d d d"
+    ;
+    height: 100%;
+    gap: .5rem;
+}
+.name_container {
+    grid-area: n;
+}
+.name {
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+.list_container {
+    grid-area: l;
+}
+.about_me_list {
+    display: flex;
+    flex-direction: column;
+}
+.about_me_item {
+    color: var(--grey);
+}
+.arg {
+    width: 24px;
+    height: 16px;
+}
+.about_me_role_container {
+    grid-area: w;
+}
+.about_me_role {
+    font-weight: 900;
+    font-size: 5rem;
+    line-height: .9;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+.about_me_desc_container {
+    grid-area: d;
+    display: flex;
+    justify-content: flex-end;
+}
+.about_me_desc {
+    color: var(--black);
+    align-self: flex-end;
+}
+.about_me_img_container {
+    grid-area: f;
+    border-radius: 10px;
+}
+.img_container {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    background: var(--brand-900);
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+}
+.img_container > img {
+    height: auto;
+    width: 200%;
+    transform: translateX(-25%);
+}
+.about_me_button_container {
+    grid-area: b;
+}

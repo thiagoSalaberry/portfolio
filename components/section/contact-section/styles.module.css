@@ -1,0 +1,14 @@
+
+/* CONTACT */
+.contact_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    gap: .5rem;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+}
+.contact_desc {
+    text-align: center;
+}
