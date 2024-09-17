@@ -173,32 +173,37 @@ type SectionSketchProps = {
 function Section(props:SectionSketchProps) {
     const cellNumber = `cell_${props.index + 1}`;
     return (
-        <div
-            className={`
-                ${styles.inner_content}
-                ${props.opened && styles.opened}
-                ${styles[cellNumber]}
-                ${props.unselected && styles.unselected}
-            `}
-        >
-            <div className={styles.inner_content_header}>
-                <h2
-                    className={`
-                        ${styles.section_title}
-                        ${bigShouldersDisplay.className}
-                        `}
-                        >
-                    {props.title}
-                </h2>
-                <div className={`${styles.button_container} ${props.opened && styles.opened}`}>
-                    <Button
-                        onClick={props.onClick}
-                        variant="main_icon"
-                        >{props.opened ? <Minimize2 size={20}/> : <Maximize2 size={20}/>}</Button>
+        <>
+            <section
+                ref={props.selfRef}
+                className={`${styles.cell} ${styles[cellNumber]}`}
+            ></section>
+            {/* <div
+                className={`
+                    ${styles.inner_content}
+                    ${props.opened && styles.opened}
+                    ${props.unselected && styles.unselected}
+                    `}
+                    >
+                <div className={styles.inner_content_header}>
+                    <h2
+                        className={`
+                            ${styles.section_title}
+                            ${bigShouldersDisplay.className}
+                            `}
+                            >
+                        {props.title}
+                    </h2>
+                    <div className={`${styles.button_container} ${props.opened && styles.opened}`}>
+                        <Button
+                            onClick={props.onClick}
+                            variant="main_icon"
+                            >{props.opened ? <Minimize2 size={20}/> : <Maximize2 size={20}/>}</Button>
+                    </div>
                 </div>
-            </div>
-            {!props.unselected && props.children}
-        </div>
+                {!props.unselected && props.children}
+            </div> */}
+        </>
     )
 };
 

@@ -11,6 +11,29 @@
     flex-direction: column;
     gap: 10px;
     height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(15, 1fr);
+    grid-template-areas: 
+        "a"
+        "a"
+        "a"
+        "a"
+        "a"
+        "p"
+        "p"
+        "p"
+        "p"
+        "t"
+        "t"
+        "t"
+        "e"
+        "e"
+        "c"
+    ;
+    position: relative;
+    border: 1px solid red;
+    border-radius: 10px;
 }
 .inner_content {
     display: grid;
@@ -25,20 +48,48 @@
     overflow: hidden;
     width: 100%;
 }
+.cell {
+    border: 1px solid green;
+}
 .inner_content.cell_1 {
-    height: 30%;
+    grid-area: a;
+    /* height: 30%; */
+}
+.cell_1 {
+    grid-area: a;
+    /* height: 30%; */
 }
 .inner_content.cell_2 {
-    height: 25%;
+    grid-area: p;
+    /* height: 25%; */
+}
+.cell_2 {
+    grid-area: p;
+    /* height: 25%; */
 }
 .inner_content.cell_3 {
-    height: 20%;
+    grid-area: t;
+    /* height: 20%; */
+}
+.cell_3 {
+    grid-area: t;
+    /* height: 20%; */
 }
 .inner_content.cell_4 {
-    height: 15%;
+    grid-area: e;
+    /* height: 15%; */
+}
+.cell_4 {
+    grid-area: e;
+    /* height: 15%; */
 }
 .inner_content.cell_5 {
-    height: 10%;
+    grid-area: c;
+    /* height: 10%; */
+}
+.cell_5 {
+    grid-area: c;
+    /* height: 10%; */
 }
 .inner_content.opened {
     grid-template-rows: auto 1fr;
