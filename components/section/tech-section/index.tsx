@@ -7,7 +7,7 @@ export function TechSection({opened}: {opened:boolean}) {
             {opened && (
                 <div className={styles.techs_container}>
                     {Object.values(techsMap).map((tech, index) => {
-                        return <Tech img={tech.img} title={tech.name}/>
+                        return <Tech key={index} img={tech.img} title={tech.name}/>
                     })}
                 </div>
             )}
