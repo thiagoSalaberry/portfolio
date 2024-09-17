@@ -25,7 +25,14 @@ export default function Page() {
         height:number,
       }[]>([])
 
-    const refs:React.RefObject<HTMLTableSectionElement>[] = [...Array(5)].map(_ => useRef<HTMLTableSectionElement>(null))
+    // const refs:React.RefObject<HTMLTableSectionElement>[] = [...Array(5)].map(_ => useRef<HTMLTableSectionElement>(null));
+      const refs = [
+        useRef<HTMLTableSectionElement>(null),
+        useRef<HTMLTableSectionElement>(null),
+        useRef<HTMLTableSectionElement>(null),
+        useRef<HTMLTableSectionElement>(null),
+        useRef<HTMLTableSectionElement>(null),
+      ]
     const [currentRef, setCurrentRef] = useState<number | null>(null);
     const updateCellStyles =  () => {
         const newStyles = refs.map(cellRef => {
