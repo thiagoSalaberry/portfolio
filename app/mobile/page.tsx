@@ -10,11 +10,12 @@ import { ContactForm } from "@/components";
 import arrow from "@/public/arrow-1.svg"
 import translation from "@/lib/translation.json";
 import { techsMap } from "@/lib/techsMap";
-
+import { motion, AnimatePresence } from "framer-motion";
 const concepts = translation.es.techs_section.key_concepts.list;
 
 export default function Page() {
     const mainRef = useRef<HTMLMediaElement>(null);
+    // const refs = [...Array(5)].map(_ => React.createRef<HTMLTableSectionElement>())
     const [cellStyles, setCellStyles] = useState<{
         left:number,
         top:number,
@@ -22,10 +23,8 @@ export default function Page() {
         height:number,
       }[]>([])
 
-    // const refs:React.RefObject<HTMLTableSectionElement>[] = [...Array(5)].map(_ => useRef<HTMLTableSectionElement>(null))
-    const refs = [...Array(5)].map(_ => React.createRef<HTMLTableSectionElement>())
+    const refs:React.RefObject<HTMLTableSectionElement>[] = [...Array(5)].map(_ => useRef<HTMLTableSectionElement>(null))
     const [currentRef, setCurrentRef] = useState<number | null>(null);
-
     const updateCellStyles =  () => {
         const newStyles = refs.map(cellRef => {
          const cell = cellRef.current;
@@ -66,20 +65,20 @@ export default function Page() {
             title: "CONTACTO",
             content: <Contact opened={currentRef == 4} unselected={currentRef != null && currentRef != 4}/>
         },
-    }
+    };
     return (
         <div className={styles.page}>
             <Header/>
             {/* <Navbar/> */}
             <main ref={mainRef} className={styles.grid}>
-                {[...Array(5)].map((cell, index) => {
+                {refs.map((cell, index) => {
                     const cellNumber = `cell_${index + 1}`;
                     return (
                         <Section
                             key={cellNumber}
                             index={index}
                             gridRef={mainRef}
-                            selfRef={refs[index]}
+                            selfRef={cell}
                             onClick={()=>handleSelect(index)}
                             opened={currentRef == index}
                             unselected={currentRef !== null && currentRef !== index}
@@ -170,6 +169,17 @@ type SectionSketchProps = {
     gridRef: React.RefObject<HTMLMediaElement>;
     onClick: () => void;
 }
+const animation = {
+    initial: {
+        opacity: 0
+    },
+    animate: {
+        opacity: 1
+    },
+    exit: {
+        opacity: 0
+    }
+}
 function Section(props:SectionSketchProps) {
     const cellNumber = `cell_${props.index + 1}`;
     return (
@@ -178,31 +188,44 @@ function Section(props:SectionSketchProps) {
                 ref={props.selfRef}
                 className={`${styles.cell} ${styles[cellNumber]}`}
             ></section>
-            {/* <div
+            <div
                 className={`
                     ${styles.inner_content}
                     ${props.opened && styles.opened}
                     ${props.unselected && styles.unselected}
-                    `}
-                    >
+                `}
+                style={
+                    props.opened ? {
+                        top: 0,
+                        left: 0,
+                        width: props.gridRef.current?.offsetWidth,
+                        height: props.gridRef.current?.offsetHeight,
+                    } : {
+                        top: props.selfRef.current?.offsetTop,
+                        left: props.selfRef.current?.offsetLeft,
+                        width: props.selfRef.current?.offsetWidth,
+                        height: props.selfRef.current?.offsetHeight
+                    }
+                }
+            >
                 <div className={styles.inner_content_header}>
                     <h2
                         className={`
                             ${styles.section_title}
                             ${bigShouldersDisplay.className}
-                            `}
-                            >
+                        `}
+                    >
                         {props.title}
                     </h2>
                     <div className={`${styles.button_container} ${props.opened && styles.opened}`}>
                         <Button
                             onClick={props.onClick}
                             variant="main_icon"
-                            >{props.opened ? <Minimize2 size={20}/> : <Maximize2 size={20}/>}</Button>
+                        >{props.opened ? <Minimize2 size={20}/> : <Maximize2 size={20}/>}</Button>
                     </div>
                 </div>
                 {!props.unselected && props.children}
-            </div> */}
+            </div>
         </>
     )
 };
@@ -213,40 +236,42 @@ function AboutMe({opened, unselected}: {opened:boolean, unselected:boolean}) {
     return (
         <>
             {opened && (
-                <div className={`${styles.about_me_container} ${poppins.className}`}>
-                    <div className={styles.name_container}>
-                        <h2 className={`${styles.name} ${bigShouldersDisplay.className}`}>THIAGO SALABERRY</h2>
-                    </div>
-                    <div className={styles.list_container}>
-                        <ul className={styles.about_me_list}>
-                        <li className={styles.about_me_item}>
-                                <MapPin size={18}/> Buenos Aires, <img className={styles.arg} src="/argentina.gif" alt="argentina" />
-                            </li>
-                            <li className={styles.about_me_item}>
-                                <Coffee size={18}/> {translation["es"].about_me_section.list[0]}
-                            </li>
-                            <li className={styles.about_me_item}>
-                                <Book size={18}/> {translation["es"].about_me_section.list[1]}
-                            </li>
-                        </ul>
-                    </div>
-                    <div className={styles.about_me_desc_container}>
-                        <p className={styles.about_me_desc}>
-                            {translation["es"].about_me_section.desc.split("&").map((text, index) => {
-                                if(index != 1 && index != 3) return text
-                                return <b key={text}>{text}</b>
-                            })}
-                        </p>
-                    </div>
-                    <div className={styles.about_me_img_container}>
-                        <div className={styles.img_container}>
-                            {/* <img src="man_3.jpg" alt="" /> */}
+                <AnimatePresence>
+                    <motion.div initial={animation.initial} animate={animation.animate} exit={animation.exit} transition={{duration: 1}} className={`${styles.about_me_container} ${poppins.className}`}>
+                        <div className={styles.name_container}>
+                            <h2 className={`${styles.name} ${bigShouldersDisplay.className}`}>THIAGO SALABERRY</h2>
                         </div>
-                    </div>
-                    <div className={styles.about_me_button_container}>
-                        <Button variant="secondaryIcon" onClick={()=>{}}>CV <Download size={20}/></Button>
-                    </div>
-                </div>
+                        <div className={styles.list_container}>
+                            <ul className={styles.about_me_list}>
+                            <li className={styles.about_me_item}>
+                                    <MapPin size={18}/> Buenos Aires, <img className={styles.arg} src="/argentina.gif" alt="argentina" />
+                                </li>
+                                <li className={styles.about_me_item}>
+                                    <Coffee size={18}/> {translation["es"].about_me_section.list[0]}
+                                </li>
+                                <li className={styles.about_me_item}>
+                                    <Book size={18}/> {translation["es"].about_me_section.list[1]}
+                                </li>
+                            </ul>
+                        </div>
+                        <div className={styles.about_me_desc_container}>
+                            <p className={styles.about_me_desc}>
+                                {translation["es"].about_me_section.desc.split("&").map((text, index) => {
+                                    if(index != 1 && index != 3) return text
+                                    return <b key={text}>{text}</b>
+                                })}
+                            </p>
+                        </div>
+                        <div className={styles.about_me_img_container}>
+                            <div className={styles.img_container}>
+                                {/* <img src="man_3.jpg" alt="" /> */}
+                            </div>
+                        </div>
+                        <div className={styles.about_me_button_container}>
+                            <Button variant="secondaryIcon" onClick={()=>{}}>CV <Download size={20}/></Button>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
             )}
         </>
     )

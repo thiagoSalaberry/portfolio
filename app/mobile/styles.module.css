@@ -7,9 +7,9 @@
     position: relative;
 }
 .grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    row-gap: 10px;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
@@ -23,22 +23,56 @@
         "p"
         "p"
         "p"
-        "p"
         "t"
         "t"
         "t"
         "e"
         "e"
         "c"
+        "c"
     ;
     position: relative;
-    border: 1px solid red;
     border-radius: 10px;
 }
+.cell {
+    position: relative;
+}
+.cell.cell_1 {
+    grid-area: a;
+    /* height: 30%; */
+}
+.cell.cell_2 {
+    grid-area: p;
+    /* height: 25%; */
+}
+.cell.cell_3 {
+    grid-area: t;
+    /* height: 20%; */
+}
+.cell.cell_4 {
+    grid-area: e;
+    /* height: 15%; */
+}
+.cell.cell_5 {
+    grid-area: c;
+    /* height: 10%; */
+}
+/* .inner_content.opened {
+    grid-template-rows: auto 1fr;
+    height: 70%;
+    max-height: 70%;
+} */
+/* .inner_content.unselected {
+    height: 7.5%;
+} */
 .inner_content {
-    display: grid;
-    grid-template-rows: auto;
-    align-items: flex-start;
+    /* display: grid; */
+    /* grid-template-rows: auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
     padding: .5rem;
     gap: .5rem;
     border-radius: 10px;
@@ -47,57 +81,6 @@
     border: 1px solid var(--grey);
     overflow: hidden;
     width: 100%;
-}
-.cell {
-    border: 1px solid green;
-}
-.inner_content.cell_1 {
-    grid-area: a;
-    /* height: 30%; */
-}
-.cell_1 {
-    grid-area: a;
-    /* height: 30%; */
-}
-.inner_content.cell_2 {
-    grid-area: p;
-    /* height: 25%; */
-}
-.cell_2 {
-    grid-area: p;
-    /* height: 25%; */
-}
-.inner_content.cell_3 {
-    grid-area: t;
-    /* height: 20%; */
-}
-.cell_3 {
-    grid-area: t;
-    /* height: 20%; */
-}
-.inner_content.cell_4 {
-    grid-area: e;
-    /* height: 15%; */
-}
-.cell_4 {
-    grid-area: e;
-    /* height: 15%; */
-}
-.inner_content.cell_5 {
-    grid-area: c;
-    /* height: 10%; */
-}
-.cell_5 {
-    grid-area: c;
-    /* height: 10%; */
-}
-.inner_content.opened {
-    grid-template-rows: auto 1fr;
-    height: 70%;
-    max-height: 70%;
-}
-.inner_content.unselected {
-    height: 7.5%;
 }
 .inner_content_header {
     display: flex;
