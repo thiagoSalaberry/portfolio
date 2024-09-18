@@ -17,8 +17,8 @@ export function Header() {
                 <LanguageSwitch/>
                 <div className={styles.splitter}></div>
                     <div className={styles.links_container}>
-                        <Navigation href="https://www.linkedin.com/in/thiago-salaberry/"><Linkedin size={30}/></Navigation>
-                        <Navigation href="https://github.com/thiagoSalaberry"><Github size={30}/></Navigation>
+                        <Navigation href="https://www.linkedin.com/in/thiago-salaberry/"><Linkedin className={styles.linkedin}/></Navigation>
+                        <Navigation href="https://github.com/thiagoSalaberry"><Github className={styles.github}/></Navigation>
                     </div>
                 </div>
         </header>

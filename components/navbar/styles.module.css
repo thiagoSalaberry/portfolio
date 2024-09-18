@@ -43,3 +43,9 @@
     background: var(--black);
     transition: all .4s ease;
 }
+/* DESKTOP */
+@media (max-width: 1024px) {
+    .nav {
+        display: none;
+    }
+}

@@ -29,3 +29,26 @@
     align-items: center;
     gap: 20px;
 }
+.github {
+    transform: scale(1.5);
+}
+/* DESKTOP */
+@media (max-width: 1024px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    .right_content {
+        gap: 10px;
+    }
+    .links_container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .linkedin {
+        transform: scale(.85);
+    }
+    .github {
+        transform: scale(1.25);
+    }
+}
