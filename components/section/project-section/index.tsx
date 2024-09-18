@@ -96,7 +96,7 @@ function ProjectCard(props:ProjectCardProp) {
                     <ChevronDown size={20}/>
                 </span>
             </button>
-            {!props.notSelected && <p className={`${styles.desc} ${poppins.className}`}>{props.desc}</p>}
+            {!props.notSelected && !props.selected && <p className={`${styles.desc} ${poppins.className}`}>{props.desc}</p>}
             {props.selected && (
                 <div className={`${styles.card_content}`}>
                     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} className={styles.img_container}>
