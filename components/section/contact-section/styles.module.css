@@ -1,5 +1,9 @@
 
 /* CONTACT */
+.contact_container {
+    width: 100%;
+    display: flex;
+}
 .contact_container.opened {
     display: grid;
     grid-template-columns: 1fr;
@@ -9,13 +13,16 @@
     justify-items: center;
     height: 100%;
 }
+
 .contact_desc {
     text-align: center;
+    display: none;
 }
-.contact_container {
-    width: 100%;
+.contact_container.opened .contact_desc {
+    display: block;
 }
 .mail {
+    width: 100%;
     background: none;
     border: none;
     font-weight: 700;
@@ -24,4 +31,36 @@
     align-items: center;
     gap: .2rem;
     font-size: 1rem;
+    cursor: pointer;
+}
+.contact_container.opened .mail {
+    justify-content: center;
+}
+.contact_links_container {
+    display: none;
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+    .contact_container {
+        display: grid;
+        justify-content: flex-start;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        height: 100%;
+    }
+    .contact_desc {
+        display: block;
+        text-align: left;
+        justify-self: flex-start;
+    }
+    .contact_container.opened .mail {
+        justify-content: flex-start;
+    }
+    .contact_links_container {
+        display: flex;
+        align-items: flex-end;
+        justify-self: flex-start;
+        gap: 1rem;
+    }
 }

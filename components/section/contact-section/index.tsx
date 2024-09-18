@@ -1,9 +1,11 @@
 import { poppins } from "@/lib/fonts";
 import styles from "./styles.module.css";
 import { ContactForm } from "@/components/contact-form";
-import { Copy, CopyCheck } from "lucide-react";
+import { Copy, CopyCheck, Linkedin } from "lucide-react";
 import copy from "copy-to-clipboard";
 import { useState } from "react";
+import { Navigation } from "@/ui";
+import { Github } from "react-bootstrap-icons";
 
 export function ContactSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
     const [copied, setCopied] = useState<boolean>(false)
@@ -15,24 +17,17 @@ export function ContactSection({opened, language}: {opened:boolean, language: "e
         }, 3000);
     }
     return (
-        <>
-            {opened ? (
-                <div className={`${styles.contact_container} ${styles.opened}`}>
-                    <p className={`${styles.contact_desc} ${poppins.className}`}>Completá el formulario o enviame un mail a la siguiente dirección</p>
-                    <b onClick={handleCopy} className={`${styles.mail} ${poppins.className}`}>
-                        thiagosalaberry99@gmail.com
-                        {copied ? <CopyCheck size={20}/> : <Copy size={20}/>}
-                    </b>
-                    <ContactForm language="es"/>
-                </div>
-            ) : (
-                <div className={styles.contact_container}>
-                    <button onClick={handleCopy} className={`${styles.mail} ${poppins.className}`}>
-                        thiagosalaberry99@gmail.com
-                        {copied ? <CopyCheck size={20}/> : <Copy size={20}/>}
-                    </button>
-                </div>
-            )}
-        </>
+        <div className={`${styles.contact_container} ${opened && styles.opened}`}>
+            <p className={`${styles.contact_desc} ${poppins.className}`}>Completá el formulario o enviame un mail a la siguiente dirección:</p>
+            <button onClick={handleCopy} className={`${styles.mail} ${poppins.className}`}>
+                thiagosalaberry99@gmail.com
+                {copied ? <CopyCheck size={20}/> : <Copy size={20}/>}
+            </button>
+            {opened && <ContactForm language={language}/>}
+            <div className={styles.contact_links_container}>
+                <Navigation href="https://www.linkedin.com/in/thiago-salaberry/"><Linkedin size={24}/> LinkedIn</Navigation>
+                <Navigation href="https://github.com/thiagoSalaberry"><Github size={24}/> GitHub</Navigation>
+            </div>
+        </div>
     )
 }

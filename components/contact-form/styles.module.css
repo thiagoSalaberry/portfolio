@@ -64,7 +64,7 @@
         /* background: var(--brand-950); */
         border-radius: 10px;
         width: 100%;
-        height: auto;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
