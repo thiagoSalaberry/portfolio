@@ -1,0 +1,92 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    height: 100svh;
+    position: relative;
+}
+.main {
+    display: grid;
+    gap: .5rem;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(15, 1fr);
+    grid-template-areas: 
+        "a"
+        "a"
+        "a"
+        "a"
+        "a"
+        "p"
+        "p"
+        "p"
+        "t"
+        "t"
+        "t"
+        "e"
+        "e"
+        "c"
+        "c"
+    ;
+    position: relative;
+    border-radius: 10px;
+}
+.cell {
+    position: relative;
+    border-radius: 10px;
+}
+.cell.cell_1 {
+    grid-area: a;
+}
+.cell.cell_2 {
+    grid-area: p;
+}
+.cell.cell_3 {
+    grid-area: t;
+}
+.cell.cell_4 {
+    grid-area: e;
+}
+.cell.cell_5 {
+    grid-area: c;
+}
+
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+    .main {
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        grid-template-areas: 
+            "p p p p p p p a a a a a"
+            "p p p p p p p a a a a a"
+            "p p p p p p p a a a a a"
+            "p p p p p p p a a a a a"
+            "p p p p p p p a a a a a"
+            "p p p p p p p a a a a a"
+            "p p p p p p p a a a a a"
+            "t t t t t t t c c c c c"
+            "t t t t t t t c c c c c"
+            "t t t t t t t c c c c c"
+            "t t t t t t t e e e e e"
+            "t t t t t t t e e e e e"
+        ;
+    }
+    .cell.cell_1 {
+        grid-area: a;
+    }
+    .cell.cell_2 {
+        grid-area: p;
+    }
+    .cell.cell_3 {
+        grid-area: t;
+    }
+    .cell.cell_4 {
+        grid-area: e;
+    }
+    .cell.cell_5 {
+        grid-area: c;
+    }
+}
