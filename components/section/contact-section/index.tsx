@@ -27,10 +27,10 @@ export function ContactSection({opened, language}: {opened:boolean, language: "e
                 </div>
             ) : (
                 <div className={styles.contact_container}>
-                    <b onClick={handleCopy} className={`${styles.mail} ${poppins.className}`}>
+                    <button onClick={handleCopy} className={`${styles.mail} ${poppins.className}`}>
                         thiagosalaberry99@gmail.com
                         {copied ? <CopyCheck size={20}/> : <Copy size={20}/>}
-                    </b>
+                    </button>
                 </div>
             )}
         </>

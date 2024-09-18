@@ -12,7 +12,7 @@ export function TechSection({opened, language}: {opened:boolean, language: "es" 
                     })}
                 </>
             ) : (
-                <p className={poppins.className}>Repertorio de las tecnologías que domino</p>
+                <p className={poppins.className}>Repertorio de las tecnologías que domino.</p>
             )}
         </div>
     )

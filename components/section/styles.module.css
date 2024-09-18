@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0;
+    padding: 3.4rem .5rem .5rem .5rem;
     position: absolute;
     border-radius: 10px;
     transition: all .3s;
@@ -15,11 +17,7 @@
     position: absolute;
     left: .8rem;
     top: .8rem;
-    font-size: 48px;
-    font-size: 2.2em;
-    /* padding: 3px 9px; */
-    /* background: var(--base); */
-    /* border-radius: 10px; */
+    font-size: 1.75rem;
     z-index: 2;
 }
 .section_title.white {
@@ -33,14 +31,6 @@
 .section_title.opened, .button_container.opened {
     z-index: 11;
 }
-/* @keyframes zindex {
-    from {
-        z-index: 10;
-    }
-    to {
-        z-index: 1;
-    }
-} */
 .opened {
     z-index: 10;
 }

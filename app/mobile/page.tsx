@@ -136,38 +136,6 @@ function Header() {
     )
 };
 
-
-
-// function Navbar() {
-//     const [selected, setSelected] = useState<number | null>(null);
-//     const handleSelect = (index:number):void => {
-//         setSelected(prev => prev == index ? null : index);
-//     }
-//     return (
-//         <nav className={styles.navbar}>
-//             <ul className={styles.navbar_list}>
-//                 <li onClick={()=>handleSelect(0)} className={`${styles.navbar_item} ${selected == 0 && styles.selected}`}>
-//                     SOBRE MÍ
-//                 </li>
-//                 <li onClick={()=>handleSelect(1)} className={`${styles.navbar_item} ${selected == 1 && styles.selected}`}>
-//                     PROYECTOS
-//                 </li>
-//                 <li onClick={()=>handleSelect(2)} className={`${styles.navbar_item} ${selected == 2 && styles.selected}`}>
-//                     TECNOLOGÍAS
-//                 </li>
-//                 <li onClick={()=>handleSelect(3)} className={`${styles.navbar_item} ${selected == 3 && styles.selected}`}>
-//                     EDUCACIÓN
-//                 </li>
-//                 <li onClick={()=>handleSelect(4)} className={`${styles.navbar_item} ${selected == 4 && styles.selected}`}>
-//                     CONTACTO
-//                 </li>
-//             </ul>
-//         </nav>
-//     )
-// }
-
-
-
 type SectionSketchProps = {
     index:number;
     title: string;
@@ -181,7 +149,6 @@ type SectionSketchProps = {
 
 function Section(props:SectionSketchProps) {
     const cellNumber = `cell_${props.index + 1}`;
-    console.log(props.title)
     return (
         <>
             <section

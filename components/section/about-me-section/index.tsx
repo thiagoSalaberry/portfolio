@@ -4,8 +4,6 @@ import translation from "@/lib/translation.json";
 import { Button } from "@/ui";
 import { AnimatePresence, motion } from "framer-motion";
 import { Book, Coffee, Download, MapPin } from "lucide-react";
-import Image from "next/image";
-import me from "@/public/man_3.webp"
 const animation = {
     initial: {
         opacity: 0

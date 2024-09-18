@@ -70,7 +70,6 @@ export default function Page() {
                             onClick={()=>handleSelect(index)}
                             //@ts-ignore
                             opened={section == classMap[index as keyof typeof section]}
-                            // opened={false}
                             title={sections[index].title}
                             mainRef={gridRef}
                             sectionRef={cellRef}

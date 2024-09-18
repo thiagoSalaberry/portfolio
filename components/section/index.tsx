@@ -24,7 +24,9 @@ import { ProjectsSection } from "./project-section";
 import { TechSection } from "./tech-section";
 import { EducationSection } from "./education-section";
 import { ContactSection } from "./contact-section";
+
 const concepts = translation.es.techs_section.key_concepts.list;
+
 export function Section(props:SectionProps) {
     const language = useRecoilValue(languageAtom)
     const sectionsMap = {
@@ -66,9 +68,9 @@ export function Section(props:SectionProps) {
                 <Button
                     onClick={props.onClick}
                     variant="main_icon"
-                >{props.opened ? <Minimize2 /> : <Maximize2 />}</Button>
+                >{props.opened ? <Minimize2 size={20}/> : <Maximize2 size={20}/>}</Button>
             </div>
-            {/* {sectionsMap[props.index as keyof typeof sectionsMap]} */}
+            {sectionsMap[props.index as keyof typeof sectionsMap]}
         </div>
     );
 };
