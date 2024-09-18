@@ -5,6 +5,7 @@ import { ChevronDown, ExternalLink } from "lucide-react";
 import { Github } from "react-bootstrap-icons";
 import { Navigation } from "@/ui";
 import { motion } from "framer-motion";
+import { Project } from "@/components/project";
 
 export function ProjectsSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
     const [selected, setSelected] = useState<number | null>(1);
@@ -13,60 +14,61 @@ export function ProjectsSection({opened, language}: {opened:boolean, language: "
     }
     return (
         <div className={`${styles.projects_container} ${opened && styles.opened}`}>
-            {opened ? (
-                <>
-                    <ProjectCard
-                        index={0}
-                        selected={selected == 0}
-                        notSelected={selected != null && selected != 0}
-                        onSelect={()=>handleSelect(0)}
-                        title="E-COMMERCE"
-                        desc="Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
-                        techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
-                        link=""
-                        github=""
-                    />
-                    <ProjectCard
-                        index={1}
-                        selected={selected == 1}
-                        notSelected={selected != null && selected != 1}
-                        onSelect={()=>handleSelect(1)}
-                        title="URL SHORTENER"
-                        desc="Una web para recortar URLs largos y hacerlos más legibles y cómodos."
-                        techs={["React.js", "Next.js", "TypeScript", "PostgreSQL"]}
-                        link=""
-                        github=""
-                    />
-                    <ProjectCard
-                        index={2}
-                        selected={selected == 2}
-                        notSelected={selected != null && selected != 2}
-                        onSelect={()=>handleSelect(2)}
-                        title="TEOXYS TATTOO"
-                        desc="Una web para facilitar la reservación de turnos de tatuajes."
-                        techs={["React.js", "Next.js", "TypeScript", "Styled Components"]}
-                        link=""
-                        github=""
-                    />
-                    <ProjectCard
-                        index={3}
-                        selected={selected == 3}
-                        notSelected={selected != null && selected != 3}
-                        onSelect={()=>handleSelect(3)}
-                        title="PIEDRA PAPEL Ó TIJERA"
-                        desc="Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
-                        techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
-                        link=""
-                        github=""
-                    />
-                </>
-            ) : (
-                <div className={`${styles.projects_container} ${poppins.className}`}>
-                    <p className={styles.projects_desc}>Estos son mis proyectos más destacados hasta la fecha, en los que se pueden apreciar mis conocimientos técnicos
-                        y mi enfoque de diseño y experiencia de usuario.
-                    </p>
-                </div>
-            )}
+            <p className={`${styles.desc} ${poppins.className} ${opened && styles.opened}`}>Estos son mis proyectos más destacados hasta la fecha, en los que se pueden apreciar mis conocimientos técnicos y mi enfoque de diseño y experiencia de usuario.</p>
+            <div className={`${styles.projects_list} ${opened && styles.opened}`}>
+                <Project
+                    title="E-COMMERCE"
+                    description="Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
+                    techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
+                    index={0}
+                    language="es"
+                    opened={opened}
+                    selected={selected == 0}
+                    notSelected={selected != null && selected != 0}
+                    githubLink=""
+                    link=""
+                    onSelect={()=>handleSelect(0)}
+                />
+                <Project
+                    title="URL SHORTENER"
+                    description="Una web para recortar URLs largos y hacerlos más legibles y cómodos."
+                    techs={["React.js", "Next.js", "TypeScript", "PostgreSQL"]}
+                    index={1}
+                    language="es"
+                    opened={opened}
+                    selected={selected == 1}
+                    notSelected={selected != null && selected != 1}
+                    githubLink=""
+                    link=""
+                    onSelect={()=>handleSelect(1)}
+                />
+                <Project
+                    title="TEOXYS TATTOO"
+                    description="Una web para facilitar la reservación de turnos de tatuajes."
+                    techs={["React.js", "Next.js", "TypeScript", "Styled-Components"]}
+                    index={2}
+                    language="es"
+                    opened={opened}
+                    selected={selected == 2}
+                    notSelected={selected != null && selected != 2}
+                    githubLink=""
+                    link=""
+                    onSelect={()=>handleSelect(2)}
+                />
+                <Project
+                    title="PIEDRA PAPEL Ó TIJERA"
+                    description="Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
+                    techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
+                    index={3}
+                    language="es"
+                    opened={opened}
+                    selected={selected == 3}
+                    notSelected={selected != null && selected != 3}
+                    githubLink=""
+                    link=""
+                    onSelect={()=>handleSelect(3)}
+                />
+            </div>
         </div>
     )
 };

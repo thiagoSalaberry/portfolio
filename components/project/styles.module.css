@@ -1,41 +1,225 @@
-.wrapper {
-    position: relative;
-    overflow: hidden;
-}
-.project_container {
+/* MOBILE */
+.projects_container.opened {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    padding: 2.5%;
-    gap: 2.5%;
-    position: relative;
     height: 100%;
-    transform: translateY(calc(100% - 2.25rem));
-    transition: transform .7s cubic-bezier(1,0,0,1);
-}
-.project_container.opened {
-    transform: translateY(0%);
-}
-.wrapper:hover .project_container.E-COMMERCE, .wrapper:hover .project_container.URL_SHORTENER, .wrapper:hover .project_container.TEOXYS_TATTOO, .wrapper:hover .project_container.PIEDRA_PAPEL_O_TIJERA {
-    transform: translateY(0%);
-}
-.project_img_container {
     width: 100%;
-    aspect-ratio: 1/1.2;
+    gap: .5rem;
+}
+.project_card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: var(--border);
+    border-radius: 10px;
+    padding: .4rem;
+    gap: .5rem;
+    transition: height .3s;
+}
+.project_card.selected {
+    height: 82%;
+}
+.project_card.not_selected {
+    height: 6%;
+}
+.dropdown_button {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+}
+.dropdown_title {
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+.chevron {
+    transition: all .3s;
+    display: grid;
+    place-content: center;
+}
+.chevron.opened {
+    transition: all .3s;
+    transform: rotate(-180deg);
+}
+.card_content {
+    display: grid;
+    grid-template-rows: repeat(3, auto) 1fr;
+    height: 100%;
+    gap: .5rem;
+}
+.img_container {
+    width: 100%;
+    aspect-ratio: 2/1;
+    border-radius: 10px;
+    border: var(--border);
     overflow: hidden;
-    border: var(--border-clear);
-    border-radius: 5px;
-    /* display: none; */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .7s cubic-bezier(1,0,0,1);
+    max-width: 400px;
+    justify-self: center;
 }
-.wrapper:hover .project_img_container, .project_img_container.opened {
-    display: initial;
-    opacity: 1;
-    visibility: visible;
+.img_container > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
+.img.E-COMMERCE {
+    transform: translateY(-13%);
+}
+.img.URL_SHORTENER {
+    transform: translateY(-36%);
+}
+.img.TEOXYS_TATTOO {
+    transform: translateY(-15%);
+}
+.img.PIEDRA_PAPEL_Ó_TIJERA {
+    transform: translateY(-5.5%);
+}
+.desc {
+    color: var(--grey-800);
+}
+.techs_list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+.tech {
+    font-size: 14px;
+    color: var(--grey-600);
+    background: var(--grey-100);
+    border-radius: 20px;
+    padding: 3px 6px;
+    border: 0.5px solid var(--grey-300);
+    height: fit-content;
+}
+.links_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.desktop {
+    display: none;
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+    .mobile {
+        display: none;
+    }
+    .desktop {
+        display: initial;
+    }
+    .wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+    .project_container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        /* align-items: center; */
+        padding: 2.5%;
+        gap: 2.5%;
+        position: relative;
+        transform: translateY(90%);
+        transition: transform .7s cubic-bezier(1,0,0,1);
+    }
+    .project_container.opened {
+        transform: translateY(0%);
+    }
+    .wrapper:hover .project_container.E-COMMERCE, .wrapper:hover .project_container.URL_SHORTENER, .wrapper:hover .project_container.TEOXYS_TATTOO, .wrapper:hover .project_container.PIEDRA_PAPEL_Ó_TIJERA {
+        transform: translateY(0%);
+    }
+    .project_img_container {
+        width: 100%;
+        aspect-ratio: 1/1.2;
+        overflow: hidden;
+        border: var(--border-clear);
+        border-radius: 5px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .7s cubic-bezier(1,0,0,1);
+    }
+    .wrapper:hover .project_img_container, .project_img_container.opened {
+        display: initial;
+        opacity: 1;
+        visibility: visible;
+    }
+    .project_img_container > img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    .project_img_container > img.URL_SHORTENER {
+        transform: translateY(-25%);
+    }
+    .project_img_container > img.TEOXYS_TATTOO {
+        transform: translateY(-15%);
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        height: 100%;
+        gap: 1.25%;
+    }
+    .title_wrapper {
+        overflow: hidden;
+        width: 100%;
+        white-space: nowrap;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        /* border: var(--border-clear); */
+    }
+    @keyframes title_movement {
+        from {
+            transform: translateX(100%)
+        }
+        to {
+            transform: translateX(-100%)
+        }
+    }
+    .title {
+        font-weight: 900;
+        font-size: 1.75rem;
+        text-wrap: nowrap;
+        animation: title_movement 5s linear infinite;
+        display: inline-block;
+        padding-right: 35%;
+    }
+    .desc {
+        color: var(--grey-800);
+    }
+    .techs_container {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+    .tech {
+        font-size: 14px;
+        color: var(--grey-600);
+        background: var(--grey-100);
+        border-radius: 20px;
+        padding: 3px 6px;
+        border: 0.5px solid var(--grey-300);
+    }
+    .links_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+    }
+}
+
 @media (max-width: 1366px) {
+    .project_container {
+        transform: translateY(calc(100% - 2.5rem));
+    }
     .project_img_container {
         display: none;
     }
@@ -45,70 +229,4 @@
     .wrapper:hover .project_img_container.opened{
         display: initial;
     }
-}
-.project_img_container > img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-.project_img_container > img.URL_SHORTENER {
-    transform: translateY(-25%);
-}
-.project_img_container > img.TEOXYS_TATTOO {
-    transform: translateY(-15%);
-}
-.content {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr auto;
-    height: 100%;
-    gap: 1.25%;
-}
-.title_wrapper {
-    overflow: hidden;
-    width: 100%;
-    white-space: nowrap;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    /* border: var(--border-clear); */
-}
-@keyframes title_movement {
-    from {
-        transform: translateX(100%)
-    }
-    to {
-        transform: translateX(-100%)
-    }
-}
-.title {
-    font-weight: 900;
-    font-size: 1.75rem;
-    text-wrap: nowrap;
-    animation: title_movement 5s linear infinite;
-    display: inline-block;
-    padding-right: 35%;
-}
-.desc {
-    color: var(--grey-800);
-}
-.techs_container {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    height: fit-content;
-}
-.tech {
-    font-size: 14px;
-    color: var(--grey-600);
-    background: var(--grey-100);
-    border-radius: 20px;
-    padding: 3px 6px;
-    border: 0.5px solid var(--grey-300);
-}
-.links_container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
 }

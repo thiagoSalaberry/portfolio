@@ -52,6 +52,9 @@
 .desc {
     color: var(--grey-800);
 }
+.desc.opened {
+    display: none;
+}
 .techs_list {
     list-style: none;
     display: flex;
@@ -81,6 +84,16 @@
     height: 100%;
     /* background: var(--brand-900); */
 }
+.projects_list {
+    display: none;
+}
+.projects_list.opened {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: .5rem;
+}
+
 .projects_title {
     /* color: var(--white); */
 }
@@ -110,4 +123,21 @@
 }
 .PIEDRA_PAPEL_Ó_TIJERA {
     transform: translateY(-5.5%);
+}
+/* DESKTOP */
+@media (min-width: 1024px) {
+    .desc {
+        display: none;
+    }
+    .projects_desc {
+        display: none;
+    }
+    .projects_container {
+        display: flex;
+        flex-direction: row;
+    }
+    .projects_list, .projects_list.opened {
+        display: flex;
+        flex-direction: row;
+    }
 }

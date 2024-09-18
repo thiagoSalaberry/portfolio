@@ -9,7 +9,10 @@ export type ProjectProps = {
   link: string;
   githubLink: string;
   opened: boolean;
+  selected: boolean;
+  notSelected: boolean;
   language: "es" | "en";
+  onSelect: () => void;
 };
 export type SectionProps = {
   index: number;
