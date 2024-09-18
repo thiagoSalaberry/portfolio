@@ -1,17 +1,20 @@
+import { poppins } from "@/lib/fonts";
 import styles from "./styles.module.css";
 import { techsMap } from "@/lib/techsMap";
 
-export function TechSection({opened}: {opened:boolean}) {
+export function TechSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
     return (
-        <>
-            {opened && (
-                <div className={styles.techs_container}>
+        <div className={`${styles.techs_container} ${opened && styles.opened}`}>
+            {opened ? (
+                <>
                     {Object.values(techsMap).map((tech, index) => {
                         return <Tech key={index} img={tech.img} title={tech.name}/>
                     })}
-                </div>
+                </>
+            ) : (
+                <p className={poppins.className}>Repertorio de las tecnologías que domino</p>
             )}
-        </>
+        </div>
     )
 };
                         

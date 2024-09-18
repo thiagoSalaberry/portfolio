@@ -96,3 +96,30 @@
     display: grid;
     grid-template-columns: 1fr auto;
 }
+.education_title_wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+.education_title_slider {
+    white-space: nowrap;
+    animation: move 8s linear infinite;
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+.education_title.opened {
+    text-wrap: nowrap;
+}
+.divider {
+    min-height: 100%;
+    width: 1px;
+    background: var(--grey);
+}
+@keyframes move {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

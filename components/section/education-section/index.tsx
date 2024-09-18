@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { techsMap } from "@/lib/techsMap";
 import { BookCheck, Hourglass, Network } from "lucide-react";
 
-export function EducationSection({opened, concepts}: {opened:boolean, concepts: {title:string, desc:string}[]}) {
+export function EducationSection({opened, concepts, language}: {opened:boolean, concepts: {title:string, desc:string}[], language: "es" | "en"}) {
     return (
         <>
             {opened ? (
@@ -29,8 +29,13 @@ export function EducationSection({opened, concepts}: {opened:boolean, concepts: 
                 </div>
             ) : (
                 <div className={styles.education_container}>
-                    <h4 className={`${styles.education_title} ${poppins.className} ${styles.opened}`}>Fullstack Web Developer <BookCheck color="var(--green)" size={20}/></h4>
-                    <h4 className={`${styles.education_title} ${poppins.className} ${styles.opened}`}>Tecnicatura en Programación <span><Hourglass color="var(--grey)" size={20}/></span></h4>
+                    <div className={styles.education_title_wrapper}>
+                        <div className={styles.education_title_slider}>
+                            <h4 className={`${styles.education_title} ${poppins.className} ${styles.opened}`}>Fullstack Web Developer <BookCheck color="var(--green)" size={20}/></h4>
+                            <div className={styles.divider}></div>
+                            <h4 className={`${styles.education_title} ${poppins.className} ${styles.opened}`}>Tecnicatura en Programación <span><Hourglass color="var(--grey)" size={20}/></span></h4>
+                        </div>
+                    </div>
                 </div>
             )}
         </>

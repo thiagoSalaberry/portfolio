@@ -5,7 +5,7 @@ import { Copy, CopyCheck } from "lucide-react";
 import copy from "copy-to-clipboard";
 import { useState } from "react";
 
-export function ContactSection({opened}: {opened:boolean}) {
+export function ContactSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
     const [copied, setCopied] = useState<boolean>(false)
     const handleCopy = () => {
         copy("thiagosalaberry99@gmail.com")

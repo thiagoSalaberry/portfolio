@@ -4,6 +4,8 @@ import translation from "@/lib/translation.json";
 import { Button } from "@/ui";
 import { AnimatePresence, motion } from "framer-motion";
 import { Book, Coffee, Download, MapPin } from "lucide-react";
+import Image from "next/image";
+import me from "@/public/man_3.webp"
 const animation = {
     initial: {
         opacity: 0
@@ -15,7 +17,16 @@ const animation = {
         opacity: 0
     }
 }
-export function AboutMeSection({opened}: {opened:boolean}) {
+export function AboutMeSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
+    const handleDownload = () => {
+        const cvPDF = language == "es" ? "/CV - Sep.pdf" : "/CV- Sep Eng.pdf" ;
+        const link = document.createElement("a");
+        link.href = cvPDF;
+        link.download = "CV - Thiago Salaberry.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
     return (
         <>
             {opened ? (
@@ -41,12 +52,10 @@ export function AboutMeSection({opened}: {opened:boolean}) {
                             <h1 className={`${styles.about_me_role} ${bigShouldersDisplay.className}`}>FULL<br/>STACK<br/>WEB<br/>DEV</h1>
                         </div>
                         <div className={styles.about_me_img_container}>
-                            <div className={styles.img_container}>
-                                {/* <img src="man_3.jpg" alt="" /> */}
-                            </div>
+                                <img src="man_3.webp" alt="me" loading="lazy"/>
                         </div>
                         <div className={styles.about_me_button_container}>
-                            <Button variant="secondaryIcon" onClick={()=>{}}>CV <Download size={20}/></Button>
+                            <Button variant="secondaryIcon" onClick={handleDownload}>CV <Download size={20}/></Button>
                         </div>
                         <div className={styles.about_me_desc_container}>
                             <p className={styles.about_me_desc}>
@@ -61,7 +70,8 @@ export function AboutMeSection({opened}: {opened:boolean}) {
             ) : (
                 <div className={styles.container_contained}>
                     <h2 className={`${styles.name} ${bigShouldersDisplay.className}`}>THIAGO SALABERRY</h2>
-                    <div className={styles.contained_img}></div>
+                    <b className={styles.profesion}>FULLSTACK WEB DEVELOPER</b>
+                    <Button variant="mainIcon" onClick={handleDownload}>CV <Download size={20}/></Button>
                 </div>
             )}
         </>

@@ -84,7 +84,7 @@
     background: var(--base);
 }
 .inner_content.CONTACTO {
-    background: var(--brand-700);
+    background: var(--brand-200);
 }
 .inner_content.CONTACTO.opened {
     background: var(--base);

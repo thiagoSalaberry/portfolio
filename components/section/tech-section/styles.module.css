@@ -5,13 +5,21 @@
     /* max-height: 100%; */
     border: var(--border);
 }
-.techs_container {
+.techs_container.opened {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: .5rem;
     height: 100%;
     width: 100%;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
+}
+.techs_container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+.techs_container > p {
+    color: var(--black);
 }
 .tech_container {
     display: flex;

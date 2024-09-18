@@ -1,11 +1,13 @@
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import styles from "./styles.module.css";
 import { useState } from "react";
-import { ChevronDown, ExternalLink, Navigation } from "lucide-react";
+import { ChevronDown, ExternalLink } from "lucide-react";
 import { Github } from "react-bootstrap-icons";
+import { Navigation } from "@/ui";
+import { motion } from "framer-motion";
 
-export function ProjectsSection({opened}: {opened:boolean}) {
-    const [selected, setSelected] = useState<number | null>(null);
+export function ProjectsSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
+    const [selected, setSelected] = useState<number | null>(1);
     const handleSelect = (index:number):void => {
         setSelected(prev => prev == index ? null : index);
     }
@@ -14,6 +16,7 @@ export function ProjectsSection({opened}: {opened:boolean}) {
             {opened ? (
                 <>
                     <ProjectCard
+                        index={0}
                         selected={selected == 0}
                         notSelected={selected != null && selected != 0}
                         onSelect={()=>handleSelect(0)}
@@ -24,6 +27,7 @@ export function ProjectsSection({opened}: {opened:boolean}) {
                         github=""
                     />
                     <ProjectCard
+                        index={1}
                         selected={selected == 1}
                         notSelected={selected != null && selected != 1}
                         onSelect={()=>handleSelect(1)}
@@ -34,6 +38,7 @@ export function ProjectsSection({opened}: {opened:boolean}) {
                         github=""
                     />
                     <ProjectCard
+                        index={2}
                         selected={selected == 2}
                         notSelected={selected != null && selected != 2}
                         onSelect={()=>handleSelect(2)}
@@ -44,6 +49,7 @@ export function ProjectsSection({opened}: {opened:boolean}) {
                         github=""
                     />
                     <ProjectCard
+                        index={3}
                         selected={selected == 3}
                         notSelected={selected != null && selected != 3}
                         onSelect={()=>handleSelect(3)}
@@ -55,17 +61,17 @@ export function ProjectsSection({opened}: {opened:boolean}) {
                     />
                 </>
             ) : (
-                <div className={styles.projects_container}>
-                    <h3 className={styles.projects_title}>E-COMMERCE</h3>
-                    <h3 className={styles.projects_title}>URL SHORTENER</h3>
-                    <h3 className={styles.projects_title}>TEOXYS TATTOO</h3>
-                    <h3 className={styles.projects_title}>PIEDRA PAPEL O TIJERA</h3>
+                <div className={`${styles.projects_container} ${poppins.className}`}>
+                    <p className={styles.projects_desc}>Estos son mis proyectos más destacados hasta la fecha, en los que se pueden apreciar mis conocimientos técnicos
+                        y mi enfoque de diseño y experiencia de usuario.
+                    </p>
                 </div>
             )}
         </div>
     )
 };
 type ProjectCardProp = {
+    index:number;
     title:string;
     desc:string;
     techs:string[];
@@ -76,6 +82,12 @@ type ProjectCardProp = {
     onSelect:()=>void;
 }
 function ProjectCard(props:ProjectCardProp) {
+    const imageMap = {
+        0: "ecommerce.png",
+        1: "urlshortener.png",
+        2: "teoxys-tattoo.png",
+        3: "ppt.png"
+    }
     return (
         <div className={`${styles.project_card} ${props.selected && styles.selected} ${props.notSelected && styles.not_selected}`}>
             <button onClick={props.onSelect} className={styles.dropdown_button}>
@@ -84,8 +96,12 @@ function ProjectCard(props:ProjectCardProp) {
                     <ChevronDown size={20}/>
                 </span>
             </button>
+            {!props.notSelected && <p className={`${styles.desc} ${poppins.className}`}>{props.desc}</p>}
             {props.selected && (
                 <div className={`${styles.card_content}`}>
+                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} className={styles.img_container}>
+                        <img className={styles[props.title.replaceAll(" ", "_")]} src={imageMap[props.index as keyof typeof imageMap]} alt={imageMap[props.index as keyof typeof imageMap]} />
+                    </motion.div>
                     <p className={`${styles.desc} ${poppins.className}`}>{props.desc}</p>
                     <ul className={styles.techs_list}>
                         {props.techs.map(tech => {
@@ -93,8 +109,8 @@ function ProjectCard(props:ProjectCardProp) {
                         })}
                     </ul>
                     <div className={styles.links_container}>
-                        <Navigation href=""><ExternalLink size={20}/> Ver</Navigation>
-                        <Navigation href=""><Github size={20}/> GitHub</Navigation>
+                        <Navigation href={props.link}><ExternalLink size={20}/> Ver</Navigation>
+                        <Navigation href={props.github}><Github size={20}/> GitHub</Navigation>
                     </div>
                 </div>
             )}

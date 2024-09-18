@@ -12,27 +12,27 @@ import { ProjectsSection } from "@/components/section/project-section";
 import { TechSection } from "@/components/section/tech-section";
 import { EducationSection } from "@/components/section/education-section";
 import { ContactSection } from "@/components/section/contact-section";
+import { useRecoilValue } from "recoil";
+import { languageAtom } from "@/lib/atoms";
 
 const concepts = translation.es.techs_section.key_concepts.list;
 
 export default function Page() {
+    const language = useRecoilValue(languageAtom)
     const mainRef = useRef<HTMLMediaElement>(null);
-    // const refs = [...Array(5)].map(_ => React.createRef<HTMLTableSectionElement>())
     const [cellStyles, setCellStyles] = useState<{
         left:number,
         top:number,
         width:number,
         height:number,
-      }[]>([])
-
-    // const refs:React.RefObject<HTMLTableSectionElement>[] = [...Array(5)].map(_ => useRef<HTMLTableSectionElement>(null));
-      const refs = [
-        useRef<HTMLTableSectionElement>(null),
-        useRef<HTMLTableSectionElement>(null),
-        useRef<HTMLTableSectionElement>(null),
-        useRef<HTMLTableSectionElement>(null),
-        useRef<HTMLTableSectionElement>(null),
-      ]
+    }[]>([])
+    const refs = [
+    useRef<HTMLTableSectionElement>(null),
+    useRef<HTMLTableSectionElement>(null),
+    useRef<HTMLTableSectionElement>(null),
+    useRef<HTMLTableSectionElement>(null),
+    useRef<HTMLTableSectionElement>(null),
+    ]
     const [currentRef, setCurrentRef] = useState<number | null>(null);
     const updateCellStyles =  () => {
         const newStyles = refs.map(cellRef => {
@@ -56,23 +56,23 @@ export default function Page() {
     const sectionMap = {
         0: {
             title: "SOBRE MÍ",
-            content: <AboutMeSection opened={currentRef == 0}/>
+            content: <AboutMeSection opened={currentRef == 0} language={language}/>
         },
         1: {
             title: "PROYECTOS",
-            content: <ProjectsSection opened={currentRef == 1}/>
+            content: <ProjectsSection opened={currentRef == 1} language={language}/>
         },
         2: {
             title: "TECNOLOGÍAS",
-            content: <TechSection opened={currentRef == 2}/>
+            content: <TechSection opened={currentRef == 2}  language={language}/>
         },
         3: {
             title: "EDUCACIÓN",
-            content: <EducationSection concepts={concepts} opened={currentRef == 3}/>
+            content: <EducationSection concepts={concepts} opened={currentRef == 3} language={language}/>
         },
         4: {
             title: "CONTACTO",
-            content: <ContactSection opened={currentRef == 4}/>
+            content: <ContactSection opened={currentRef == 4} language={language}/>
         },
     };
     return (
