@@ -5,7 +5,8 @@ import { Github } from "react-bootstrap-icons";
 import { ChevronDown, ExternalLink } from "lucide-react";
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import { useRef } from "react";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
+
 export function Project(props:ProjectProps) {
     return (
         <>

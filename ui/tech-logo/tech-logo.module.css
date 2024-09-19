@@ -1,8 +1,0 @@
-.img {
-    width: auto;
-    height: 30px;
-    filter: saturate(0);
-}
-.hovered {
-    filter: saturate(1);
-}

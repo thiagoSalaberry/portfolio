@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { bigShouldersDisplay } from "@/lib/fonts";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { languageAtom, sectionAtom } from "@/lib/atoms";
-import translation from "@/lib/translation.json"
+import translation from "@/lib/translation.json";
 
 export function Navbar() {
     const [section, setSection] = useRecoilState(sectionAtom);
@@ -24,10 +24,10 @@ export function Navbar() {
         }
     }, [section, language]);
     const content = {
-        projects: translation[language].header_nav[0],
-        techs: translation[language].header_nav[1],
-        contact: translation[language].header_nav[2],
-    }
+        projects: translation[language as "es" | "en"].header_nav[0],
+        techs: translation[language as "es" | "en"].header_nav[1],
+        contact: translation[language as "es" | "en"].header_nav[2],
+    };
     return (
         <nav className={styles.nav}>
             <ul className={styles.nav_list}>
