@@ -17,7 +17,7 @@
     align-items: center;
     gap: 1rem;
 }
-.education {
+.education_container.opened .education {
     padding: .5rem;
     border: var(--border);
     border-radius: 10px;
@@ -54,7 +54,11 @@
     animation: pending 2s ease infinite;
 }
 .education_lapse {
+    display: none;
     color: var(--grey-700);
+}
+.education_container.opened .education_lapse {
+    display: block;
 }
 .concepts_list_wrapper {
     overflow-y: scroll;
@@ -121,5 +125,17 @@
     }
     100% {
         transform: translateX(-100%);
+    }
+}
+/* DESKTOP */
+@media (min-width: 1024px) {
+    .education_title_slider {
+        animation: none;
+    }
+    .education {
+        border: none;
+    }
+    .education_lapse {
+        display: block;
     }
 }

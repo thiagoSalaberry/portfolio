@@ -5,9 +5,9 @@ import { BookCheck, Hourglass, Network } from "lucide-react";
 
 export function EducationSection({opened, concepts, language}: {opened:boolean, concepts: {title:string, desc:string}[], language: "es" | "en"}) {
     return (
-        <>
+        <div className={`${styles.education_container} ${opened && styles.opened}`}>
             {opened ? (
-                <div className={`${styles.education_container} ${styles.opened}`}>
+                <>
                     <div className={`${styles.education} ${styles.in_progress}`}>
                         <h4 className={`${styles.education_title} ${poppins.className}`}>Tecnicatura en Programación <span><Hourglass color="var(--grey)" size={20}/></span></h4>
                         <p className={`${styles.education_lapse} ${poppins.className}`}>UTN | 2024 - presente</p>
@@ -26,19 +26,23 @@ export function EducationSection({opened, concepts, language}: {opened:boolean, 
                             })}
                         </ul>
                     </div>
-                </div>
+                </>
             ) : (
-                <div className={styles.education_container}>
-                    <div className={styles.education_title_wrapper}>
-                        <div className={styles.education_title_slider}>
+                <div className={styles.education_title_wrapper}>
+                    <div className={styles.education_title_slider}>
+                        <div className={styles.education}>
                             <h4 className={`${styles.education_title} ${poppins.className} ${styles.opened}`}>Fullstack Web Developer <BookCheck color="var(--green)" size={20}/></h4>
-                            <div className={styles.divider}></div>
+                            <p className={`${styles.education_lapse} ${poppins.className}`}>APX | 2022 - 2024</p>
+                        </div>
+                        <div className={styles.divider}></div>
+                        <div className={styles.education}>
                             <h4 className={`${styles.education_title} ${poppins.className} ${styles.opened}`}>Tecnicatura en Programación <span><Hourglass color="var(--grey)" size={20}/></span></h4>
+                            <p className={`${styles.education_lapse} ${poppins.className}`}>UTN | 2024 - presente</p>
                         </div>
                     </div>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 type ConceptProps = {
