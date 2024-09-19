@@ -4,12 +4,10 @@ import { bigShouldersDisplay } from "@/lib/fonts";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { languageAtom, sectionAtom } from "@/lib/atoms";
 import translation from "@/lib/translation.json"
-// import { NavbarProps } from "@/lib/types";
 
 export function Navbar() {
     const [section, setSection] = useRecoilState(sectionAtom);
     const language = useRecoilValue(languageAtom);
-    // const [selected, setSelected] = useState<"projects" | "techs" | "about_me" | "contact" | null>(null);
     const currentRef = useRef<HTMLDivElement>(null);
     useEffect(()=>{
         const currentDiv = currentRef.current;

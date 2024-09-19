@@ -2,8 +2,8 @@
 import styles from "./styles.module.css";
 import { Header, Section } from "@/components";
 import React, { useState, useEffect, useRef } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { languageAtom, sectionAtom } from "@/lib/atoms";
+import { useRecoilState } from "recoil";
+import { sectionAtom } from "@/lib/atoms";
 import { sections } from "../sections";
 
 export default function Page() {
@@ -22,7 +22,6 @@ export default function Page() {
         height:number,
     }[]>([])
     const [section, setSection] = useRecoilState(sectionAtom);
-    const language = useRecoilValue(languageAtom);
     const updateCellStyles =  () => {
         const newStyles = cellRefs.map(cellRef => {
          const cell = cellRef.current;
@@ -85,7 +84,6 @@ export default function Page() {
                     </React.Fragment>
                     )
                 })}
-                {/* <section className={`${styles.cell} ${styles.cell_1}`}></section> */}
             </main>
         </div>
     )

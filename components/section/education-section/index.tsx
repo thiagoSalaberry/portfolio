@@ -1,6 +1,5 @@
 import { bigShouldersDisplay, poppins } from "@/lib/fonts";
 import styles from "./styles.module.css";
-import { techsMap } from "@/lib/techsMap";
 import { BookCheck, BrickWall, DatabaseZap, Hourglass, Network, Rocket } from "lucide-react";
 import translation from "@/lib/translation.json"
 

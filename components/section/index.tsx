@@ -1,23 +1,11 @@
 import styles from "./styles.module.css";
 import { SectionProps } from "@/lib/types";
-import { Button, Input, Navigation, Textarea } from "@/ui";
-import { Box, Copy, CopyCheck, Download, Linkedin, LinkedinIcon, MapPin, Coffee, Book, Maximize2, Minimize2, BookCheck, Send, LayoutGridIcon } from "lucide-react";
-import { useState } from "react";
-import { bigShouldersDisplay, poppins } from "@/lib/fonts";
-import Image from "next/image";
-import img1 from "@/public/man_1.jpg";
-import img2 from "@/public/man_2.jpg";
-import img3 from "@/public/man_3.jpg";
-import { Github, Hourglass } from "react-bootstrap-icons";
-import { ContactForm, Project, TechCard } from "@/components";
-import { techsMap } from "@/lib/techsMap";
-import copy from "copy-to-clipboard";
-import { useContactForm } from "@/hooks/useContactForm";
-import { Miss_Fajardose } from "next/font/google";
+import { Button } from "@/ui";
+import { Maximize2, Minimize2 } from "lucide-react";
+import { bigShouldersDisplay } from "@/lib/fonts";
 import { useRecoilValue } from "recoil";
-import { languageAtom, sectionAtom } from "@/lib/atoms";
+import { languageAtom } from "@/lib/atoms";
 import translation from "@/lib/translation.json"
-import {motion, AnimatePresence} from "framer-motion";
 
 import { AboutMeSection } from "./about-me-section"
 import { ProjectsSection } from "./project-section";
@@ -41,7 +29,6 @@ export function Section(props:SectionProps) {
         3: translation[language].education_section.title,
         4: translation[language].contact_section.title,
     }
-    console.log(props.index, props.title)
     return (
         <div
             className={`

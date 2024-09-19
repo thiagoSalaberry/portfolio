@@ -1,10 +1,6 @@
-import { bigShouldersDisplay, poppins } from "@/lib/fonts";
+import { poppins } from "@/lib/fonts";
 import styles from "./styles.module.css";
 import { useState } from "react";
-import { ChevronDown, ExternalLink } from "lucide-react";
-import { Github } from "react-bootstrap-icons";
-import { Navigation } from "@/ui";
-import { motion } from "framer-motion";
 import { Project } from "@/components/project";
 import translation from "@/lib/translation.json"
 

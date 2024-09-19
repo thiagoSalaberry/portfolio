@@ -1,7 +1,6 @@
 import styles from "./styles.module.css";
 import { Navbar, ThemeSwitch, LanguageSwitch } from "@/components";
 import { Navigation } from "@/ui"
-// import { HeaderProps } from "@/lib/types";
 import { Github } from "react-bootstrap-icons";
 import { Linkedin } from "lucide-react";
 import { inter } from "@/lib/fonts";

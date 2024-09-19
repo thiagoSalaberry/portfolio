@@ -2,9 +2,9 @@ import styles from "./styles.module.css";
 import { ProjectProps } from "@/lib/types";
 import { Navigation } from "@/ui";
 import { Github } from "react-bootstrap-icons";
-import { ArrowUpCircle, ChevronDown, ExternalLink } from "lucide-react";
-import { bigShouldersDisplay, inter, poppins } from "@/lib/fonts";
-import { useRef, useState } from "react";
+import { ChevronDown, ExternalLink } from "lucide-react";
+import { bigShouldersDisplay, poppins } from "@/lib/fonts";
+import { useRef } from "react";
 import {motion} from "framer-motion";
 export function Project(props:ProjectProps) {
     return (

@@ -3,11 +3,9 @@ import styles from "./styles.module.css";
 import { bigShouldersDisplay } from "@/lib/fonts";
 import { useRecoilState } from "recoil";
 import { languageAtom } from "@/lib/atoms";
-// import { LanguageSwitchProps } from "@/lib/types";
 
 export function LanguageSwitch() {
     const [language, setLanguage] = useRecoilState(languageAtom);
-    // const [selected, setSelected] = useState<"es" | "en">("es");
     const currentRef = useRef<HTMLDivElement>(null);
     useEffect(()=>{
         const currentDiv = currentRef.current;
