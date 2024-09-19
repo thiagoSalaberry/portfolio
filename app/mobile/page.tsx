@@ -68,7 +68,7 @@ export default function Page() {
         },
         3: {
             title: "EDUCACIÓN",
-            content: <EducationSection concepts={concepts} opened={currentRef == 3} language={language}/>
+            content: <EducationSection opened={currentRef == 3} language={language}/>
         },
         4: {
             title: "CONTACTO",
