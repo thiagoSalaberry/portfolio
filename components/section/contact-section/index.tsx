@@ -6,6 +6,7 @@ import copy from "copy-to-clipboard";
 import { useState } from "react";
 import { Navigation } from "@/ui";
 import { Github } from "react-bootstrap-icons";
+import translation from "@/lib/translation.json"
 
 export function ContactSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
     const [copied, setCopied] = useState<boolean>(false)
@@ -18,7 +19,7 @@ export function ContactSection({opened, language}: {opened:boolean, language: "e
     }
     return (
         <div className={`${styles.contact_container} ${opened && styles.opened}`}>
-            <p className={`${styles.contact_desc} ${poppins.className}`}>Completá el formulario o enviame un mail a la siguiente dirección:</p>
+            <p className={`${styles.contact_desc} ${poppins.className}`}>{translation[language].contact_section.contact_section_quote}</p>
             <button onClick={handleCopy} className={`${styles.mail} ${poppins.className}`}>
                 thiagosalaberry99@gmail.com
                 {copied ? <CopyCheck size={20}/> : <Copy size={20}/>}

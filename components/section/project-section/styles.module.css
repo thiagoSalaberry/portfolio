@@ -121,7 +121,7 @@
 .TEOXYS_TATTOO {
     transform: translateY(-15%);
 }
-.PIEDRA_PAPEL_Ó_TIJERA {
+.PIEDRA_PAPEL_Ó_TIJERA, .ROCK_PAPER_Ó_SCISSORS {
     transform: translateY(-5.5%);
 }
 /* DESKTOP */

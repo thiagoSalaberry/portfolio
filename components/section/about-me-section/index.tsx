@@ -44,15 +44,15 @@ export function AboutMeSection({opened, language}: {opened:boolean, language: "e
                                 <MapPin size={18}/> Buenos Aires, <img className={styles.arg} src="/argentina.gif" alt="argentina" />
                             </li>
                             <li className={styles.about_me_item}>
-                                <Coffee size={18}/> {translation["es"].about_me_section.list[0]}
+                                <Coffee size={18}/> {translation[language].about_me_section.list[0]}
                             </li>
                             <li className={styles.about_me_item}>
-                                <Book size={18}/> {translation["es"].about_me_section.list[1]}
+                                <Book size={18}/> {translation[language].about_me_section.list[1]}
                             </li>
                         </ul>
                     </div>
                     <div className={styles.about_me_role_container}>
-                        <h1 className={`${styles.about_me_role} ${bigShouldersDisplay.className}`}>FULL<br className={styles.br}/>STACK<br/>WEB<br className={styles.br}/>DEV</h1>
+                        <h1 className={`${styles.about_me_role} ${bigShouldersDisplay.className}`}>FULL<br className={styles.br}/>STACK<br/>WEB<br className={styles.br}/> DEV</h1>
                     </div>
                     <div className={styles.about_me_img_container}>
                             <img src="man_3.webp" alt="me" loading="lazy"/>
@@ -62,7 +62,7 @@ export function AboutMeSection({opened, language}: {opened:boolean, language: "e
                     </div>
                     <div className={styles.about_me_desc_container}>
                         <p className={styles.about_me_desc}>
-                            {translation["es"].about_me_section.desc.split("&").map((text, index) => {
+                            {translation[language].about_me_section.desc.split("&").map((text, index) => {
                                 if(index != 1 && index != 3) return text
                                 return <b key={text}>{text}</b>
                             })}

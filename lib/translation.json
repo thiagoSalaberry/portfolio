@@ -8,8 +8,10 @@
     },
     "techs_section": {
       "title": "TECNOLOGÍAS",
+      "contained_desc": "Este es el repertorio de tecnologías que domino.",
       "key_concepts": {
         "title": "Conceptos clave",
+        "subtitle": "CONOCIMIENTOS",
         "desc": "Además de las tecnologías detalladas, comprendo y aplico conceptos fundamentales que son cruciales para desarrollar de manera efectiva:",
         "list": [
           {
@@ -33,6 +35,7 @@
     },
     "projects_section": {
       "title": "PROYECTOS",
+      "contained_desc": "Estos son mis proyectos destacados, en los que se pueden apreciar mis conocimientos técnicos.",
       "1": {
         "title": "E-COMMERCE",
         "desc": "Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
@@ -46,7 +49,7 @@
         "desc": "Una web para facilitar la reservación de turnos de tatuajes."
       },
       "4": {
-        "title": "PIEDRA PAPEL O TIJERA",
+        "title": "PIEDRA PAPEL Ó TIJERA",
         "desc": "Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
       }
     },
@@ -99,8 +102,10 @@
     },
     "techs_section": {
       "title": "TECHS",
+      "contained_desc": "This is my techs repertory I'm keen on.",
       "key_concepts": {
         "title": "Key concepts",
+        "subtitle": "KNOWLEDGE",
         "desc": "In addition to the detailed techs, I understand and apply fundamental concepts that are crucial for effective development:",
         "list": [
           {
@@ -124,6 +129,7 @@
     },
     "projects_section": {
       "title": "PROJECTS",
+      "contained_desc": "These are my featured projects, in which you can appreciate my technical skills",
       "1": {
         "title": "E-COMMERCE",
         "desc": "An E-Commerce to publish products and buy using MercadoPago."

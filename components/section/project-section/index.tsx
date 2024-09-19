@@ -6,6 +6,7 @@ import { Github } from "react-bootstrap-icons";
 import { Navigation } from "@/ui";
 import { motion } from "framer-motion";
 import { Project } from "@/components/project";
+import translation from "@/lib/translation.json"
 
 export function ProjectsSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
     const [selected, setSelected] = useState<number | null>(1);
@@ -14,108 +15,61 @@ export function ProjectsSection({opened, language}: {opened:boolean, language: "
     }
     return (
         <div className={`${styles.projects_container} ${opened && styles.opened}`}>
-            <p className={`${styles.desc} ${poppins.className} ${opened && styles.opened}`}>Estos son mis proyectos más destacados hasta la fecha, en los que se pueden apreciar mis conocimientos técnicos y mi enfoque de diseño y experiencia de usuario.</p>
+            <p className={`${styles.desc} ${poppins.className} ${opened && styles.opened}`}>{translation[language].projects_section.contained_desc}</p>
             <div className={`${styles.projects_list} ${opened && styles.opened}`}>
                 <Project
                     title="E-COMMERCE"
-                    description="Un comercio electrónico para publicar productos y comprar a través de MercadoPago."
+                    description={translation[language].projects_section[1].desc}
                     techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
                     index={0}
-                    language="es"
+                    language={language}
                     opened={opened}
                     selected={selected == 0}
                     notSelected={selected != null && selected != 0}
-                    githubLink=""
-                    link=""
+                    githubLink="https://github.com/thiagoSalaberry/frontend"
+                    link="https://frontend-seven-blond.vercel.app/"
                     onSelect={()=>handleSelect(0)}
                 />
                 <Project
                     title="URL SHORTENER"
-                    description="Una web para recortar URLs largos y hacerlos más legibles y cómodos."
+                    description={translation[language].projects_section[2].desc}
                     techs={["React.js", "Next.js", "TypeScript", "PostgreSQL"]}
                     index={1}
-                    language="es"
+                    language={language}
                     opened={opened}
                     selected={selected == 1}
                     notSelected={selected != null && selected != 1}
-                    githubLink=""
-                    link=""
+                    githubLink="https://github.com/thiagoSalaberry/url-shortener"
+                    link="https://teoxys-url.vercel.app/"
                     onSelect={()=>handleSelect(1)}
                 />
                 <Project
                     title="TEOXYS TATTOO"
-                    description="Una web para facilitar la reservación de turnos de tatuajes."
+                    description={translation[language].projects_section[3].desc}
                     techs={["React.js", "Next.js", "TypeScript", "Styled-Components"]}
                     index={2}
-                    language="es"
+                    language={language}
                     opened={opened}
                     selected={selected == 2}
                     notSelected={selected != null && selected != 2}
-                    githubLink=""
-                    link=""
+                    githubLink="https://github.com/thiagoSalaberry/landing-page"
+                    link="https://landing-page-zeta-mauve.vercel.app/"
                     onSelect={()=>handleSelect(2)}
                 />
                 <Project
-                    title="PIEDRA PAPEL Ó TIJERA"
-                    description="Un piedra papel o tijera online para jugar con tus amigos en tiempo real."
+                    title={translation[language].projects_section[4].title}
+                    description={translation[language].projects_section[4].desc}
                     techs={["React.js", "Next.js", "TypeScript", "Firebase"]}
                     index={3}
-                    language="es"
+                    language={language}
                     opened={opened}
                     selected={selected == 3}
                     notSelected={selected != null && selected != 3}
-                    githubLink=""
-                    link=""
+                    githubLink="https://github.com/thiagoSalaberry/ppt-online"
+                    link="https://ppt-online-react.vercel.app/"
                     onSelect={()=>handleSelect(3)}
                 />
             </div>
         </div>
     )
 };
-type ProjectCardProp = {
-    index:number;
-    title:string;
-    desc:string;
-    techs:string[];
-    link:string;
-    github:string;
-    selected:boolean;
-    notSelected: boolean;
-    onSelect:()=>void;
-}
-function ProjectCard(props:ProjectCardProp) {
-    const imageMap = {
-        0: "ecommerce.png",
-        1: "urlshortener.png",
-        2: "teoxys-tattoo.png",
-        3: "ppt.png"
-    }
-    return (
-        <div className={`${styles.project_card} ${props.selected && styles.selected} ${props.notSelected && styles.not_selected}`}>
-            <button onClick={props.onSelect} className={styles.dropdown_button}>
-                <h3 className={`${styles.dropdown_title} ${bigShouldersDisplay.className}`}>{props.title}</h3>
-                <span className={`${styles.chevron} ${props.selected && styles.opened}`}>
-                    <ChevronDown size={20}/>
-                </span>
-            </button>
-            {!props.notSelected && !props.selected && <p className={`${styles.desc} ${poppins.className}`}>{props.desc}</p>}
-            {props.selected && (
-                <div className={`${styles.card_content}`}>
-                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} className={styles.img_container}>
-                        <img className={styles[props.title.replaceAll(" ", "_")]} src={imageMap[props.index as keyof typeof imageMap]} alt={imageMap[props.index as keyof typeof imageMap]} />
-                    </motion.div>
-                    <p className={`${styles.desc} ${poppins.className}`}>{props.desc}</p>
-                    <ul className={styles.techs_list}>
-                        {props.techs.map(tech => {
-                            return <li key={tech.toString()} className={`${styles.tech} ${poppins.className}`}>{tech}</li>
-                        })}
-                    </ul>
-                    <div className={styles.links_container}>
-                        <Navigation href={props.link}><ExternalLink size={20}/> Ver</Navigation>
-                        <Navigation href={props.github}><Github size={20}/> GitHub</Navigation>
-                    </div>
-                </div>
-            )}
-        </div>
-    )
-}

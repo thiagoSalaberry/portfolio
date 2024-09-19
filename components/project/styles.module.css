@@ -130,7 +130,7 @@
     .project_container.opened {
         transform: translateY(0%);
     }
-    .wrapper:hover .project_container.E-COMMERCE, .wrapper:hover .project_container.URL_SHORTENER, .wrapper:hover .project_container.TEOXYS_TATTOO, .wrapper:hover .project_container.PIEDRA_PAPEL_Ó_TIJERA {
+    .wrapper:hover .project_container.E-COMMERCE, .wrapper:hover .project_container.URL_SHORTENER, .wrapper:hover .project_container.TEOXYS_TATTOO, .wrapper:hover .project_container.PIEDRA_PAPEL_Ó_TIJERA,.wrapper:hover .project_container.ROCK_PAPER_Ó_SCISSORS {
         transform: translateY(0%);
     }
     .project_img_container {
@@ -158,6 +158,9 @@
     }
     .project_img_container > img.TEOXYS_TATTOO {
         transform: translateY(-15%);
+    }
+    .project_img_container {
+        display: none;
     }
     .content {
         display: grid;

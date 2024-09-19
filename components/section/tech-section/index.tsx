@@ -4,6 +4,7 @@ import { techsMap } from "@/lib/techsMap";
 import translation from "@/lib/translation.json"
 import { TechCard } from "@/components/tech-card";
 import { motion, AnimatePresence } from "framer-motion"
+import { BrickWall, DatabaseZap, Network, Rocket } from "lucide-react";
 export function TechSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
     return (
         <>
@@ -21,7 +22,7 @@ function Mobile({opened, language}: {opened:boolean, language: "es" | "en"}) {
                     return <Tech key={index} img={tech.img} title={tech.name}/>
                 })}
             </div>
-            <p className={`${styles.desc} ${opened && styles.opened} ${poppins.className}`}>Repertorio de las tecnologías que domino.</p>
+            <p className={`${styles.desc} ${opened && styles.opened} ${poppins.className}`}>{translation[language].techs_section.contained_desc}</p>
         </div>
     )
 }
@@ -47,6 +48,12 @@ function Desktop({opened, language}: {opened:boolean, language: "es" | "en"}) {
         exit: {
             opacity: 1
         }
+    };
+    const iconsMap = {
+        0: <Network size={24}/>,
+        1: <BrickWall size={24}/>,
+        2: <DatabaseZap size={24}/>,
+        3: <Rocket size={24}/>,
     }
     return (
         <div className={`${styles.techs_container} ${styles.desktop} ${opened && styles.opened}`}>
@@ -82,19 +89,19 @@ function Desktop({opened, language}: {opened:boolean, language: "es" | "en"}) {
                         <p className={poppins.className}>{translation[language].techs_section.key_concepts.desc}</p>
                         <ul className={styles.concept_list}>
                             <li>
-                                <b>{translation[language].techs_section.key_concepts.list[0].title}</b>
+                                <b>{iconsMap[0]} {translation[language].techs_section.key_concepts.list[0].title}</b>
                                 <p className={poppins.className}>{translation[language].techs_section.key_concepts.list[0].desc}</p>
                             </li>
                             <li>
-                                <b>{translation[language].techs_section.key_concepts.list[1].title}</b>
+                                <b>{iconsMap[1]} {translation[language].techs_section.key_concepts.list[1].title}</b>
                                 <p className={poppins.className}>{translation[language].techs_section.key_concepts.list[1].desc}</p>
                             </li>
                             <li>
-                                <b>{translation[language].techs_section.key_concepts.list[2].title}</b>
+                                <b>{iconsMap[2]} {translation[language].techs_section.key_concepts.list[2].title}</b>
                                 <p className={poppins.className}>{translation[language].techs_section.key_concepts.list[2].desc}</p>
                             </li>
                             <li>
-                                <b>{translation[language].techs_section.key_concepts.list[3].title}</b>
+                                <b>{iconsMap[3]} {translation[language].techs_section.key_concepts.list[3].title}</b>
                                 <p className={poppins.className}>{translation[language].techs_section.key_concepts.list[3].desc}</p>
                             </li>
                         </ul>

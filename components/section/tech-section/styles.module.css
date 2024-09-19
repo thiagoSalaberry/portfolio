@@ -102,7 +102,7 @@
         z-index: 3;
     }
     .techs_container {
-        background-image: url('/background.png');
+        /* background-image: url('/background.png'); */
         background-repeat: repeat;
         display: flex;
         justify-content: center;
@@ -194,6 +194,7 @@
         height: 100%;
         border: var(--border-clear);
         border-radius: 10px;
+        scrollbar-width: none;
     }
     .concept_container {
         display: grid;
@@ -206,6 +207,7 @@
         font-size: 30px;
     }
     .concept_list {
+        list-style: none;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -214,6 +216,9 @@
     }
     .concept_list > li > b {
         font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
     }
     .cards_container {
         display: grid;

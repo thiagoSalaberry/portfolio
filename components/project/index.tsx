@@ -4,7 +4,7 @@ import { Navigation } from "@/ui";
 import { Github } from "react-bootstrap-icons";
 import { ArrowUpCircle, ChevronDown, ExternalLink } from "lucide-react";
 import { bigShouldersDisplay, inter, poppins } from "@/lib/fonts";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {motion} from "framer-motion";
 export function Project(props:ProjectProps) {
     return (
@@ -21,11 +21,12 @@ function Desktop(props:ProjectProps) {
         1: "/urlshortener.png",
         2: "/teoxys-tattoo.png",
         3: "/ppt.png"
-    }
+    };
+    const imageContainerRef = useRef<HTMLDivElement>(null);
     return (
             <div className={`${styles.wrapper} ${styles.desktop}`} style={{borderRight: props.index !== 3 ? "1px solid var(--grey)" : ""}}>
-                <div className={`${styles.project_container} ${props.opened && styles.opened} ${styles[props.title.replaceAll(" ", "_")]}`}>
-                    <div className={`${styles.project_img_container} ${props.opened && styles.opened}`}>
+                <div className={`${styles.project_container} ${props.opened && styles.opened} ${styles[props.title.replaceAll(" ", "_").replace("&", "Ó")]}`}>
+                    <div ref={imageContainerRef} className={`${styles.project_img_container} ${props.opened && styles.opened}`}>
                         <img className={styles[props.title.replaceAll(" ", "_")]} src={imageMap[props.index as keyof typeof imageMap]} alt={imageMap[props.index as keyof typeof imageMap]} />
                     </div>
                     <div className={styles.content}>
@@ -77,7 +78,7 @@ function Mobile(props:ProjectProps) {
                         })}
                     </ul>
                     <div className={styles.links_container}>
-                        <Navigation href={props.link}><ExternalLink size={20}/> Ver</Navigation>
+                        <Navigation href={props.link}><ExternalLink size={20}/> {props.language == "es" ? "Ver" : "View"}</Navigation>
                         <Navigation href={props.githubLink}><Github size={20}/> GitHub</Navigation>
                     </div>
                 </div>
