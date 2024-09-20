@@ -5,11 +5,13 @@ import { useContactForm } from "@/hooks/useContactForm";
 import translation from "@/lib/translation.json";
 import { poppins } from "@/lib/fonts";
 import { CheckCircle, Send } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSendEmail } from "@/hooks/useSendEmail";
 
-export function ContactForm({language}: {language: "es" | "en"}) {7
+export function ContactForm({language}: {language: "es" | "en"}) {
     const [step, setStep] = useState<number>(0);
     const { form, setForm, disabled, setDisabled } = useContactForm();
+    const { loading, error, data, sendEmail } = useSendEmail();
     const handleChange = (fieldName: keyof typeof form, value:string):void => {
         setForm({
             ...form,
@@ -33,32 +35,17 @@ export function ContactForm({language}: {language: "es" | "en"}) {7
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault();
         setDisabled(true);
-        setTimeout(() => {
-            setDisabled(false);
-            setStep(1)
-        }, 2000);
-        setTimeout(() => {
-            setStep(0);
-            setForm({
-                name: {
-                    value: "",
-                    missing: false
-                },
-                email: {
-                    value: "",
-                    missing: false
-                },
-                company: {
-                    value: "",
-                    missing: false
-                },
-                message: {
-                    value: "",
-                    missing: false
-                },
-            })
-        }, 10000);
-    }
+        sendEmail(form.name.value, form.email.value, form.company.value, form.message.value);
+    };
+    useEffect(()=>{
+        if(data) {
+            setStep(1);
+            setDisabled(false)
+            setTimeout(() => {
+                setStep(0)
+            }, 7000);
+        }
+    }, [data])
     return (
         <AnimatePresence>
             {step == 0 ? (
@@ -111,7 +98,14 @@ export function ContactForm({language}: {language: "es" | "en"}) {7
                         />
                     </div>
                     <div className={styles.submit_section}>
-                        <Button disabled={disabled} type="submit" submitting={disabled} variant="mainIcon" onClick={()=>{}} loadingText={language == "es" ? "Enviando" : "Sending"}>{language == "es" ? "Enviar" : "Send"} <Send size={20}/></Button>
+                        <Button
+                            disabled={disabled}
+                            type="submit"
+                            submitting={loading}
+                            variant="mainIcon"
+                            onClick={()=>{}}
+                            loadingText={language == "es" ? "Enviando" : "Sending"}
+                        >{language == "es" ? "Enviar" : "Send"} <Send size={20}/></Button>
                     </div>
                     <div className={styles.form_image}>
                         <img src="/hello.png" alt="contact.png" />
