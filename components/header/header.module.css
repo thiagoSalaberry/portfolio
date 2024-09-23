@@ -1,0 +1,107 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+}
+.desktop {
+    display: none;
+}
+/* 768px */
+@media (min-width: 768px) {
+    .desktop {
+        display: inherit;
+    }
+    .header__nav__list {
+        display: flex;
+        list-style-type: none;
+        gap: 15px;
+    }
+    .header__nav__list__item {
+        cursor: pointer;
+        /* transition: all .1s; */
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+    }
+    .item__p {
+        font-size: 30px;
+        font-family: var(--font-secondary);
+        font-weight: 500;
+        transition: all .3s;
+    }
+    .item__p:hover {
+        transform: translateY(-100%);
+    }
+    .item__p::after {
+        content: attr(data-content);
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -100%;
+        text-align: center;
+    }
+    /* .header__nav__list__item::after {
+        content: attr(data-content);
+        width: 100%;
+        height: 2px;
+        transform: translateY(100%);
+        transition: all .1s;
+    }
+    .header__nav__list__item:hover:after {
+        transform: translateY(0%);
+    } */
+    .header__nav__list__item:active {
+        transform: scale(.97);
+    }
+    .header__rigth__content {
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+}
+/* 1280px */
+@media (min-width: 1280px) {
+    .header {
+        padding: 15px 300px;
+    }
+}
+.header__rigth__content {
+    display: flex;
+    gap: 15px;
+}
+.waving__animation {
+    animation: waving .4s infinite;
+    font-size: 24px;
+}
+.languaje__buttons__container {
+    display: flex;
+    gap: 10px;
+}
+.languaje__button {
+    background: none;
+    border: none;
+    color: var(--blue-200);
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all .2s;
+}
+.languaje__button::after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    background: none;
+    border: 1px solid var(--blue-200);
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: all .2s;
+}
+.languaje__button.selected {
+    color: var(--blue);
+}
+.languaje__button.selected::after {
+    background: var(--blue);
+    border: none;
+}
