@@ -10,10 +10,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <RecoilRoot>
-      <html lang="en">
-        <body className={bigShouldersDisplay.className}>{children}</body>
+    <html lang="en">
+        <head>
+          <title>Portfolio: Thiago Salaberry</title>
+          <link rel="icon" href="briefcase.svg" type="image/svg"/>
+        </head>
+          <body className={bigShouldersDisplay.className}>
+            <RecoilRoot>
+              {children}
+            </RecoilRoot>
+          </body>
       </html>
-    </RecoilRoot>
   )
 }
