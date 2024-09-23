@@ -1,0 +1,51 @@
+.nav {
+
+}
+.nav_list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+.nav_list_item {
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+.nav_list_item > p {
+    font-size: 30px;
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    transition: all .2s;
+}
+.nav_list_item > p::after {
+    content: attr(data-content);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -100%;
+    text-align: center;
+}
+.nav_list_item > p:hover {
+    transform: translateY(-100%);
+}
+/* .nav_list_item > p:active {
+    transform: scale(.95);
+} */
+.current {
+    position: absolute;
+    left: 0;
+    width: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--black);
+    transition: all .4s ease;
+}
+/* DESKTOP */
+@media (max-width: 1024px) {
+    .nav {
+        display: none;
+    }
+}

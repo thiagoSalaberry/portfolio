@@ -1,0 +1,97 @@
+:root {
+  /* COLORS */
+  /* PALETTE */
+  --base: #F2F3EE;
+  --main: #F5F5F5;
+  --brand-50: #F5F6F4;
+  --brand-100: #E5E6DF;
+  --brand-200: #CACBBC;
+  --brand-300: #AEAF9A;
+  --brand: #A5A58D;
+  --brand-500: #8E8C72;
+  --brand-600: #7C7763;
+  --brand-700: #696354;
+  --brand-800: #585248;
+  --brand-900: #4A463D;
+  --brand-950: #282520;
+  /* GREYS */
+  --white: #F5F5F5;
+  --grey-100: #EFEFEF;
+  --grey-200: #DCDCDC;
+  --grey-300: #BDBDBD;
+  --grey: #989898;
+  --grey-500: #7C7C7C;
+  --grey-600: #656565;
+  --grey-700: #525252;
+  --grey-800: #464646;
+  --grey-900: #3D3D3D;
+  --black: #292929;
+      /* GREENS */
+  --green-50: #F1FDF0;
+  --green-100: #DCFDDB;
+  --green-200: #BCF8BA;
+  --green-300: #6EEE6B;
+  --green: #4AE147;
+  --green-500: #22C81F;
+  --green-600: #16A613;
+  --green-700: #148213;
+  --green-800: #156615;
+  --green-900: #135414;
+  --green-950: #042F05;
+      /* REDS */
+  --red-50: #FFF1F1;
+  --red-100: #FFE1E1;
+  --red-200: #FFC7C7;
+  --red-300: #FFA0A0;
+  --red: #FF7A7A;
+  --red-500: #F83B3B;
+  --red-600: #E51D1D;
+  --red-700: #C11414;
+  --red-800: #A01414;
+  --red-900: #841818;
+  --red-950: #480707;
+      /* YELLOWS */
+  --yellow-50: #FEFEE8;
+  --yellow-100: #FEFFC2;
+  --yellow-200: #FFFE87;
+  --yellow-300: #FFF643;
+  --yellow: #FFEA28;
+  --yellow-500: #EFCE03;
+  --yellow-600: #CEA100;
+  --yellow-700: #A47404;
+  --yellow-800: #885A0B;
+  --yellow-900: #734910;
+  --yellow-950: #432605;
+      /* BLUES */
+  --blue-50: #EEF2FF;
+  --blue-100: #DAE2FF;
+  --blue-200: #BDCCFF;
+  --blue-300: #90ACFF;
+  --blue: #597EFF;
+  --blue-500: #3554FC;
+  --blue-600: #1F32F1;
+  --blue-700: #171EDE;
+  --blue-800: #191BB4;
+  --blue-900: #1A1E8E;
+  --blue-950: #151556;
+  /* UTILITES */
+  --border: 1px solid var(--grey);
+  --border-clear: 1px solid var(--grey-300);
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: var(--base);
+  padding: .1rem;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+}
+::selection {
+  background: var(--brand);
+  color: var(--white);
+}
