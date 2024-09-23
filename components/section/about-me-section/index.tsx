@@ -55,7 +55,7 @@ export function AboutMeSection({opened, language}: {opened:boolean, language: "e
                         <h1 className={`${styles.about_me_role} ${bigShouldersDisplay.className}`}>FULL<br className={styles.br}/>STACK<br/>WEB<br className={styles.br}/> DEV</h1>
                     </div>
                     <div className={styles.about_me_img_container}>
-                            <img src="man_3.webp" alt="me" loading="lazy"/>
+                            <img src="yo2.webp" alt="me" loading="lazy"/>
                     </div>
                     <div className={styles.about_me_button_container}>
                         <Button variant="secondaryIcon" onClick={handleDownload}>CV <Download size={20}/></Button>

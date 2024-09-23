@@ -85,7 +85,7 @@
 .about_me_img_container > img {
     height: 50%;
     width: auto;
-    transform: translateY(51%) scale(.15);
+    transform: translateY(51%) scale(.14);
 }
 .about_me_button_container {
     grid-area: b;
@@ -132,5 +132,8 @@
     }
     .br {
         display: none;
+    }
+    .about_me_img_container > img {
+        transform: translateY(51%) scale(.18);
     }
 }
