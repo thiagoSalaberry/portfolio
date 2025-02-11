@@ -17,7 +17,7 @@ const animation = {
 }
 export function AboutMeSection({opened, language}: {opened:boolean, language: "es" | "en"}) {
     const handleDownload = () => {
-        const cvPDF = language == "es" ? "/CV - Sep.pdf" : "/CV- Sep Eng.pdf" ;
+        const cvPDF = language == "es" ? "CV- Feb - DE.pdf" : "/CV- Feb Eng.pdf" ;
         const link = document.createElement("a");
         link.href = cvPDF;
         link.download = "CV - Thiago Salaberry.pdf";
